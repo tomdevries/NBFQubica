@@ -1,0 +1,43 @@
+﻿@{
+    var grid = new WebGrid(Model, 
+                           canPage: true, 
+                           rowsPerPage: 10,
+                           selectionFieldName: "selectedRow", 
+                           ajaxUpdateContainerId: "gridContent");
+    grid.Pager(WebGridPagerModes.All);
+} 
+<section id="messages">
+    <div class="description">@TempData["message"]</div>
+    <div class="error">@TempData["error"]</div>
+</section>
+<section id="searchForm">
+    @using (Html.BeginForm())
+    {
+        <table>
+            <tr><td>Bowlinghuis:</td><td>@Html.TextBox("name", @Request["name"])</td><td><input type="submit" value="zoek" /></td></tr>
+        </table>
+    }
+</section>
+<section>
+    <div id="gridContent">
+        @grid.GetHtml(
+            tableStyle: "webGrid",
+            headerStyle: "header",
+            alternatingRowStyle: "alt",
+            selectedRowStyle: "select",
+            footerStyle: "footer",
+            fillEmptyRows: true,
+            columns: grid.Columns(
+                        grid.Column("Naam", format: (item) => Html.ActionLink((string)item.Name, "Edit", "Bowlinghuis", new { id = item.id }, null)),
+                        grid.Column("Address", "Adres"),
+                        grid.Column("Zipcode", "Postcode"),
+                        grid.Column("City", "Plaats"),
+                        grid.Column("Phonenumber", "Telefoonnummer"),
+                        grid.Column(header: "", format: (item) => Html.ActionLink("Openingstijden", "Opentimes", "Bowlinghuis", new { id = item.id }, null), style: "actions"),
+                        grid.Column(header: "", format: (item) => Html.ActionLink("Advertenties", "Adverts", "Bowlinghuis", new { id = item.id }, null), style: "actions"),
+                        grid.Column(format: (item) => Html.ActionLink("Verwijderen", "Delete", new { id = item.id }, new { onclick = "return confirm('Weet je het zeker?');" }))
+                    )
+            )
+    </div>
+    @Html.ActionLink("Voeg een bowlinghuis toe", "Insert", "Bowlinghuis")
+</section>

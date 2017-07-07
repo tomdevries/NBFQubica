@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Home Pagina";
+}
+<div id="welkom">
+    <label id="welkomnaam">Welkom: @User.Identity.Name</label>
+    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+    {
+        @Html.AntiForgeryToken()
+        <input id="logout" type="button" value="LOGOUT" onclick="javascript: document.getElementById('logoutForm').submit()" />
+    }
+</div>
+<div id="background">
+    <div id="contentfixed">
+        <div id="dashboard">
+            <div id="dashboardmenu">
+                <table>
+                    <tr>
+                        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { id = "myScoresForm" }))
+                        {
+                            <td onclick="javascript: document.getElementById('myScoresForm').submit()">MIJN SCORES</td>
+                        }
+                        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { id = "bowlingCentersForm" }))
+                        {
+                            <td onclick="javascript: document.getElementById('bowlingCentersForm').submit()">BOWLINGHUIZEN</td>
+                        }
+                        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { id = "playersForm" }))
+                        {
+                            <td onclick="javascript: document.getElementById('playersForm').submit()">SPELERS ZOEKEN</td>
+                        }
+                        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { id = "favoritsForm" }))
+                        {
+                            <td onclick="javascript: document.getElementById('favoritsForm').submit()">FAVORIETEN</td>
+                        }
+                        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { id = "newsForm" }))
+                        {
+                            <td onclick="javascript: document.getElementById('newsForm').submit()">NIEUWS</td>
+                        }
+                    </tr>
+                </table>
+            </div>
+            <div id="spacer"></div>
+            <div id="dashboardcontent">
+                <table>
+                    <tr><th></th></tr>
+                    <tr><td><hr /></td></tr>
+                    <tr>
+                        <td>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="spacer"></div>
+            <div id="challenge">
+                @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { id = "challengeForm" }))
+                {
+                    <div onclick="javascript: document.getElementById('challengeForm').submit()">CHALLENGE OF THE MONTH<div><img src="/images/pins.png" /></div></div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

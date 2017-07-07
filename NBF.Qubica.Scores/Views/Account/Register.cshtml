@@ -1,0 +1,67 @@
+﻿@model NBF.Qubica.Scores.Models.RegisterModel
+@{
+    ViewBag.Title = "";
+}
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+	<div id="nbflogo">
+		<a href="http://www.bowlingnbf.nl/" target="_new"><img src="/images/nbflogo.png" /></a>
+	</div>
+	<div id="content">
+		<div id="inputarea">
+            <table>
+                <tr>
+                    <td colspan="2" class="title">Registreer</td>
+                </tr>
+                <tr>
+                    <td><label>@Html.LabelFor(m => m.Name)</label></td>
+                    <td>@Html.TextBoxFor(m => m.Name)</td>
+                </tr>
+                <tr>
+                    <td><label>@Html.LabelFor(m => m.Email)</label></td>
+                    <td>@Html.TextBoxFor(m => m.Email)</td>
+                </tr>
+                <tr>
+                    <td><label>@Html.LabelFor(m => m.Address)</label></td>
+                    <td>@Html.TextBoxFor(m => m.Address)</td>
+                </tr>
+                <tr>
+                    <td><label>@Html.LabelFor(m => m.City)</label></td>
+                    <td>@Html.TextBoxFor(m => m.City)</td>
+                </tr>                
+                <tr>
+                    <td colspan="2"><hr/></td>
+                </tr>
+                <tr>
+                    <td><label>@Html.LabelFor(m => m.UserName)</label></td>
+                    <td>@Html.TextBoxFor(m => m.UserName)</td>
+                </tr>
+                <tr>
+                    <td><label>@Html.LabelFor(m => m.Password)</label></td>
+                    <td>@Html.PasswordFor(m => m.Password)</td>
+                </tr>
+                <tr>
+                    <td><label>@Html.LabelFor(m => m.ConfirmPassword)</label></td>
+                    <td>@Html.PasswordFor(m => m.ConfirmPassword)</td>
+                </tr>               
+                <tr>
+                    <td>&nbsp;</td>
+                    <td class="righttext">@Html.ActionLink("Terug naar inloggen", "Login", "Account")</td>
+                </tr>
+                <tr>
+                    <td colspan="3">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><input type="submit" value="REGISTREER" /></td>
+                </tr>
+            </table>
+		</div>
+	</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

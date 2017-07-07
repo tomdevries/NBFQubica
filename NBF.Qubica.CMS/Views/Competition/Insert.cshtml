@@ -1,0 +1,53 @@
+﻿@model NBF.Qubica.CMS.Models.CompetitionModel
+@{
+    ViewBag.Title = "Toevoegen Competitie";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+</hgroup>
+
+<section id="competitieForm">
+<h2></h2>
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Competitie Form</legend>
+        @Html.HiddenFor(m => m.challengeId)
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.description)
+                @Html.TextBoxFor(m => m.description)
+                @Html.ValidationMessageFor(m => m.description)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.price)
+                @Html.TextBoxFor(m => m.price)
+                @Html.ValidationMessageFor(m => m.price)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.StartDate)
+                @Html.TextBoxFor(m => m.StartDate)
+                @Html.ValidationMessageFor(m => m.StartDate)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.EndDate)
+                @Html.TextBoxFor(m => m.EndDate)
+                @Html.ValidationMessageFor(m => m.EndDate)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.challenge)
+                @Html.TextBoxFor(m => m.challenge, new { @readonly = "readonly" })
+                @Html.ValidationMessageFor(m => m.challenge)
+            </li>
+        </ol>
+        <input type="submit" value="Maak aan" />
+    </fieldset>
+}
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

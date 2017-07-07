@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile>2014-07-06T17:54:28.0000000+02:00</TimeStampOfAssociatedLegacyPublishXmlFile>
+    <_PublishTargetUrl>C:\temp\NBF.Qubica.RestWebService</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/NBF.Qubica.Classes.dll">
+      <publishTime>03/05/2017 17:25:46</publishTime>
+    </File>
+    <File Include="bin/NBF.Qubica.Common.dll">
+      <publishTime>03/05/2017 17:25:46</publishTime>
+    </File>
+    <File Include="bin/NBF.Qubica.Database.dll">
+      <publishTime>03/05/2017 17:25:46</publishTime>
+    </File>
+    <File Include="bin/NBF.Qubica.Managers.dll">
+      <publishTime>03/05/2017 17:25:47</publishTime>
+    </File>
+    <File Include="bin/NBF.Qubica.RestWebService.dll">
+      <publishTime>03/11/2017 14:56:44</publishTime>
+    </File>
+    <File Include="bin/NLog.config">
+      <publishTime>03/23/2015 14:47:02</publishTime>
+    </File>
+    <File Include="bin/NLog.dll">
+      <publishTime>03/23/2015 14:44:05</publishTime>
+    </File>
+    <File Include="NLog.config">
+      <publishTime>03/23/2015 14:47:02</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>03/05/2017 15:24:43</publishTime>
+    </File>
+    <File Include="RestService.svc">
+      <publishTime>06/21/2014 16:09:40</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>03/11/2017 14:56:45</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

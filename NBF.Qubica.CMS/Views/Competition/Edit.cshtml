@@ -1,0 +1,71 @@
+﻿@using MvcCheckBoxList.Model
+@model NBF.Qubica.CMS.Models.CompetitionModel
+@{
+    ViewBag.Title = "Aanpassen Competitie";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+</hgroup>
+
+<section id="competitieForm">
+<h2></h2>
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Competitie Form</legend>
+        @Html.HiddenFor(m => m.challengeId)
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.description)
+                @Html.TextBoxFor(m => m.description)
+                @Html.ValidationMessageFor(m => m.description)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.price)
+                @Html.TextBoxFor(m => m.price)
+                @Html.ValidationMessageFor(m => m.price)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.StartDate)
+                @Html.TextBoxFor(m => m.StartDate)
+                @Html.ValidationMessageFor(m => m.StartDate)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.EndDate)
+                @Html.TextBoxFor(m => m.EndDate)
+                @Html.ValidationMessageFor(m => m.EndDate)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.challenge)
+                @Html.TextBoxFor(m => m.challenge, new { @readonly = "readonly" })
+                @Html.ValidationMessageFor(m => m.challenge)
+            </li>
+            <li>
+                <fieldset>
+                    <div class="checkboxes">
+                        <label>@Html.CheckBoxFor(m => m.AllBowlingCentersChecked, new { @class = "checkall", @checked = @Model.AllBowlingCentersChecked })<span>Alle bowlinghuizen?</span></label>
+                        <hr />
+                        @Html.CheckBoxListFor(
+                               model => model.PostedBowlingCenters.CheckboxIds,
+                               model => model.AvailableBowlingCenters,
+                               fruit => fruit.Id,
+                               fruit => fruit.Name,
+                               model => model.SelectedBowlingCenters,
+                               Position.Vertical,
+                               x => new { @class = "allcheckboxes" })
+                    </div>
+                </fieldset>
+            </li>        
+         </ol>
+        <input type="submit" value="Sla op" />
+    </fieldset>
+}
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" src="@Url.Content("/Scripts/CustomScripts.js")"></script>
+}

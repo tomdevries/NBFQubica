@@ -1,0 +1,15 @@
+﻿@model NBF.Qubica.CMS.Models.RegisterModel
+@{
+    ViewBag.Title = "Registratie resultaat";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+    <h2></h2>
+</hgroup>
+<p>
+    De registratie voor de gebruiker '@ViewBag.Name' is succesvol opgeslagen. Zodra de registratie is gevalideerd kan de de gerbuiker inloggen op het CMS.
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

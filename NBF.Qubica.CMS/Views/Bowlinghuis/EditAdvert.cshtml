@@ -1,0 +1,47 @@
+﻿@model NBF.Qubica.CMS.Models.AdvertModel
+@{
+    ViewBag.Title = "Wijzigen Advertentie";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+</hgroup>
+
+<section id="advertForm">
+<h2></h2>
+@using (Html.BeginForm("EditAdvert", "Bowlinghuis", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Advert Form</legend>
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.BowlingcenterId)
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.Advertisement)
+                @Html.TextBoxFor(m => m.Advertisement, new { @class = "wide" })
+                @Html.ValidationMessageFor(m => m.Advertisement)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.AdvertisementUrl)
+                @Html.TextBoxFor(m => m.AdvertisementUrl, new { @class = "wide", @readonly = true })
+                @Html.ValidationMessageFor(m => m.AdvertisementUrl)
+            </li>
+            <li>
+                <input type="file" name="UploadedFile" class="wide" />
+            </li>
+            <li>
+                @Html.LabelFor(m => m.AdvertisementWWW)
+                @Html.TextBoxFor(m => m.AdvertisementWWW, new { @class = "wide" })
+                @Html.ValidationMessageFor(m => m.AdvertisementWWW)
+            </li>        </ol>
+        <input type="submit" value="Sla op" />
+    </fieldset>
+}
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

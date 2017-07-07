@@ -1,0 +1,41 @@
+﻿@model NBF.Qubica.CMS.Models.FederationModel
+@{
+    ViewBag.Title = "Bond gegevens";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+</hgroup>
+<section id="messages">
+    <div class="description">@TempData["message"]</div>
+    <div class="error">@TempData["error"]</div>
+</section>
+<section id="FederationForm">
+<h2></h2>
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Bond Form</legend>
+        @Html.HiddenFor(m => m.Id)
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.Information)
+                @Html.TextAreaFor(m => m.Information)
+                @Html.ValidationMessageFor(m => m.Information)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.UrlLogo)
+                @Html.TextBoxFor(m => m.UrlLogo, new { @class= "wide" })
+                @Html.ValidationMessageFor(m => m.UrlLogo)
+            </li>
+        </ol>
+        <input type="submit" value="Sla op" />
+    </fieldset>
+}
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

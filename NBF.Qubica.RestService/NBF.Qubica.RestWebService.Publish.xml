@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="C:\temp\NBF\Deploy" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="bin/NLog.config" publishTime="07/06/2014 17:52:34" />
+    <file relUrl="bin/NBF.Qubica.Common.dll" publishTime="07/06/2014 17:54:13" />
+    <file relUrl="bin/NLog.xml" publishTime="07/17/2011 23:26:56" />
+    <file relUrl="bin/NBF.Qubica.Database.dll" publishTime="07/06/2014 17:54:14" />
+    <file relUrl="bin/NBF.Qubica.Managers.dll" publishTime="07/06/2014 17:54:14" />
+    <file relUrl="RestService.svc" publishTime="06/21/2014 16:09:38" />
+    <file relUrl="bin/NBF.Qubica.RestWebService.pdb" publishTime="07/06/2014 17:54:14" />
+    <file relUrl="bin/NBF.Qubica.Classes.dll" publishTime="07/06/2014 17:54:13" />
+    <file relUrl="bin/NLog.dll" publishTime="07/17/2011 23:26:56" />
+    <file relUrl="bin/NBF.Qubica.Managers.pdb" publishTime="07/06/2014 17:54:14" />
+    <file relUrl="bin/NBF.Qubica.RestWebService.dll" publishTime="07/06/2014 17:54:14" />
+    <file relUrl="NLog.config" publishTime="07/06/2014 17:52:34" />
+    <file relUrl="Web.config" publishTime="07/06/2014 17:54:26" />
+    <file relUrl="bin/NBF.Qubica.Classes.pdb" publishTime="07/06/2014 17:54:13" />
+    <file relUrl="bin/NBF.Qubica.Database.pdb" publishTime="07/06/2014 17:54:14" />
+    <file relUrl="bin/NBF.Qubica.Common.pdb" publishTime="07/06/2014 17:54:13" />
+  </publishProfile>
+</publishData>

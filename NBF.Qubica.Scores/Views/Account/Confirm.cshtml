@@ -1,0 +1,65 @@
+﻿@model NBF.Qubica.Scores.Models.ConfirmModel
+@{
+    ViewBag.Title = "";
+}
+
+<section id="loginForm">
+    @using (Html.BeginForm("Login", "Account", ""))
+    //@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div id="nbflogo">
+            <a href="http://www.bowlingnbf.nl/" target="_new"><img src="/images/nbflogo.png" /></a>
+        </div>
+        <div id="content">
+            <div id="inputarea">
+                <table>
+                    <tr>
+                        <td colspan="3" class="title">Inloggen</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">De bevestiging is geslaagd.</td>
+                    </tr>
+                    <tr>
+                        <td><label>@Html.LabelFor(m => m.UserName)</label></td>
+                        <td colspan="2">@Html.TextBoxFor(m => m.UserName)</td>
+                    </tr>
+                    <tr>
+                        <td><label>@Html.LabelFor(m => m.Password)</label></td>
+                        <td colspan="2">@Html.PasswordFor(m => m.Password)</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td class="righttext" colspan="2">
+                            @Html.ActionLink("Wachtwoord vergeten", "Forgotten", "Account")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><input type="submit" value="LOGIN" /></td>
+                        <td nowrap>
+                            <label id="smalllabel">Nog geen account?</label><br />
+                            @Html.ActionLink("Registeer hier", "Register", "Account")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td colspan="2">
+                            @Html.ValidationMessageFor(m => m.UserName)
+                            <br />@Html.ValidationMessageFor(m => m.Password)
+                            <br />@Html.ValidationSummary(true)
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    }
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,46 @@
+﻿@model NBF.Qubica.Scores.Models.ForgottenModel
+@{
+    ViewBag.Title = "";
+}
+
+<section id="loginForm">
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+	<div id="nbflogo">
+		<a href="http://www.bowlingnbf.nl/" target="_new"><img src="/images/nbflogo.png" /></a>
+	</div>
+	<div id="content">
+		<div id="inputarea">
+            <table>
+                <tr>
+                    <td colspan="2" class="title">Reset</td>
+                </tr>
+                <tr>
+                    <td><label>@Html.LabelFor(m => m.UserName)</label></td>
+                    <td>@Html.TextBoxFor(m => m.UserName)@Html.ValidationMessageFor(m => m.UserName)</td>
+                </tr>
+                <tr>
+                    <td><label>@Html.LabelFor(m => m.Email)</label></td>
+                    <td>@Html.TextBoxFor(m => m.Email)@Html.ValidationMessageFor(m => m.Email)</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td class="righttext">@Html.ActionLink("Terug naar inloggen", "Login", "Account")</td>
+                </tr>
+                <tr>
+                    <td colspan="3">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><input type="submit" value="RESET" /></td>
+                </tr>
+            </table>
+		</div>
+	</div>
+}
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

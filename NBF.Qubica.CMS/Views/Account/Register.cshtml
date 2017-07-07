@@ -1,0 +1,74 @@
+﻿@model NBF.Qubica.CMS.Models.RegisterModel
+@{
+    ViewBag.Title = "Registeer een account";
+}
+<script type="text/javascript">
+    function ValidateNumber(e) {
+        var evt = (e) ? e : window.event;
+        var charCode = (evt.keyCode) ? evt.keyCode : evt.which;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    };
+</script>
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+    <h2></h2>
+</hgroup>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Registration Form</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.Name)
+                @Html.TextBoxFor(m => m.Name)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Address)
+                @Html.TextBoxFor(m => m.Address)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.City)
+                @Html.TextBoxFor(m => m.City)
+            </li>
+            <hr/>
+            <li>
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.ConfirmPassword)
+                @Html.PasswordFor(m => m.ConfirmPassword)
+            </li>
+            <li>
+                <table><tr><td>@Html.CheckBoxFor(m => m.IsMember)</td><td>Is lid van een bond?</td></tr></table>
+            </li>
+            <li>
+                @Html.LabelFor(m => m.MemberNumber)
+                @Html.TextBoxFor(m => m.MemberNumber)
+            </li> 
+            <li>
+                @Html.LabelFor(m => m.FrequentBowlerNumber)
+                @Html.TextBoxFor(m => m.FrequentBowlerNumber, new { onkeydown = "return ValidateNumber(event);" })
+            </li>
+        </ol>
+        <input type="submit" value="Registeer" />
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

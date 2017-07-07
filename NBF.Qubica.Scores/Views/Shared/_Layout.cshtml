@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - NBF Qubica Scores</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        <script src="@Url.Content("~/Scripts/jquery-2.1.1.js")" type="text/javascript"> </script>
+        <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
+        <script src="@Url.Content("~/Scripts/gridmvc.min.js")" type="text/javascript"> </script>
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lily+Script+One|Fascinate+Inline|Fugaz+One">
+    </head>
+    <body>
+        @RenderBody()
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

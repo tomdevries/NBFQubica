@@ -1,0 +1,43 @@
+﻿@model NBF.Qubica.CMS.Models.OpentimeModel
+@{
+    ViewBag.Title = "Toevoegen Openingstijd";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+</hgroup>
+
+<section id="openingstijdForm">
+<h2></h2>
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Openingstijd Form</legend>
+        @Html.HiddenFor(m => m.BowlingcenterId)
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.Day)
+                @Html.DropDownListFor(m => m.Day, Model.Days, String.Empty)
+                @Html.ValidationMessageFor(m => m.Day)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Opentime)
+                @Html.TextBoxFor(m => m.Opentime)
+                @Html.ValidationMessageFor(m => m.Opentime)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Closetime)
+                @Html.TextBoxFor(m => m.Closetime)
+                @Html.ValidationMessageFor(m => m.Closetime)
+            </li>
+        </ol>
+        <input type="submit" value="Maak aan" />
+    </fieldset>
+}
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
