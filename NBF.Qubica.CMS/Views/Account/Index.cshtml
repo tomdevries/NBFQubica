@@ -28,7 +28,8 @@
             footerStyle: "footer",
             fillEmptyRows: true,
             columns: grid.Columns(
-                        grid.Column("Naam", format: (item) => Html.ActionLink((string)item.Name, "Edit", "Account", new { id = item.id }, null)),
+                        grid.Column(format: (item) => Html.ActionLink("Aanpassen", "Edit", new { id = item.id }, null)),
+                        grid.Column("Name", "Naam"),
                         grid.Column("Address", "Adres"),
                         grid.Column("City", "Plaats"),
                         grid.Column("Email", "E-mail"),

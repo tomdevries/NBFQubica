@@ -18,8 +18,9 @@
             footerStyle: "footer",
             fillEmptyRows: true,
             columns: grid.Columns(
+                        grid.Column(format: (item) => Html.ActionLink("Competities", "Competition", "Competition", new { id = item.id }, null)),
                         grid.Column("Id", "Nummer"),
-                        grid.Column("Omschrijving", format: (item) => Html.ActionLink((string)item.Name, "Competition", "Competition", new { id = item.id }, null))
+                        grid.Column("Name", "Omschrijving")
                     )
             )
     </div>

@@ -25,7 +25,7 @@
                         grid.Column("Id", "Id"),
                         grid.Column("Name", "Naam"),
                         grid.Column("FrequentBowlerNumber", "Frequent Bowlernummer"),
-                                 grid.Column(format: (item) => Html.ActionLink("Verwijderen", "DeletePlayer", new { id = item.id}, new { onclick = "return confirm('Weet je het zeker?');" }))
+                        grid.Column(format: (item) => Html.ActionLink("Verwijderen", "DeletePlayer", new { id = item.id}, new { onclick = "return confirm('Weet je het zeker?');" }))
                     )
             )
     </div>

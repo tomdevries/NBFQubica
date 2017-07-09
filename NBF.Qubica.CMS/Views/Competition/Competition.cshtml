@@ -29,6 +29,7 @@
                         grid.Column("StartDate", "Start datum"),
                         grid.Column("EndDate", "Eind datum"),
                         grid.Column(header: "", format: (item) => Html.ActionLink("Deelnemers", "competitionplayers", "Competition", new { id = item.id }, new { @class = "player",  @title = "Bowlers voor deze competitie" }), style: "actions"),
+                        grid.Column(header: "", format: (item) => Html.ActionLink("Stand", "competitionranking", "Competition", new { id = item.id }, null), style: "actions"),
                         grid.Column(            format: (item) => Html.ActionLink("Verwijderen", "Delete", new { id = item.id }, new { onclick = "return confirm('Weet je het zeker?');" }))
                     )
             )

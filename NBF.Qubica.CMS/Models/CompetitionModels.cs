@@ -74,4 +74,19 @@ namespace NBF.Qubica.CMS.Models
         [Display(Name = "Frequent Bowlernummer")]
         public long FrequentBowlernumber { get; set; }
     }
+
+    public class PlayerRankingGridModel
+    {
+        [Display(Name = "Rank")]
+        public long Rank { get; set; }
+
+        [Display(Name = "Naam")]
+        public string Name { get; set; }
+
+        [Display(Name = "Frequent Bowlernummer")]
+        public long FrequentBowlernumber { get; set; }
+
+        [Display(Name = "Score")]
+        public long Score { get; set; }
+    }
 }

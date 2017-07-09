@@ -28,15 +28,16 @@
             footerStyle: "footer",
             fillEmptyRows: true,
             columns: grid.Columns(
-                        grid.Column("Naam", format: (item) => Html.ActionLink((string)item.Name, "Edit", "Bowlinghuis", new { id = item.id }, null)),
-                        grid.Column("Address", "Adres"),
-                        grid.Column("Zipcode", "Postcode"),
-                        grid.Column("City", "Plaats"),
-                        grid.Column("Phonenumber", "Telefoonnummer"),
-                        grid.Column(header: "", format: (item) => Html.ActionLink("Openingstijden", "Opentimes", "Bowlinghuis", new { id = item.id }, null), style: "actions"),
-                        grid.Column(header: "", format: (item) => Html.ActionLink("Advertenties", "Adverts", "Bowlinghuis", new { id = item.id }, null), style: "actions"),
-                        grid.Column(format: (item) => Html.ActionLink("Verwijderen", "Delete", new { id = item.id }, new { onclick = "return confirm('Weet je het zeker?');" }))
-                    )
+                     grid.Column(format: (item) => Html.ActionLink("Aanpassen", "Edit", new { id = item.id }, null)),
+                     grid.Column("Name", "Naam"),
+                     grid.Column("Address", "Adres"),
+                     grid.Column("Zipcode", "Postcode"),
+                     grid.Column("City", "Plaats"),
+                     grid.Column("Phonenumber", "Telefoonnummer"),
+                     grid.Column(header: "", format: (item) => Html.ActionLink("Openingstijden", "Opentimes", "Bowlinghuis", new { id = item.id }, null), style: "actions"),
+                     grid.Column(header: "", format: (item) => Html.ActionLink("Advertenties", "Adverts", "Bowlinghuis", new { id = item.id }, null), style: "actions"),
+                     grid.Column(format: (item) => Html.ActionLink("Verwijderen", "Delete", new { id = item.id }, new { onclick = "return confirm('Weet je het zeker?');" }))
+                 )
             )
     </div>
     @Html.ActionLink("Voeg een bowlinghuis toe", "Insert", "Bowlinghuis")

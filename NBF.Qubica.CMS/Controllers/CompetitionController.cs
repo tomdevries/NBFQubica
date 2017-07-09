@@ -121,6 +121,34 @@ namespace NBF.Qubica.CMS.Controllers
             return View(playerCompetitionList);
         }
 
+        [Authorize]
+        public ActionResult competitionranking(long id)
+        {
+            ObservableCollection<PlayerRankingGridModel> playerRankingModelList = new ObservableCollection<PlayerRankingGridModel>();
+
+            List<S_CompetitonPlayers> playerList;
+
+            playerList = CompetitionManager.GetPlayersByCompetition(id);
+
+            int i = 0;
+            foreach (S_CompetitonPlayers player in playerList)
+            {
+                S_User user = UserManager.GetUserById(player.userid);
+
+                PlayerRankingGridModel pgm = new PlayerRankingGridModel();
+                pgm.Rank = ++i;
+                pgm.Name = user.name;
+                pgm.FrequentBowlernumber = user.frequentbowlernumber;
+                pgm.Score = 100;
+
+                playerRankingModelList.Add(pgm);
+            }
+
+            ViewBag.competitionid = id;
+
+            return View(playerRankingModelList);
+        }
+
         //
         // POST: /Competition/Insert
         [HttpPost]
