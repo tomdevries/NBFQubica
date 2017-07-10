@@ -41,6 +41,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{5A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebServices", "WebServices", "{93676361-F7A8-4397-94BF-641E9C99B781}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CompetitionQueries", "CompetitionQueries", "{9925B84C-8E16-4661-A106-57FBEB7A39BE}"
+	ProjectSection(SolutionItems) = preProject
+		References\01_top_aantal_strikes_per_maand.sql = References\01_top_aantal_strikes_per_maand.sql
+		References\02_top_aantal_spares_per_maand.sql = References\02_top_aantal_spares_per_maand.sql
+		References\03_top_game_per_maand.sql = References\03_top_game_per_maand.sql
+		References\04_top_2_games_per_maand.sql = References\04_top_2_games_per_maand.sql
+		References\05_top_3_games_per_maand.sql = References\05_top_3_games_per_maand.sql
+		References\06_minste_nul_scores_per_maand.sql = References\06_minste_nul_scores_per_maand.sql
+		References\07_meeste_splits_gespared_per_maand.sql = References\07_meeste_splits_gespared_per_maand.sql
+		References\08_meeste_9_pin_in_eerste_beurt_per_maand.sql = References\08_meeste_9_pin_in_eerste_beurt_per_maand.sql
+		References\09_meest_aantal_keren_boven_160_per_maand.sql = References\09_meest_aantal_keren_boven_160_per_maand.sql
+		References\10_meest_aantal_games_per_maand.sql = References\10_meest_aantal_games_per_maand.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -176,17 +190,18 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{0E65A688-EE4E-4ACD-A342-2730FEB4062D} = {D4D1F59E-0434-436E-B86A-4A0B7B3392B0}
-		{F295380B-DD04-4ED0-AB0E-A80A70DA14A7} = {D4D1F59E-0434-436E-B86A-4A0B7B3392B0}
-		{7B5ADD41-A967-4650-8891-7CB0EDEE709E} = {D4D1F59E-0434-436E-B86A-4A0B7B3392B0}
-		{243F140F-840B-4EB5-AA1B-2DA51E341253} = {E69B2CA9-C6D2-4B21-B6FB-44E4B12F2DAE}
+		{57ABF991-249E-4609-84D2-FBD073B0219E} = {7DB7CFC1-58FB-4CCF-8063-C4140EC9A7A0}
+		{F201BC8D-4DB2-4006-AD89-FA6FA214AF21} = {7DB7CFC1-58FB-4CCF-8063-C4140EC9A7A0}
+		{2ADD427D-F985-4FEC-85DF-B02DAD79D9E9} = {93676361-F7A8-4397-94BF-641E9C99B781}
 		{59F448AB-824A-4669-B4DF-E12BD8634BF4} = {E69B2CA9-C6D2-4B21-B6FB-44E4B12F2DAE}
 		{D9198E8F-9C1E-4E77-AB4B-E63F361FDD8B} = {E69B2CA9-C6D2-4B21-B6FB-44E4B12F2DAE}
 		{682FEA93-ABE5-4E1D-851E-917E666CCBE1} = {E69B2CA9-C6D2-4B21-B6FB-44E4B12F2DAE}
-		{57ABF991-249E-4609-84D2-FBD073B0219E} = {7DB7CFC1-58FB-4CCF-8063-C4140EC9A7A0}
-		{F201BC8D-4DB2-4006-AD89-FA6FA214AF21} = {7DB7CFC1-58FB-4CCF-8063-C4140EC9A7A0}
+		{243F140F-840B-4EB5-AA1B-2DA51E341253} = {E69B2CA9-C6D2-4B21-B6FB-44E4B12F2DAE}
+		{9925B84C-8E16-4661-A106-57FBEB7A39BE} = {E69B2CA9-C6D2-4B21-B6FB-44E4B12F2DAE}
 		{A6A697B7-90F2-4175-9E66-6B9399B1B5FF} = {E6F943DB-8920-4248-BECD-26719B3283D9}
 		{700ADA99-9D80-46BF-94B0-B8609780782B} = {5AD8C19A-B8F8-4B4D-A4B5-0ECCD859896F}
-		{2ADD427D-F985-4FEC-85DF-B02DAD79D9E9} = {93676361-F7A8-4397-94BF-641E9C99B781}
+		{7B5ADD41-A967-4650-8891-7CB0EDEE709E} = {D4D1F59E-0434-436E-B86A-4A0B7B3392B0}
+		{0E65A688-EE4E-4ACD-A342-2730FEB4062D} = {D4D1F59E-0434-436E-B86A-4A0B7B3392B0}
+		{F295380B-DD04-4ED0-AB0E-A80A70DA14A7} = {D4D1F59E-0434-436E-B86A-4A0B7B3392B0}
 	EndGlobalSection
 EndGlobal

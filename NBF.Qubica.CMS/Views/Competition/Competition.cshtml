@@ -28,12 +28,13 @@
                         grid.Column("Price", "Prijs"),
                         grid.Column("StartDate", "Start datum"),
                         grid.Column("EndDate", "Eind datum"),
-                        grid.Column(header: "", format: (item) => Html.ActionLink("Deelnemers", "competitionplayers", "Competition", new { id = item.id }, new { @class = "player",  @title = "Bowlers voor deze competitie" }), style: "actions"),
-                        grid.Column(header: "", format: (item) => Html.ActionLink("Stand", "competitionranking", "Competition", new { id = item.id }, null), style: "actions"),
-                        grid.Column(            format: (item) => Html.ActionLink("Verwijderen", "Delete", new { id = item.id }, new { onclick = "return confirm('Weet je het zeker?');" }))
+                        grid.Column(header: "", format: (item) => Html.ActionLink("Deelnemers", "competitionplayers", "Competition", new { id = item.id, challengeid = ViewBag.challengeid }, new { @class = "player", @title = "Bowlers voor deze competitie" }), style: "actions"),
+                        grid.Column(header: "", format: (item) => Html.ActionLink("Stand", "competitionranking", "Competition", new { id = item.id, challengeid = ViewBag.challengeid }, null), style: "actions"),
+                        grid.Column(header: "", format: (item) => Html.ActionLink("Verwijderen", "Delete", new { id = item.id }, new { onclick = "return confirm('Weet je het zeker?');" }))
                     )
             )
     </div>
     @Html.ActionLink("Voeg een competitie toe", "Insert", "Competition", new { id = ViewBag.challengeid }, null)
+    @Html.ActionLink("Ga terug","Index","Challenge")
 </section>
 

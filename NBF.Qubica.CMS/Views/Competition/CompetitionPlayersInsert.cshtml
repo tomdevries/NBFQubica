@@ -37,8 +37,9 @@
                         grid.Column("Id", "Id"),
                         grid.Column("Name", "Name"),
                         grid.Column("FrequentBowlerNumber", "Frequent Bowlernummer"),
-                        grid.Column(format: (item) => Html.ActionLink("Voeg toe aan competitie", "AddCompetionPlayer", new { id = item.id, cid = ViewBag.competitionid}))
+                                 grid.Column(format: (item) => Html.ActionLink("Voeg toe aan competitie", "AddCompetionPlayer", new { id = item.id, cid = ViewBag.competitionid, challengeid = ViewBag.challengeid }))
                     )
             )
     </div>
+    @Html.ActionLink("Ga terug", "CompetitionPlayers", "Competition", new { id = ViewBag.competitionid, challengeid = ViewBag.challengeid }, null)
 </section>

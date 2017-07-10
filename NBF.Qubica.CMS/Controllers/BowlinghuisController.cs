@@ -291,7 +291,7 @@ namespace NBF.Qubica.CMS.Controllers
         }
 
         //
-        // POST: /Bowlinghuis/Insert
+        // POST: /Bowlinghuis/InsertOpentime
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
@@ -443,7 +443,7 @@ namespace NBF.Qubica.CMS.Controllers
         }
 
         //
-        // GET: /Bowlinghuis/Insert
+        // GET: /Bowlinghuis/InsertAdvert
         [Authorize]
         public ActionResult InsertAdvert(long id)
         {
@@ -454,7 +454,7 @@ namespace NBF.Qubica.CMS.Controllers
         }
 
         //
-        // POST: /Bowlinghuis/Insert
+        // POST: /Bowlinghuis/InsertAdvert
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]

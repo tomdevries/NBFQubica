@@ -20,7 +20,8 @@
             footerStyle: "footer",
             fillEmptyRows: true,
             columns: grid.Columns(
-                        grid.Column("Omschrijving", format: (item) => Html.ActionLink((string)item.Advertisement, "EditAdvert", "Bowlinghuis", new { id = item.id }, null)),
+                        grid.Column(format: (item) => Html.ActionLink("Aanpassen", "EditAdvert", new { id = item.id }, null)),
+                        grid.Column("Advertisement", "Omschrijving"),
                         grid.Column("AdvertisementUrl", "Link naar banner"),
                         grid.Column("AdvertisementWWW", "Website adres"), 
                         grid.Column(format: (item) => Html.ActionLink("Verwijderen", "DeleteAdvert", new { id = item.id }, new { onclick = "return confirm('Weet je het zeker?');" }))
@@ -28,4 +29,5 @@
             )
     </div>
     @Html.ActionLink("Voeg een advertentie toe", "InsertAdvert", "Bowlinghuis", new { id = ViewBag.bowlingcenterid }, null)
+    @Html.ActionLink("Ga terug", "Index", "Bowlinghuis")
 </section>

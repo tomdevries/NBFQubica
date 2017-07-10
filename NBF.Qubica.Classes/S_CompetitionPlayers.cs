@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NBF.Qubica.Classes
 {
-    public class S_CompetitonPlayers
+    public class S_CompetitionPlayers
     {
         public long id { get; set; }
         public long competitionid { get; set; }

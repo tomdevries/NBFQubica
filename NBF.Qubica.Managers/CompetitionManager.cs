@@ -39,15 +39,28 @@ namespace NBF.Qubica.Managers
             return competition;
         }
 
-        private static S_CompetitonPlayers DataToCompetitionPlayerObject(MySqlDataReader dataReader)
+        private static S_CompetitionPlayers DataToCompetitionPlayerObject(MySqlDataReader dataReader)
         {
-            S_CompetitonPlayers competitionPlayer = new S_CompetitonPlayers();
+            S_CompetitionPlayers competitionPlayer = new S_CompetitionPlayers();
 
             competitionPlayer.id = Conversion.SqlToLongOrNull(dataReader["id"]).Value;
             competitionPlayer.competitionid = (long)Conversion.SqlToLongOrNull(dataReader["competitionid"]);
             competitionPlayer.userid = (long)Conversion.SqlToLongOrNull(dataReader["userid"]);
 
             return competitionPlayer;
+        }
+
+        private static S_CompetitionPlayersRanking DataToCompetitionPlayersRankingObject(int rank, MySqlDataReader dataReader)
+        {
+            S_CompetitionPlayersRanking competitionPlayersRanking = new S_CompetitionPlayersRanking();
+
+            competitionPlayersRanking.Rank = rank;
+            competitionPlayersRanking.UserId = (long)Conversion.SqlToLongOrNull(dataReader["id"]);
+            competitionPlayersRanking.Name = Conversion.SqlToString(dataReader["playername"]);
+            competitionPlayersRanking.FrequentBowlernumber = (long)Conversion.SqlToLongOrNull(dataReader["freeentrycode"]);
+            competitionPlayersRanking.Score = (long)Conversion.SqlToLongOrNull(dataReader[3]);
+
+            return competitionPlayersRanking;
         }
 
         private static S_Player DataToPlayerObject(MySqlDataReader dataReader)
@@ -59,9 +72,9 @@ namespace NBF.Qubica.Managers
             return player;
         }
 
-        public static S_CompetitonPlayers GetCompetitionPlayer(long id)
+        public static S_CompetitionPlayers GetCompetitionPlayer(long id)
         {
-            S_CompetitonPlayers competitionplayer = null;
+            S_CompetitionPlayers competitionplayer = null;
 
             try
             {
@@ -92,11 +105,143 @@ namespace NBF.Qubica.Managers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("GetCompetitionPlayer, Error reading competitionplayer data: {0}", ex.Message));
+                logger.Error(string.Format("GetCompetitionPlayer, Error reading competitionplayersranking data: {0}", ex.Message));
             }
 
             return competitionplayer;
         }
+
+        public static List<S_CompetitionPlayersRanking> GetCompetitionPlayersRanking(long challangeid, long competitionid, List<S_CompetitionPlayers> playerList, DateTime startdate, DateTime enddate)
+        {
+            List<S_CompetitionPlayersRanking> competitionplayersranking = new List<S_CompetitionPlayersRanking>();
+
+            try
+            {
+                DatabaseConnection databaseconnection = new DatabaseConnection();
+
+                //Open connection
+                if (databaseconnection.OpenConnection())
+                {
+                    //Create Command
+                    MySqlCommand command = new MySqlCommand();
+                    command.Connection = databaseconnection.getConnection();
+                    switch (challangeid)
+                    {
+                        case 1:
+                            command.CommandText = "SELECT d.id " +
+                                                  ",      playername " +
+                                                  ",      freeentrycode " +
+                                                  ",      count(1) AS aantal_strikes " +
+                                                  "FROM nbf.game g " +
+                                                  ",    nbf.frame f " +
+                                                  ",    nbf.bowl b " +
+                                                  ",    nbf.event e " +
+                                                  ",    nbf.scores s " +
+                                                  ", (SELECT user.id " +
+                                                  "   ,      user.name " +
+                                                  "   ,      user.frequentbowlernumber " +
+                                                  "   FROM competitionplayers " +
+                                                  "   ,    user " +
+                                                  "   WHERE user.id = competitionplayers.userid " +
+                                                  "   AND   competitionplayers.competitionid=@competitionid) d " +
+                                                  "WHERE b.frameid = f.id " +
+                                                  "AND   f.gameid = g.id " + 
+                                                  "AND   b.isstrike IS true " +
+                                                  "AND   g.freeentrycode IS NOT null " +
+                                                  "AND   date(g.startdatetime)>=@startdate " +
+                                                  "AND   date(g.startdatetime)<=@enddate " +
+                                                  "AND   d.name = g.playername " +
+                                                  "AND   d.frequentbowlernumber = g.freeentrycode " +
+                                                  "AND   g.eventid = e.id " +
+                                                  "AND   e.scoresid = s.id " +
+                                                  "AND   s.bowlingcenterid in (SELECT bowlingcenterid FROM competitionbowlingcenter " +
+                                                  "                            WHERE  competitionbowlingcenter.competitionid = @competitionid) " +
+                                                  "GROUP BY d.id, g.playername, g.freeentrycode " +
+                                                  "ORDER BY aantal_strikes DESC ";
+                                                  //"limit 10";
+                            command.Parameters.AddWithValue("@competitionid", Conversion.LongToSql(competitionid));
+                            command.Parameters.AddWithValue("@startdate", Conversion.DateTimeToSql(startdate));
+                            command.Parameters.AddWithValue("@enddate", Conversion.DateTimeToSql(enddate));
+                            break;
+                        case 2:
+                            command.CommandText = "SELECT d.id " +
+                                                  ",      playername " +
+                                                  ",      freeentrycode " +
+                                                  ",      count(1) AS aantal_strikes " +
+                                                  "FROM nbf.game g " +
+                                                  ",    nbf.frame f " +
+                                                  ",    nbf.bowl b " +
+                                                  ",    nbf.event e " +
+                                                  ",    nbf.scores s " +
+                                                  ", (SELECT user.id " +
+                                                  "   ,      user.name " +
+                                                  "   ,      user.frequentbowlernumber " +
+                                                  "   FROM competitionplayers " +
+                                                  "   ,    user " +
+                                                  "   WHERE user.id = competitionplayers.userid " +
+                                                  "   AND   competitionplayers.competitionid=@competitionid) d " +
+                                                  "WHERE b.frameid = f.id " +
+                                                  "AND   f.gameid = g.id " + 
+                                                  "AND   b.isspare IS true " +
+                                                  "AND   g.freeentrycode IS NOT null " +
+                                                  "AND   date(g.startdatetime)>=@startdate " +
+                                                  "AND   date(g.startdatetime)<=@enddate " +
+                                                  "AND   d.name = g.playername " +
+                                                  "AND   d.frequentbowlernumber = g.freeentrycode " +
+                                                  "AND   g.eventid = e.id " +
+                                                  "AND   e.scoresid = s.id " +
+                                                  "AND   s.bowlingcenterid in (SELECT bowlingcenterid FROM competitionbowlingcenter " +
+                                                  "                            WHERE  competitionbowlingcenter.competitionid = @competitionid) " +
+                                                  "GROUP BY d.id, g.playername, g.freeentrycode " +
+                                                  "ORDER BY aantal_strikes DESC ";
+                                                  //"limit 10";
+                            command.Parameters.AddWithValue("@competitionid", Conversion.LongToSql(competitionid));
+                            command.Parameters.AddWithValue("@startdate", Conversion.DateTimeToSql(startdate));
+                            command.Parameters.AddWithValue("@enddate", Conversion.DateTimeToSql(enddate));                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        case 5:
+                            break;
+                        case 6:
+                            break;
+                        case 7:
+                            break;
+                        case 8:
+                            break;
+                        case 9:
+                            break;
+                        case 10:
+                            break;
+                    }
+
+                    //Create a data reader and Execute the command
+                    MySqlDataReader dataReader = command.ExecuteReader();
+
+                    //Read the data and store them in the list
+                    int rank = 1;
+                    while (dataReader.Read())
+                    {
+                        S_CompetitionPlayersRanking cpr = DataToCompetitionPlayersRankingObject(rank++, dataReader);
+                        competitionplayersranking.Add(cpr);
+                    }
+
+                    //close Data Reader
+                    dataReader.Close();
+
+                    //close Connection
+                    databaseconnection.CloseConnection();
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("GetCompetitionPlayersRanking, Error reading competitionplayersranking data: {0}", ex.Message));
+            }
+
+            return competitionplayersranking;
+        }
+
 
         public static S_Competition GetCompetition(long id)
         {
@@ -213,9 +358,9 @@ namespace NBF.Qubica.Managers
             return competitionbowlingcenters;
         }
 
-        public static List<S_CompetitonPlayers> GetPlayersByCompetition(long id)
+        public static List<S_CompetitionPlayers> GetPlayersByCompetition(long id)
         {
-            List<S_CompetitonPlayers> competitonplayers = new List<S_CompetitonPlayers>();
+            List<S_CompetitionPlayers> competitonplayers = new List<S_CompetitionPlayers>();
 
             try
             {
@@ -245,7 +390,7 @@ namespace NBF.Qubica.Managers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("GetPlayersByCompetition, Error reading competitionplayer data: {0}", ex.Message));
+                logger.Error(string.Format("GetPlayersByCompetition, Error reading competitionplayersranking data: {0}", ex.Message));
             }
 
             return competitonplayers;
@@ -404,7 +549,7 @@ namespace NBF.Qubica.Managers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Delete, Error deleting competitionplayer data: {0}", ex.Message));
+                logger.Error(string.Format("Delete, Error deleting competitionplayersranking data: {0}", ex.Message));
             }
         }
 
@@ -429,7 +574,7 @@ namespace NBF.Qubica.Managers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("AddPlayer, Error adding competitionplayer data: {0}", ex.Message));
+                logger.Error(string.Format("AddPlayer, Error adding competitionplayersranking data: {0}", ex.Message));
             }
         }
 

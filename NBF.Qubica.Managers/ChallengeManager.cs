@@ -64,6 +64,44 @@ namespace NBF.Qubica.Managers
             return challenge;
         }
 
+        public static S_Challenge GetChallengeByCompetition(long id)
+        {
+            S_Challenge challenge = null;
+
+            try
+            {
+                DatabaseConnection databaseconnection = new DatabaseConnection();
+
+                //Open connection
+                if (databaseconnection.OpenConnection())
+                {
+                    //Create Command
+                    MySqlCommand command = new MySqlCommand();
+                    command.Connection = databaseconnection.getConnection();
+                    command.CommandText = "SELECT ch.* FROM challenge ch, competition co WHERE ch.id = co.challengeid AND co.id=@id";
+                    command.Parameters.AddWithValue("@id", Conversion.LongToSql(id));
+
+                    //Create a data reader and Execute the command
+                    MySqlDataReader dataReader = command.ExecuteReader();
+
+                    //Read the data and store them in the list
+                    if (dataReader.Read())
+                        challenge = DataToChallengeObject(dataReader);
+
+                    //close Data Reader
+                    dataReader.Close();
+
+                    //close Connection
+                    databaseconnection.CloseConnection();
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("GetChallenge, Error reading challenge data: {0}", ex.Message));
+            }
+
+            return challenge;
+        }
         public static List<S_Challenge> GetChallenges()
         {
             List<S_Challenge> challenges = new List<S_Challenge>();

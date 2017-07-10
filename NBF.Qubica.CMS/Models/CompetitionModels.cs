@@ -80,6 +80,8 @@ namespace NBF.Qubica.CMS.Models
         [Display(Name = "Rank")]
         public long Rank { get; set; }
 
+        public long UserId { get; set; }
+
         [Display(Name = "Naam")]
         public string Name { get; set; }
 

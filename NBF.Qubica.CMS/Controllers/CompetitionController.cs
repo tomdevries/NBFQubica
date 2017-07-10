@@ -56,15 +56,15 @@ namespace NBF.Qubica.CMS.Controllers
         }
 
         [Authorize]
-        public ActionResult competitionplayers(long id)
+        public ActionResult competitionplayers(long id, long challengeid)
         {
             ObservableCollection<PlayerGridModel> playerModelList = new ObservableCollection<PlayerGridModel>();
 
-            List<S_CompetitonPlayers> playerList;
+            List<S_CompetitionPlayers> playerList;
 
             playerList = CompetitionManager.GetPlayersByCompetition(id);
 
-            foreach (S_CompetitonPlayers player in playerList)
+            foreach (S_CompetitionPlayers player in playerList)
             {
                 S_User user = UserManager.GetUserById(player.userid);
 
@@ -78,12 +78,13 @@ namespace NBF.Qubica.CMS.Controllers
             }
 
             ViewBag.competitionid = id;
+            ViewBag.challengeid = challengeid;
 
             return View(playerModelList);
         }
 
         [Authorize]
-        public ActionResult competitionplayersinsert(long id, string name)
+        public ActionResult competitionplayersinsert(long id, string name, long challengeid)
         {
             ObservableCollection<PlayerModel> playerCompetitionList = new ObservableCollection<PlayerModel>();
 
@@ -117,36 +118,62 @@ namespace NBF.Qubica.CMS.Controllers
             }
             
             ViewBag.competitionid = id;
+            ViewBag.challengeid = challengeid;
 
             return View(playerCompetitionList);
         }
 
         [Authorize]
-        public ActionResult competitionranking(long id)
+        public ActionResult competitionranking(long id, string name, long challengeid)
         {
             ObservableCollection<PlayerRankingGridModel> playerRankingModelList = new ObservableCollection<PlayerRankingGridModel>();
+            ObservableCollection<PlayerRankingGridModel> filteredPlayerRankingModelList = new ObservableCollection<PlayerRankingGridModel>();
 
-            List<S_CompetitonPlayers> playerList;
-
+            List<S_CompetitionPlayers> playerList;
             playerList = CompetitionManager.GetPlayersByCompetition(id);
 
-            int i = 0;
-            foreach (S_CompetitonPlayers player in playerList)
+            if (playerList != null && playerList.Count() > 0)
             {
-                S_User user = UserManager.GetUserById(player.userid);
+                S_Competition competition = CompetitionManager.GetCompetition(playerList[0].competitionid);
+                S_Challenge challenge = ChallengeManager.GetChallengeByCompetition(playerList[0].competitionid);
+                List<S_CompetitionPlayersRanking> cprl = CompetitionManager.GetCompetitionPlayersRanking(challenge.id, playerList[0].competitionid, playerList, competition.startdate, competition.enddate);
 
-                PlayerRankingGridModel pgm = new PlayerRankingGridModel();
-                pgm.Rank = ++i;
-                pgm.Name = user.name;
-                pgm.FrequentBowlernumber = user.frequentbowlernumber;
-                pgm.Score = 100;
+                foreach (S_CompetitionPlayersRanking cpr in cprl)
+                {
+                    PlayerRankingGridModel prgm = new PlayerRankingGridModel();
+                    prgm.Rank = cpr.Rank;
+                    prgm.UserId = cpr.UserId;
+                    prgm.Name = cpr.Name;
+                    prgm.FrequentBowlernumber = cpr.FrequentBowlernumber;
+                    prgm.Score = cpr.Score;
 
-                playerRankingModelList.Add(pgm);
+                    playerRankingModelList.Add(prgm);
+                }
+
+                int rank = cprl.Count();
+                foreach (S_CompetitionPlayers cp in playerList)
+                {
+                    bool playerInRanking = false;
+                    foreach (PlayerRankingGridModel prgm in playerRankingModelList)
+                        if (prgm.UserId == cp.userid)
+                            playerInRanking = true;
+                    if (!playerInRanking)
+                    {
+                        S_User u = UserManager.GetUserById(cp.userid);
+                        playerRankingModelList.Add(new PlayerRankingGridModel { Name = u.name, FrequentBowlernumber = u.frequentbowlernumber, Rank = ++rank});
+                    }
+                }
+
+                foreach (PlayerRankingGridModel prgm in playerRankingModelList) {
+                    if (name == null || prgm.Name.ToUpper().Contains(name.ToUpper()))
+                        filteredPlayerRankingModelList.Add(prgm);
+                }
             }
 
             ViewBag.competitionid = id;
+            ViewBag.challengeid = challengeid;
 
-            return View(playerRankingModelList);
+            return View(filteredPlayerRankingModelList);
         }
 
         //
@@ -285,9 +312,9 @@ namespace NBF.Qubica.CMS.Controllers
         }
 
         [Authorize]
-        public ActionResult DeletePlayer(long id)
+        public ActionResult DeletePlayer(long id, long challengeid)
         {
-            S_CompetitonPlayers c = CompetitionManager.GetCompetitionPlayer(id);
+            S_CompetitionPlayers c = CompetitionManager.GetCompetitionPlayer(id);
 
             try
             {
@@ -299,11 +326,11 @@ namespace NBF.Qubica.CMS.Controllers
                 TempData["error"] = e.Message;
             }
 
-            return RedirectToAction("CompetitionPlayers", "competition", new { id = c.competitionid });
+            return RedirectToAction("CompetitionPlayers", "competition", new { id = c.competitionid, challengeid = challengeid });
         }
 
         [Authorize]
-        public ActionResult AddCompetionPlayer(long id, long cid)
+        public ActionResult AddCompetionPlayer(long id, long cid, long challengeid)
         {
             try
             {
@@ -315,7 +342,7 @@ namespace NBF.Qubica.CMS.Controllers
                 TempData["error"] = e.Message;
             }
 
-            return RedirectToAction("CompetitionPlayers", "competition", new { id = cid });
+            return RedirectToAction("CompetitionPlayers", "competition", new { id = cid, challengeid = challengeid });
         }
     }
 }
