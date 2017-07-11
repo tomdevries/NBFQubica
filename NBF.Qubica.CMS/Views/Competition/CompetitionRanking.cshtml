@@ -1,11 +1,17 @@
 ﻿@{
-    var grid = new WebGrid(Model, 
-                           canPage: true, 
+    var grid = new WebGrid(Model,
+                           canPage: true,
                            rowsPerPage: 10,
-                           selectionFieldName: "selectedRow", 
+                           selectionFieldName: "selectedRow",
                            ajaxUpdateContainerId: "gridContent");
     grid.Pager(WebGridPagerModes.All);
-} 
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+</hgroup>
+
+<h2></h2>
 <section id="messages">
     <div class="description">@TempData["message"]</div>
     <div class="error">@TempData["error"]</div>
@@ -28,15 +34,12 @@
             footerStyle: "footer",
             fillEmptyRows: true,
             columns: grid.Columns(
-                        grid.Column(format: (item) => Html.ActionLink("Aanpassen", "Edit", new { id = item.id }, null)),
+                        grid.Column("Rank", "Plaats"),
                         grid.Column("Name", "Naam"),
-                        grid.Column("Address", "Adres"),
-                        grid.Column("City", "Plaats"),
-                        grid.Column("Email", "E-mail"),
-                        grid.Column("Frequentbowlernumber", "Frequentbowlernummer"),
-                        grid.Column(format: (item) => Html.ActionLink("Verwijderen", "Delete", new { id = item.id }, new { onclick = "return confirm('Weet je het zeker?');" }))
+                        grid.Column("FrequentBowlernumber", "Frequent Bowler Nummer"),
+                        grid.Column("Score", "Score")
                     )
             )
     </div>
-    @Html.ActionLink("Voeg een account toe", "Insert", "Account")
+    @Html.ActionLink("Ga terug", "Competition", "Competition", new { id = ViewBag.challengeid }, null)
 </section>

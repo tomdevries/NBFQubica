@@ -197,12 +197,61 @@ namespace NBF.Qubica.Managers
                                                   //"limit 10";
                             command.Parameters.AddWithValue("@competitionid", Conversion.LongToSql(competitionid));
                             command.Parameters.AddWithValue("@startdate", Conversion.DateTimeToSql(startdate));
-                            command.Parameters.AddWithValue("@enddate", Conversion.DateTimeToSql(enddate));                            break;
+                            command.Parameters.AddWithValue("@enddate", Conversion.DateTimeToSql(enddate));                            
+                            break;
                         case 3:
+                            command.CommandText = "SELECT d.id " +
+                                                  ",      g.playername " +
+                                                  ",      g.freeentrycode " +
+                                                  ",      total " +
+                                                  "FROM nbf.game g " +
+                                                  ",    nbf.event e " +
+                                                  ",    nbf.scores s " +
+                                                  ",   (SELECT user.id, user.name, user.frequentbowlernumber " +
+                                                  "     FROM competitionplayers " +
+                                                  "     ,    user " +
+                                                  "     WHERE user.id = competitionplayers.userid " +
+                                                  "     AND   competitionplayers.competitionid = @competitionid) d " +
+                                                  "WHERE date(g.startdatetime)>=@startdate " +
+                                                  "AND   date(g.startdatetime)<=@enddate " +
+                                                  "AND   g.eventid = e.id " +
+                                                  "AND   d.name = g.playername " +
+                                                  "AND   d.frequentbowlernumber = g.freeentrycode " +
+                                                  "AND   e.scoresid = s.id " +
+                                                  "AND   s.bowlingcenterid in (SELECT bowlingcenterid FROM competitionbowlingcenter " +
+                                                  "                            WHERE  competitionbowlingcenter.competitionid = @competitionid) " +
+                                                  "ORDER BY total DESC";
+                                                  //limit 10;
+                            command.Parameters.AddWithValue("@competitionid", Conversion.LongToSql(competitionid));
+                            command.Parameters.AddWithValue("@startdate", Conversion.DateTimeToSql(startdate));
+                            command.Parameters.AddWithValue("@enddate", Conversion.DateTimeToSql(enddate));                            
                             break;
                         case 4:
-                            break;
                         case 5:
+                            command.CommandText = "SELECT d.id " + 
+                                                  ",      g.playername " +
+                                                  ",      g.freeentrycode " +
+                                                  ",      g.total " +
+                                                  "FROM nbf.game g " +
+                                                  ",    nbf.event e " +
+                                                  ",    nbf.scores s " +
+                                                  ",    (SELECT user.id, user.name, user.frequentbowlernumber " +
+                                                  "      FROM competitionplayers " +
+                                                  "      ,    user " +
+                                                  "      WHERE user.id = competitionplayers.userid " +
+                                                  "      AND   competitionplayers.competitionid = @competitionid) d " +
+                                                  "WHERE date(g.startdatetime) >= @startdate  " +
+                                                  "AND   date(g.startdatetime) <= @enddate " +
+                                                  "AND   d.name = g.playername " +
+                                                  "AND   d.frequentbowlernumber = g.freeentrycode " +
+                                                  "AND   g.eventid = e.id " +
+                                                  "AND   e.scoresid = s.id " +
+                                                  "AND   s.bowlingcenterid in (SELECT bowlingcenterid FROM competitionbowlingcenter " +
+                                                  "                            WHERE  competitionbowlingcenter.competitionid = @competitionid) " +
+                                                  "ORDER BY g.playername, g.total DESC";
+                            command.Parameters.AddWithValue("@competitionid", Conversion.LongToSql(competitionid));
+                            command.Parameters.AddWithValue("@startdate", Conversion.DateTimeToSql(startdate));
+                            command.Parameters.AddWithValue("@enddate", Conversion.DateTimeToSql(enddate));                            
                             break;
                         case 6:
                             break;
@@ -221,12 +270,77 @@ namespace NBF.Qubica.Managers
 
                     //Read the data and store them in the list
                     int rank = 1;
-                    while (dataReader.Read())
+                    switch (challangeid)
                     {
-                        S_CompetitionPlayersRanking cpr = DataToCompetitionPlayersRankingObject(rank++, dataReader);
-                        competitionplayersranking.Add(cpr);
-                    }
+                        case 1:
+                        case 2:
+                        case 3:
+                            while (dataReader.Read())
+                            {
+                                S_CompetitionPlayersRanking cpr = DataToCompetitionPlayersRankingObject(rank++, dataReader);
+                                competitionplayersranking.Add(cpr);
+                            }
+                            break;
+                        case 4:
+                        case 5:
+                            List<S_CompetitionPlayersRanking> cprl = new List<S_CompetitionPlayersRanking>();
+                            while (dataReader.Read())
+                            {
+                                S_CompetitionPlayersRanking cpr = DataToCompetitionPlayersRankingObject(0, dataReader);
+                                cprl.Add(cpr);
+                            }
 
+                            S_CompetitionPlayersRanking new_ccpr = null;
+                            int aantal_records = 0;
+                            int max_records = 2;
+                            if (challangeid == 5)
+                                max_records = 3;
+
+                            foreach (S_CompetitionPlayersRanking cpr in cprl)
+                            {
+                                if (new_ccpr == null)
+                                {
+                                    new_ccpr = new S_CompetitionPlayersRanking { UserId = cpr.UserId, Name = cpr.Name, FrequentBowlernumber = cpr.FrequentBowlernumber, Score = cpr.Score };
+                                    aantal_records = 1;
+                                }
+                                else
+                                {
+                                    if (new_ccpr.Name.ToUpper() == cpr.Name.ToUpper() && new_ccpr.FrequentBowlernumber == cpr.FrequentBowlernumber && aantal_records < max_records)
+                                    {
+                                        new_ccpr.Score += cpr.Score;
+                                        if (aantal_records == max_records -1)
+                                            competitionplayersranking.Add(new_ccpr);
+
+                                        aantal_records += 1;
+                                    }
+                                    else
+                                    {
+                                        if ((new_ccpr.Name.ToUpper() != cpr.Name.ToUpper() || new_ccpr.FrequentBowlernumber != cpr.FrequentBowlernumber) && aantal_records < max_records)
+                                        {
+                                            competitionplayersranking.Add(new_ccpr);
+
+                                            new_ccpr = new S_CompetitionPlayersRanking { UserId = cpr.UserId, Name = cpr.Name, FrequentBowlernumber = cpr.FrequentBowlernumber, Score = cpr.Score };
+                                            aantal_records = 1;
+                                        }
+                                        else
+                                        {
+                                            if ((new_ccpr.Name.ToUpper() != cpr.Name.ToUpper() || new_ccpr.FrequentBowlernumber != cpr.FrequentBowlernumber) && aantal_records >= max_records)
+                                            {
+                                                new_ccpr = new S_CompetitionPlayersRanking { UserId = cpr.UserId, Name = cpr.Name, FrequentBowlernumber = cpr.FrequentBowlernumber, Score = cpr.Score };
+                                                aantal_records = 1;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            competitionplayersranking.Sort((x, y) => y.Score.CompareTo(x.Score));
+                            foreach (S_CompetitionPlayersRanking cpr in competitionplayersranking)
+                            {
+                                cpr.Rank = rank++;
+                            }
+                            break;
+                    }
                     //close Data Reader
                     dataReader.Close();
 

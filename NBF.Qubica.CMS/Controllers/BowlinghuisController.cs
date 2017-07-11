@@ -53,8 +53,6 @@ namespace NBF.Qubica.CMS.Controllers
             return View(bowlinghuisList);
         } 
 
-        //
-        // GET: /Bowlinghuis/Insert
         [Authorize]
         public ActionResult Insert()
         {
@@ -69,8 +67,6 @@ namespace NBF.Qubica.CMS.Controllers
             return View(bowlinghuisModel);
         }
 
-        //
-        // POST: /Bowlinghuis/Insert
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
@@ -249,8 +245,6 @@ namespace NBF.Qubica.CMS.Controllers
             return "";
         }
 
-        //
-        // GET: /Bowlinghuis/Insert
         [Authorize]
         public ActionResult InsertOpentime(long id)
         {
@@ -290,8 +284,6 @@ namespace NBF.Qubica.CMS.Controllers
             return View(opentimeModel);
         }
 
-        //
-        // POST: /Bowlinghuis/InsertOpentime
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
@@ -442,8 +434,6 @@ namespace NBF.Qubica.CMS.Controllers
             return View(advertModelList);
         }
 
-        //
-        // GET: /Bowlinghuis/InsertAdvert
         [Authorize]
         public ActionResult InsertAdvert(long id)
         {
@@ -453,8 +443,6 @@ namespace NBF.Qubica.CMS.Controllers
             return View(advertModel);
         }
 
-        //
-        // POST: /Bowlinghuis/InsertAdvert
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
