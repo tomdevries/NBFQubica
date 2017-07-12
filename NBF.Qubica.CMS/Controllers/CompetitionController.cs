@@ -151,20 +151,24 @@ namespace NBF.Qubica.CMS.Controllers
                 }
 
                 int rank = cprl.Count();
-                foreach (S_CompetitionPlayers cp in playerList)
+                if (challengeid != 6)
                 {
-                    bool playerInRanking = false;
-                    foreach (PlayerRankingGridModel prgm in playerRankingModelList)
-                        if (prgm.UserId == cp.userid)
-                            playerInRanking = true;
-                    if (!playerInRanking)
+                    foreach (S_CompetitionPlayers cp in playerList)
                     {
-                        S_User u = UserManager.GetUserById(cp.userid);
-                        playerRankingModelList.Add(new PlayerRankingGridModel { Name = u.name, FrequentBowlernumber = u.frequentbowlernumber, Rank = ++rank});
+                        bool playerInRanking = false;
+                        foreach (PlayerRankingGridModel prgm in playerRankingModelList)
+                            if (prgm.UserId == cp.userid)
+                                playerInRanking = true;
+                        if (!playerInRanking)
+                        {
+                            S_User u = UserManager.GetUserById(cp.userid);
+                            playerRankingModelList.Add(new PlayerRankingGridModel { Name = u.name, FrequentBowlernumber = u.frequentbowlernumber, Rank = ++rank });
+                        }
                     }
                 }
 
-                foreach (PlayerRankingGridModel prgm in playerRankingModelList) {
+                foreach (PlayerRankingGridModel prgm in playerRankingModelList)
+                {
                     if (name == null || prgm.Name.ToUpper().Contains(name.ToUpper()))
                         filteredPlayerRankingModelList.Add(prgm);
                 }

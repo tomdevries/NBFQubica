@@ -254,10 +254,107 @@ namespace NBF.Qubica.Managers
                             command.Parameters.AddWithValue("@enddate", Conversion.DateTimeToSql(enddate));                            
                             break;
                         case 6:
+                            command.CommandText = "SELECT d.id " +
+                                                  ",     g.playername " +
+                                                  ",     g.freeentrycode " +
+                                                  ",     SUM(isgutter + (b.total != 10 and pins is null and isgutter is false)) as tot " +
+                                                  "FROM  bowl b " +
+                                                  ",     frame f " +
+                                                  ",     game g " +
+                                                  ",     event e " +
+                                                  ",     scores s " +
+                                                  ", (SELECT user.id " +
+                                                  "   ,      user.name " +
+                                                  "   ,      user.frequentbowlernumber " +
+                                                  "   FROM competitionplayers " +
+                                                  "   ,    user " +
+                                                  "   WHERE user.id = competitionplayers.userid " +
+                                                  "   AND   competitionplayers.competitionid=@competitionid) d " +
+                                                  "WHERE b.frameid = f.id " +
+                                                  "AND   f.gameid = g.id " +
+                                                  "AND   date(g.startdatetime)>=@startdate " +
+                                                  "AND   date(g.startdatetime)<=@enddate " +
+                                                  "AND   d.name = g.playername " +
+                                                  "AND   d.frequentbowlernumber = g.freeentrycode " +
+                                                  "AND   g.eventid = e.id " +
+                                                  "AND   e.scoresid = s.id " +
+                                                  "AND   s.bowlingcenterid in (SELECT bowlingcenterid FROM competitionbowlingcenter " +
+                                                                              "WHERE  competitionbowlingcenter.competitionid = @competitionid) " +
+                                                  "GROUP BY g.playername, g.freeentrycode " +
+                                                  "ORDER BY tot ";
+                            command.Parameters.AddWithValue("@competitionid", Conversion.LongToSql(competitionid));
+                            command.Parameters.AddWithValue("@startdate", Conversion.DateTimeToSql(startdate));
+                            command.Parameters.AddWithValue("@enddate", Conversion.DateTimeToSql(enddate));                            
                             break;
                         case 7:
+                            command.CommandText = "SELECT d.id " +
+                                                  ",      g.playername " +
+                                                  ",      g.freeentrycode " +
+                                                  ",      count(1) as tot " +
+                                                  "from  bowl b " +
+                                                  ",     frame f " +
+                                                  ",     game g " +
+                                                  ",     event e " +
+                                                  ",     scores s " +
+                                                  ",    (SELECT user.id " +
+                                                  "      ,      user.name " +
+                                                  "      ,      user.frequentbowlernumber " +
+                                                  "      FROM competitionplayers " +
+                                                  "      ,    user " +
+                                                  "      WHERE user.id = competitionplayers.userid " +
+                                                  "      AND   competitionplayers.competitionid=@competitionid) d  " +
+                                                  "WHERE b.frameid = f.id " +
+                                                  "AND   f.gameid = g.id " +
+                                                  "AND   b.total = 10 " +
+                                                  "AND   b.pins = '7,10' " +
+                                                  "AND   date(g.startdatetime)>=@startdate " +
+                                                  "AND   date(g.startdatetime)<@enddate " +
+                                                  "AND   d.name = g.playername " +
+                                                  "AND   d.frequentbowlernumber = g.freeentrycode " +
+                                                  "AND   g.eventid = e.id " +
+                                                  "AND   e.scoresid = s.id " +
+                                                  "AND   s.bowlingcenterid in (SELECT bowlingcenterid FROM competitionbowlingcenter " +
+                                                  "                            WHERE  competitionbowlingcenter.competitionid = @competitionid) " +
+                                                  "GROUP BY g.playername, g.freeentrycode " +
+                                                  "ORDER BY tot ";
+                            command.Parameters.AddWithValue("@competitionid", Conversion.LongToSql(competitionid));
+                            command.Parameters.AddWithValue("@startdate", Conversion.DateTimeToSql(startdate));
+                            command.Parameters.AddWithValue("@enddate", Conversion.DateTimeToSql(enddate));
                             break;
                         case 8:
+                            command.CommandText = "SELECT d.id " +
+                                                  ",      g.playername " +
+                                                  ",      g.freeentrycode " +
+                                                  ",      count(1) as tot " +
+                                                  "FROM  bowl b " +
+                                                  ",     frame f " +
+                                                  ",     game g " +
+                                                  ",     event e " +
+                                                  ",     scores s " +
+                                                  ",    (SELECT user.id " +
+                                                  "      ,      user.name " +
+                                                  "      ,      user.frequentbowlernumber " +
+                                                  "      FROM competitionplayers " +
+                                                  "      ,    user " +
+                                                  "      WHERE user.id = competitionplayers.userid " +
+                                                  "      AND   competitionplayers.competitionid=@competitionid) d  " +
+                                                  "WHERE b.frameid = f.id " +
+                                                  "AND   f.gameid = g.id " +
+                                                  "AND   b.bowlnumber = 1 " +
+                                                  "AND   b.pins like '%9%' " +
+                                                  "AND   date(g.startdatetime)>=@startdate " +
+                                                  "AND   date(g.startdatetime)<=@enddate " +
+                                                  "AND   d.name = g.playername " +
+                                                  "AND   d.frequentbowlernumber = g.freeentrycode " +
+                                                  "AND   g.eventid = e.id " +
+                                                  "AND   e.scoresid = s.id " +
+                                                  "AND   s.bowlingcenterid in (SELECT bowlingcenterid FROM competitionbowlingcenter " +
+                                                  "                            WHERE  competitionbowlingcenter.competitionid = @competitionid) " +
+                                                  "GROUP BY g.playername, g.freeentrycode " +
+                                                  "ORDER BY tot DESC ";
+                            command.Parameters.AddWithValue("@competitionid", Conversion.LongToSql(competitionid));
+                            command.Parameters.AddWithValue("@startdate", Conversion.DateTimeToSql(startdate));
+                            command.Parameters.AddWithValue("@enddate", Conversion.DateTimeToSql(enddate));
                             break;
                         case 9:
                             break;
@@ -275,6 +372,9 @@ namespace NBF.Qubica.Managers
                         case 1:
                         case 2:
                         case 3:
+                        case 6:
+                        case 7:
+                        case 8:
                             while (dataReader.Read())
                             {
                                 S_CompetitionPlayersRanking cpr = DataToCompetitionPlayersRankingObject(rank++, dataReader);
