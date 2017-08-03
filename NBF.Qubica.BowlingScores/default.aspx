@@ -26,6 +26,8 @@
     <!-- Theme CSS -->
     <link href="css/bowling.min.css" rel="stylesheet">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
     <!-- HTML5 Shim IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"    integrity="sha384-0s5Pv64cNZJieYFkXYOTId2HMA2Lfb6q2nAcx2n0RTLUnCAoTTsS0nKEO27XyKcY" crossorigin="anonymous"></script>
@@ -66,7 +68,7 @@
                         <a class="page-scroll" href="#aanmelden">Meld je aan</a>
                     </li>
                     <li>
-                        <a href="#ContactModal" class="portfolio-link" data-toggle="modal">Contact</a>
+                        <a class="portfolio-link" href="./Contact.aspx"  data-toggle="modal">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -92,7 +94,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Doe mee</h2>
-                    <h3 class="section-subheading text-muted">In drie simple stappen kun je mee doen</h3>
+                    <h3 class="section-subheading text-muted">In drie simpele stappen kun je mee doen</h3>
                 </div>
             </div>
             <div class="row text-center">
@@ -102,7 +104,7 @@
                         <i class="fa fa-arrow-circle-o-down fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="service-heading">Installeer de App</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <p class="text-muted">Ga naar de App-store, Play-store of Windows-store en installeer de NBF Scores App. Voordat je de App kunt gebruiken moet je eerst een Frequent Bowler Account aanmaken.</p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
@@ -110,7 +112,7 @@
                         <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="service-heading">Meld je aan</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit. <a class="page-scroll" href="#aanmelden">Meld je aan</a></p>
+                    <p class="text-muted">Aanmelden als Frequent Bowler kun je doen via de App of via het aanmeldformulier. Hou je Frequent Bowler Nummer bij de hand, deze moet je gebruiken bij het aanmelden samen met je eigen gekozen Frequent Bowler Naam <a class="page-scroll" href="#aanmelden">Meld je aan</a></p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
@@ -118,7 +120,7 @@
                         <i class="fa fa-play fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="service-heading">Ga bowlen</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <p class="text-muted">Heb je de App geinstalleerd en heb je jezelf aangemeld? Ga dan naar een aangesloten bowling centrum en meld je aan met je Frequent Bowler Naam en Frequent Bowler Nummer. Wil je meedoen aan een competitie, geef je dan hiervoor op <a class="page-scroll" href="#competities">Meld je aan</a></p>
                 </div>
             </div>
         </div>
@@ -135,6 +137,22 @@
             </div>
             <div class="row">
                 <div class="col-md-4 col-sm-6 portfolio-item">
+                    <!--
+                    <a href="#BowlingCentraModal2" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-play fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/bowling/veenendaal.png" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Olround</h4>
+                        <p class="text-muted">Veenendaal</p>
+                    </div>
+                    -->
+                </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
                     <a href="#BowlingCentraModal1" class="portfolio-link" data-toggle="modal">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content">
@@ -149,20 +167,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#BowlingCentraModal2" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-play fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/bowling/veenendaal.png" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Olround</h4>
-                        <p class="text-muted">Veenendaal</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <!--
                     <a href="#BowlingCentraModal3" class="portfolio-link" data-toggle="modal">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content">
@@ -175,6 +180,7 @@
                         <h4>Borchland</h4>
                         <p class="text-muted">Amsterdam</p>
                     </div>
+                    -->
                 </div>
             </div>
         </div>
@@ -186,68 +192,13 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Competities</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 class="section-subheading text-muted">Wil je meedoen met een competitie? Schrijf je in en ga bowlen bij een aangesloten bowlingcentrum. Bekijk de <a href='./CompetitieStanden.aspx' class='portfolio-link' data-toggle='modal'>hier</a> de active en gespeelde competitie standen.</h3>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="timeline">
-                        <li>
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/competities/1.png" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>September 2018</h4>
-                                    <h4 class="subheading">Gooi de meeste strikes</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur! <a href="#AanmeldenModal" class="portfolio-link" data-toggle="modal">Doe mee!</a></p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/competities/1.png" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>Januari 2018</h4>
-                                    <h4 class="subheading">Hoogste score</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur! <a href="#AanmeldenModal" class="portfolio-link" data-toggle="modal">Doe mee!</a></p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/competities/1.png" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>December 2017</h4>
-                                    <h4 class="subheading">Meeste headpins </h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur! <a href="#AanmeldenModal" class="portfolio-link" data-toggle="modal">Doe mee!</a></p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/competities/1.png" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>September 2017</h4>
-                                    <h4 class="subheading">Meeste splits</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur! <a href="#AanmeldenModal" class="portfolio-link" data-toggle="modal">Doe mee!</a></p>
-                                </div>
-                            </div>
-                        </li>
+                        <%=_content %>
                         <li class="timeline-inverted">
                             <div class="timeline-image">
                                 <h4>Doe mee<br>en<br>Win!</h4>
@@ -270,7 +221,7 @@
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <a href="http://www.bowlingnbf.nl/" target="_new">
-                        <img src="img/logos/nbf.jpg" class="img-responsive img-centered" alt="">
+                        <img src="../img/logo/nbf.jpg" class="img-responsive img-centered" alt="">
                     </a>
                 </div>
                 <div class="col-md-4 col-sm-6">
@@ -288,61 +239,61 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Meld je aan</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 class="section-subheading text-muted">Vul je gegevens in om als Frequent Bowler gebruik te maken van de App en deel te nemen aan de verschillende competities</h3>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <form name="sentMessage" id="contactForm" novalidate>
+                    <form name="sentMessage" id="meldForm" novalidate runat="server">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Je naam *" id="name" required data-validation-required-message="Geef je naam op.">
-                                    <p class="help-block text-danger"></p>
+                                    <asp:TextBox type="text" class="form-control" placeholder="Je naam *" id="meldnaam" runat="server" />
+                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldnaam" ErrorMessage="Geef je naam op." />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Je adres *" id="adres" required data-validation-required-message="Geef je adres op.">
-                                    <p class="help-block text-danger"></p>
+                                    <asp:TextBox type="text" class="form-control" placeholder="Je adres *" id="meldadres" runat="server" />
+                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldadres" ErrorMessage="Geef je adres op." />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Je postcode *" id="postcode" required data-validation-required-message="Geef je postcode op.">
-                                    <p class="help-block text-danger"></p>
+                                    <asp:TextBox type="text" class="form-control" placeholder="Je postcode *" id="meldpostcode" runat="server" />
+                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldpostcode" ErrorMessage="Geef je postcode op." />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Je woonplaats *" id="woonplaats" required data-validation-required-message="Geef je woonplaats op.">
-                                    <p class="help-block text-danger"></p>
+                                    <asp:TextBox type="text" class="form-control" placeholder="Je woonplaats *" id="meldwoonplaats" runat="server" />
+                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldwoonplaats" ErrorMessage="Geef je woonplaats op." />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Je telefoonnummer *" id="telefoonnummer" required data-validation-required-message="Geef je telefoonnummer op.">
-                                    <p class="help-block text-danger"></p>
+                                    <asp:TextBox type="text" class="form-control" placeholder="Je telefoonnummer *" id="meldtelefoon" runat="server" />
+                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldtelefoon" ErrorMessage="Geef je telefoonnummer op." />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Je Email *" id="email" required data-validation-required-message="Geef je e-mail adres op.">
-                                    <p class="help-block text-danger"></p>
+                                    <asp:TextBox type="text" class="form-control" placeholder="Je e-mail adres *" id="meldemail" runat="server" />
+                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldemail" ErrorMessage="Geef je e-mail adres op." />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Je bowlingnaam *" id="bowlingnaam" required data-validation-required-message="Geef je bowlingnaam op.">
-                                    <p class="help-block text-danger"></p>
+                                    <asp:TextBox type="text" class="form-control" placeholder="Je Frequent Bowler Naam *" id="meldfrequentbowlernaam" runat="server" />
+                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldfrequentbowlernaam" ErrorMessage="Geef je Frequent Bowler Naam op." />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Je Frequent Bolwernummer *" id="frequentbowlernummer" required data-validation-required-message="Geef je frequent bowlernummer op.">
-                                    <p class="help-block text-danger"></p>
+                                    <asp:TextBox type="text" class="form-control" placeholder="Je Frequent Bowler Nummmer *" id="meldfrequentbowlernummmer" runat="server" />
+                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldfrequentbowlernummmer" ErrorMessage="Geef je Frequent Bowler Nummmer op." />
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Je wachtwoord *" id="wachtwoord" required data-validation-required-message="Geef je wachtwoord op.">
-                                    <p class="help-block text-danger"></p>
+                                    <asp:TextBox type="password" class="form-control" placeholder="Je wachtwoord *" id="meldwachtwoord" runat="server" />
+                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldwachtwoord" ErrorMessage="Geef je wachtwoord op." />
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Je wachtwoord *" id="controle" required data-validation-required-message="Geef je wachtwoord nogmaals op.">
-                                    <p class="help-block text-danger"></p>
+                                    <asp:TextBox type="password" class="form-control" placeholder="Je wachtwoord *" id="meldcontrole" runat="server" />
+                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldcontrole" ErrorMessage="Geef je wachtwoord nogmaals op." />
                                 </div>
                             </div>
                             <div class="clearfix"></div>
                             <div class="col-lg-12 text-center">
-                                <div id="success"></div>
-                                <button type="submit" class="btn btn-xl">Verstuur</button>
+                                <div id="meldsuccess" runat="server"></div>
+                                <asp:Button type="submit" class="btn btn-xl" Text="Verstuur" runat="server" ID="buttonSubmitForm" OnClick="buttonSubmitForm_Click"/>
                             </div>
                         </div>
                     </form>
@@ -392,10 +343,9 @@
                             <div class="modal-body">
                                 <!-- Bowling Centra Details Go Here -->
                                 <h2>Bowling Centrum Harderwijk</h2>
-                                <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                <p class="item-intro text-muted"></p>
                                 <img class="img-responsive img-centered" src="img/bowling/harderwijk-full.png" alt="">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-
+                                <p></p>
                                 <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Sluiten</button>
                             </div>
                         </div>
@@ -514,7 +464,6 @@
         </div>
     </div>
 
-
     <!-- Modal Gebruikersvoorwaarden -->
     <div class="portfolio-modal modal fade" id="GebruikersvoorwaardenModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
@@ -559,66 +508,6 @@
         </div>
     </div>
 
-    <!-- Modal Aanmelden Competitie -->
-    <div class="portfolio-modal modal fade" id="AanmeldenModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl">
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 col-lg-offset-2">
-                            <div class="modal-body">
-                                <!-- Aanmelden Competitie Details Go Here -->
-                                <h2>Doe mee met een Competitie</h2>
-                                <p class="item-intro text-muted">Selecteer een competitie en schrijf je in met je bowlingnaam.<br />Nog geen bowlingnaam? Meld je eerst aan!</a></p>
-                                <form name="sentMessage" id="contactForm" novalidate>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <select class="form-control">
-                                                    <option>-- Selecteer een competitie --</option>
-                                                    <option>September 2017 : Meeste splits</option>
-                                                    <option>December 2017 : Meeste headpins</option>
-                                                    <option>Januari 2018 : Hoogste score</option>
-                                                    <option>September 2018 : Gooi de meeste strikes</option>
-                                                </select>
-                                                <p class="help-block text-danger"></p>
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="email" class="form-control" placeholder="Je Email *" id="email" required data-validation-required-message="Geef je e-mail adres op.">
-                                                <p class="help-block text-danger"></p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Je bowlingnaam *" id="bowlingnaam" required data-validation-required-message="Geef je bowlingnaam op.">
-                                                <p class="help-block text-danger"></p>
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="password" class="form-control" placeholder="Je wachtwoord *" id="wachtwoord" required data-validation-required-message="Geef je wachtwoord op.">
-                                                <p class="help-block text-danger"></p>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="col-lg-12 text-center">
-                                            <div id="success"></div>
-                                            <button type="submit" class="btn btn-xl">Verstuur</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Modals Contact formulier -->
     <div class="portfolio-modal modal fade" id="ContactModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
@@ -626,42 +515,6 @@
                 <div class="close-modal" data-dismiss="modal">
                     <div class="lr">
                         <div class="rl">
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 col-lg-offset-2">
-                            <div class="modal-body">
-                                <!-- Project Details Go Here -->
-                                <h2>Contact</h2>
-                                <p class="item-intro text-muted">Stel uw vraag door het formulier in te vullen.</a></p>
-                                <form name="sentMessage" id="contactForm" novalidate>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Je Naam *" id="naam" required data-validation-required-message="Geef je naam op.">
-                                                <p class="help-block text-danger"></p>
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="email" class="form-control" placeholder="Je Email *" id="email" required data-validation-required-message="Geef je e-mail adres op.">
-                                                <p class="help-block text-danger"></p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <textarea rows="10" class="form-control" placeholder="Your Message *" id="message" required data-validation-required-message="Please enter a message."></textarea>
-                                                <p class="help-block text-danger"></p>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="col-lg-12 text-center">
-                                            <div id="success"></div>
-                                            <button type="submit" class="btn btn-xl">Verstuur</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -685,5 +538,4 @@
     <script src="js/bowling.min.js"></script>
 
 </body>
-
 </html>

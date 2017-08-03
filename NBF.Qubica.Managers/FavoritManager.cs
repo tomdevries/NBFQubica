@@ -175,7 +175,7 @@ namespace NBF.Qubica.Managers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error checking isfavorit for user: {0}", ex.Message));
+                logger.Error(string.Format("Error checking isfavorit for contact: {0}", ex.Message));
             }
 
             return isfavorit;

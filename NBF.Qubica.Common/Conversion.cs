@@ -296,5 +296,54 @@ namespace NBF.Qubica.Common
         {
             return uri.Replace(" ", "%20");
         }
+
+        public static string DateToTitle(DateTime from, DateTime to)
+        {
+            string title = "";
+
+            int month = from.Month;
+            switch (month)
+            {
+                case 1: title = "Januari"; break;
+                case 2: title = "Februari"; break;
+                case 3: title = "Maart"; break;
+                case 4: title = "April"; break;
+                case 5: title = "Mei"; break;
+                case 6: title = "Juni"; break;
+                case 7: title = "Juli"; break;
+                case 8: title = "Augustus"; break;
+                case 9: title = "September"; break;
+                case 10: title = "Oktober"; break;
+                case 11: title = "November"; break;
+                case 12: title = "December"; break;
+            }
+
+            title += " " + from.Year;
+
+            if (to.Month == from.Month && to.Year == from.Year)
+                return title;
+            else
+            {
+                month = to.Month;
+                switch (month)
+                {
+                    case 1: title += " - Januari"; break;
+                    case 2: title += " - Februari"; break;
+                    case 3: title += " - Maart"; break;
+                    case 4: title += " - April"; break;
+                    case 5: title += " - Mei"; break;
+                    case 6: title += " - Juni"; break;
+                    case 7: title += " - Juli"; break;
+                    case 8: title += " - Augustus"; break;
+                    case 9: title += " - September"; break;
+                    case 10: title += " - Oktober"; break;
+                    case 11: title += " - November"; break;
+                    case 12: title += " - December"; break;
+                }
+
+                title += " " + to.Year;
+                return title;
+            }
+        }
     }
 }

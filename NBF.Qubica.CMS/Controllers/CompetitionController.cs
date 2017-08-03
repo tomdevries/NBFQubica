@@ -180,8 +180,6 @@ namespace NBF.Qubica.CMS.Controllers
             return View(filteredPlayerRankingModelList);
         }
 
-        //
-        // POST: /Competition/Insert
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -189,7 +187,7 @@ namespace NBF.Qubica.CMS.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Attempt to register the user
+                // Attempt to register the contact
                 try
                 {
                     S_Competition competition = new S_Competition();

@@ -117,7 +117,7 @@ namespace NBF.Qubica.CMS.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Attempt to register the user
+                // Attempt to register the contact
                 try
                 {
                     S_User user = new S_User();
@@ -165,7 +165,7 @@ namespace NBF.Qubica.CMS.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Attempt to register the user
+                // Attempt to register the contact
                 try
                 {
                     S_User user = new S_User();

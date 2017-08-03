@@ -64,6 +64,7 @@
     <Compile Include="S_CompetitionBowlingcenter.cs" />
     <Compile Include="S_CompetitionPlayers.cs" />
     <Compile Include="S_CompetitionPlayersRanking.cs" />
+    <Compile Include="S_Contact.cs" />
     <Compile Include="S_Event.cs" />
     <Compile Include="S_Favorit.cs" />
     <Compile Include="S_Federation.cs" />

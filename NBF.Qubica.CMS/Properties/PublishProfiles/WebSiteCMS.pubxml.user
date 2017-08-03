@@ -93,6 +93,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/ko/System.Spatial.resources.dll">
       <publishTime>07/06/2014 22:34:38</publishTime>
     </File>
+    <File Include="bin/Microsoft.CSharp.dll">
+      <publishTime>09/26/2012 03:16:08</publishTime>
+    </File>
     <File Include="bin/Microsoft.Data.Edm.dll">
       <publishTime>07/06/2014 22:34:38</publishTime>
     </File>
@@ -112,19 +115,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/10/2014 16:22:02</publishTime>
     </File>
     <File Include="bin/NBF.Qubica.Classes.dll">
-      <publishTime>03/05/2017 15:55:17</publishTime>
+      <publishTime>07/30/2017 19:52:21</publishTime>
     </File>
     <File Include="bin/NBF.Qubica.CMS.dll">
-      <publishTime>03/05/2017 16:12:28</publishTime>
+      <publishTime>08/03/2017 19:42:10</publishTime>
     </File>
     <File Include="bin/NBF.Qubica.Common.dll">
-      <publishTime>03/05/2017 15:55:17</publishTime>
+      <publishTime>07/30/2017 19:52:21</publishTime>
     </File>
     <File Include="bin/NBF.Qubica.Database.dll">
-      <publishTime>03/05/2017 15:55:17</publishTime>
+      <publishTime>07/30/2017 19:52:21</publishTime>
     </File>
     <File Include="bin/NBF.Qubica.Managers.dll">
-      <publishTime>03/05/2017 15:55:17</publishTime>
+      <publishTime>07/30/2017 19:52:22</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>07/20/2014 16:31:18</publishTime>
@@ -145,7 +148,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/06/2014 22:34:38</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
-      <publishTime>07/06/2014 22:34:34</publishTime>
+      <publishTime>07/06/2014 22:34:36</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.WebRequest.dll">
+      <publishTime>09/26/2012 03:16:08</publishTime>
     </File>
     <File Include="bin/System.Spatial.dll">
       <publishTime>07/06/2014 22:34:38</publishTime>
@@ -154,13 +160,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/20/2014 16:50:20</publishTime>
     </File>
     <File Include="bin/System.Web.Http.dll">
-      <publishTime>07/06/2014 22:34:34</publishTime>
+      <publishTime>07/06/2014 22:34:36</publishTime>
     </File>
     <File Include="bin/System.Web.Http.OData.dll">
       <publishTime>07/06/2014 22:34:40</publishTime>
     </File>
     <File Include="bin/System.Web.Http.WebHost.dll">
-      <publishTime>07/06/2014 22:34:34</publishTime>
+      <publishTime>07/06/2014 22:34:36</publishTime>
     </File>
     <File Include="bin/System.Web.Mvc.dll">
       <publishTime>07/20/2014 16:50:20</publishTime>
@@ -170,6 +176,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="bin/System.Web.Razor.dll">
       <publishTime>07/20/2014 16:50:20</publishTime>
+    </File>
+    <File Include="bin/System.Web.Routing.dll">
+      <publishTime>09/26/2012 03:16:08</publishTime>
+    </File>
+    <File Include="bin/System.Web.Services.dll">
+      <publishTime>09/26/2012 03:16:08</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.Deployment.dll">
       <publishTime>07/20/2014 16:50:20</publishTime>
@@ -214,7 +226,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/20/2014 17:28:54</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>09/07/2014 12:46:10</publishTime>
+      <publishTime>07/13/2017 13:33:03</publishTime>
     </File>
     <File Include="Content/themes/base/images/ui-bg_flat_0_aaaaaa_40x100.png">
       <publishTime>07/19/2014 15:17:58</publishTime>
@@ -520,52 +532,52 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/11/2014 21:01:22</publishTime>
     </File>
     <File Include="Views/Account/Edit.cshtml">
-      <publishTime>12/29/2014 10:38:20</publishTime>
+      <publishTime>07/10/2017 14:50:27</publishTime>
     </File>
     <File Include="Views/Account/Index.cshtml">
-      <publishTime>08/04/2014 21:04:16</publishTime>
+      <publishTime>07/09/2017 16:19:17</publishTime>
     </File>
     <File Include="Views/Account/Insert.cshtml">
-      <publishTime>11/11/2014 21:49:54</publishTime>
+      <publishTime>07/10/2017 14:50:34</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
       <publishTime>07/20/2014 15:42:14</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
-      <publishTime>11/11/2014 20:45:50</publishTime>
+      <publishTime>07/10/2017 14:50:48</publishTime>
     </File>
     <File Include="Views/Account/RegisterResult.cshtml">
-      <publishTime>07/19/2014 20:36:38</publishTime>
+      <publishTime>07/10/2017 14:51:12</publishTime>
     </File>
     <File Include="Views/Bond/Index.cshtml">
       <publishTime>07/27/2014 18:15:16</publishTime>
     </File>
     <File Include="Views/Bowlinghuis/Adverts.cshtml">
-      <publishTime>11/23/2014 12:35:04</publishTime>
+      <publishTime>07/10/2017 13:56:55</publishTime>
     </File>
     <File Include="Views/Bowlinghuis/Edit.cshtml">
-      <publishTime>02/17/2017 21:27:40</publishTime>
+      <publishTime>07/10/2017 13:49:41</publishTime>
     </File>
     <File Include="Views/Bowlinghuis/EditAdvert.cshtml">
-      <publishTime>11/23/2014 15:39:38</publishTime>
+      <publishTime>07/10/2017 14:49:33</publishTime>
     </File>
     <File Include="Views/Bowlinghuis/EditOpentime.cshtml">
-      <publishTime>07/27/2014 17:49:30</publishTime>
+      <publishTime>07/10/2017 14:49:41</publishTime>
     </File>
     <File Include="Views/Bowlinghuis/Index.cshtml">
-      <publishTime>08/10/2014 20:28:32</publishTime>
+      <publishTime>07/09/2017 15:40:31</publishTime>
     </File>
     <File Include="Views/Bowlinghuis/Insert.cshtml">
-      <publishTime>02/17/2017 21:29:02</publishTime>
+      <publishTime>07/10/2017 14:49:24</publishTime>
     </File>
     <File Include="Views/Bowlinghuis/InsertAdvert.cshtml">
-      <publishTime>11/23/2014 15:52:58</publishTime>
+      <publishTime>07/10/2017 14:49:46</publishTime>
     </File>
     <File Include="Views/Bowlinghuis/InsertOpentime.cshtml">
-      <publishTime>07/27/2014 17:50:06</publishTime>
+      <publishTime>07/10/2017 14:49:59</publishTime>
     </File>
     <File Include="Views/Bowlinghuis/Opentimes.cshtml">
-      <publishTime>07/27/2014 17:36:30</publishTime>
+      <publishTime>07/10/2017 13:51:28</publishTime>
     </File>
     <File Include="Views/Bowlinghuis/Register.cshtml">
       <publishTime>07/26/2014 16:53:43</publishTime>
@@ -573,11 +585,20 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Bowlinghuis/RegisterResult.cshtml">
       <publishTime>07/20/2014 15:34:07</publishTime>
     </File>
+    <File Include="Views/Challenge/Index.cshtml">
+      <publishTime>07/09/2017 16:55:50</publishTime>
+    </File>
     <File Include="Views/Competition/Competition.cshtml">
-      <publishTime>08/10/2014 21:05:44</publishTime>
+      <publishTime>07/10/2017 15:55:58</publishTime>
     </File>
     <File Include="Views/Competition/CompetitionPlayers.cshtml">
-      <publishTime>08/10/2014 22:39:10</publishTime>
+      <publishTime>07/10/2017 16:18:01</publishTime>
+    </File>
+    <File Include="Views/Competition/CompetitionPlayersInsert.cshtml">
+      <publishTime>07/10/2017 16:19:12</publishTime>
+    </File>
+    <File Include="Views/Competition/CompetitionRanking.cshtml">
+      <publishTime>07/10/2017 15:22:21</publishTime>
     </File>
     <File Include="Views/Competition/Edit.cshtml">
       <publishTime>08/10/2014 19:44:30</publishTime>
@@ -586,13 +607,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/03/2014 20:09:26</publishTime>
     </File>
     <File Include="Views/Competition/Insert.cshtml">
-      <publishTime>08/18/2014 21:36:58</publishTime>
+      <publishTime>07/10/2017 14:57:36</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>07/19/2014 16:23:28</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>07/20/2014 14:21:14</publishTime>
+      <publishTime>07/07/2017 11:13:58</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>07/19/2014 15:27:28</publishTime>
@@ -610,7 +631,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/08/2014 19:48:28</publishTime>
     </File>
     <File Include="Views/Shared/_MenuPartial.cshtml">
-      <publishTime>08/03/2014 19:03:34</publishTime>
+      <publishTime>07/07/2017 12:45:43</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>07/19/2014 17:49:42</publishTime>
@@ -619,7 +640,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/19/2014 15:17:30</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/05/2017 16:12:29</publishTime>
+      <publishTime>08/03/2017 19:42:10</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -148,8 +148,8 @@ namespace NBF.Qubica.Managers
                                                   "AND   f.gameid = g.id " + 
                                                   "AND   b.isstrike IS true " +
                                                   "AND   g.freeentrycode IS NOT null " +
-                                                  "AND   date(g.startdatetime)>=@startdate " +
-                                                  "AND   date(g.startdatetime)<=@enddate " +
+                                                  //"AND   date(g.startdatetime)>=@startdate " +
+                                                  //"AND   date(g.startdatetime)<=@enddate " +
                                                   "AND   d.name = g.playername " +
                                                   "AND   d.frequentbowlernumber = g.freeentrycode " +
                                                   "AND   g.eventid = e.id " +
@@ -308,7 +308,7 @@ namespace NBF.Qubica.Managers
                                                   "AND   b.total = 10 " +
                                                   "AND   b.pins = '7,10' " +
                                                   "AND   date(g.startdatetime)>=@startdate " +
-                                                  "AND   date(g.startdatetime)<@enddate " +
+                                                  "AND   date(g.startdatetime)<=@enddate " +
                                                   "AND   d.name = g.playername " +
                                                   "AND   d.frequentbowlernumber = g.freeentrycode " +
                                                   "AND   g.eventid = e.id " +
@@ -357,8 +357,63 @@ namespace NBF.Qubica.Managers
                             command.Parameters.AddWithValue("@enddate", Conversion.DateTimeToSql(enddate));
                             break;
                         case 9:
+                            command.CommandText = "SELECT d.id " +
+                                                  ",      g.playername " +
+                                                  ",      g.freeentrycode " +
+                                                  ",      count(1) as tot " +
+                                                  "FROM  game g " +
+                                                  ",     event e " +
+                                                  ",     scores s " +
+                                                  ",    (SELECT user.id " +
+                                                  "      ,      user.name " +
+                                                  "      ,      user.frequentbowlernumber " +
+                                                  "      FROM competitionplayers " +
+                                                  "      ,    user " +
+                                                  "      WHERE user.id = competitionplayers.userid " +
+                                                  "      AND   competitionplayers.competitionid=@competitionid) d  " +
+                                                  "WHERE g.total > 160 " +
+                                                  "AND   date(g.startdatetime)>=@startdate " +
+                                                  "AND   date(g.startdatetime)<=@enddate " +
+                                                  "AND   d.name = g.playername " +
+                                                  "AND   d.frequentbowlernumber = g.freeentrycode " +
+                                                  "AND   g.eventid = e.id " +
+                                                  "AND   e.scoresid = s.id " +
+                                                  "AND   s.bowlingcenterid in (SELECT bowlingcenterid FROM competitionbowlingcenter " +
+                                                  "                            WHERE  competitionbowlingcenter.competitionid = @competitionid) " +
+                                                  "GROUP BY g.playername, g.freeentrycode " +
+                                                  "ORDER BY tot DESC ";
+                            command.Parameters.AddWithValue("@competitionid", Conversion.LongToSql(competitionid));
+                            command.Parameters.AddWithValue("@startdate", Conversion.DateTimeToSql(startdate));
+                            command.Parameters.AddWithValue("@enddate", Conversion.DateTimeToSql(enddate));
                             break;
                         case 10:
+                            command.CommandText = "SELECT d.id " +
+                                                  ",      g.playername " +
+                                                  ",      g.freeentrycode " +
+                                                  ",      count(1) as tot " +
+                                                  "FROM  game g " +
+                                                  ",     event e " +
+                                                  ",     scores s " +
+                                                  ",    (SELECT user.id " +
+                                                  "      ,      user.name " +
+                                                  "      ,      user.frequentbowlernumber " +
+                                                  "      FROM competitionplayers " +
+                                                  "      ,    user " +
+                                                  "      WHERE user.id = competitionplayers.userid " +
+                                                  "      AND   competitionplayers.competitionid=@competitionid) d  " +
+                                                  "WHERE date(g.startdatetime)>=@startdate " +
+                                                  "AND   date(g.startdatetime)<=@enddate " +
+                                                  "AND   d.name = g.playername " +
+                                                  "AND   d.frequentbowlernumber = g.freeentrycode " +
+                                                  "AND   g.eventid = e.id " +
+                                                  "AND   e.scoresid = s.id " +
+                                                  "AND   s.bowlingcenterid in (SELECT bowlingcenterid FROM competitionbowlingcenter " +
+                                                  "                            WHERE  competitionbowlingcenter.competitionid = @competitionid) " +
+                                                  "GROUP BY g.playername, g.freeentrycode " +
+                                                  "ORDER BY tot DESC ";
+                            command.Parameters.AddWithValue("@competitionid", Conversion.LongToSql(competitionid));
+                            command.Parameters.AddWithValue("@startdate", Conversion.DateTimeToSql(startdate));
+                            command.Parameters.AddWithValue("@enddate", Conversion.DateTimeToSql(enddate));
                             break;
                     }
 
@@ -375,6 +430,8 @@ namespace NBF.Qubica.Managers
                         case 6:
                         case 7:
                         case 8:
+                        case 9:
+                        case 10:
                             while (dataReader.Read())
                             {
                                 S_CompetitionPlayersRanking cpr = DataToCompetitionPlayersRankingObject(rank++, dataReader);
@@ -456,7 +513,6 @@ namespace NBF.Qubica.Managers
             return competitionplayersranking;
         }
 
-
         public static S_Competition GetCompetition(long id)
         {
             S_Competition competition = null;
@@ -494,6 +550,88 @@ namespace NBF.Qubica.Managers
             }
 
             return competition;
+        }
+
+        public static List<S_Competition> GetRunningCompetitions(bool mostRecentFirst)
+        {
+            List<S_Competition> competitions = new List<S_Competition>();
+
+            try
+            {
+                DatabaseConnection databaseconnection = new DatabaseConnection();
+
+                //Open connection
+                if (databaseconnection.OpenConnection())
+                {
+                    //Create Command
+                    MySqlCommand command = new MySqlCommand();
+                    command.Connection = databaseconnection.getConnection();
+                    if (mostRecentFirst)
+                        command.CommandText = "SELECT * FROM competition WHERE enddate> now() order by startdate DESC";
+                    else
+                        command.CommandText = "SELECT * FROM competition WHERE enddate> now() order by startdate";
+
+                    //Create a data reader and Execute the command
+                    MySqlDataReader dataReader = command.ExecuteReader();
+
+                    //Read the data and store them in the list
+                    while (dataReader.Read())
+                        competitions.Add(DataToCompetitionObject(dataReader));
+
+                    //close Data Reader
+                    dataReader.Close();
+
+                    //close Connection
+                    databaseconnection.CloseConnection();
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("GetRunningCompetitions, Error reading competition data: {0}", ex.Message));
+            }
+
+            return competitions;
+        }
+
+        public static List<S_Competition> GetCompetitions(bool mostRecentFirst)
+        {
+            List<S_Competition> competitions = new List<S_Competition>();
+
+            try
+            {
+                DatabaseConnection databaseconnection = new DatabaseConnection();
+
+                //Open connection
+                if (databaseconnection.OpenConnection())
+                {
+                    //Create Command
+                    MySqlCommand command = new MySqlCommand();
+                    command.Connection = databaseconnection.getConnection();
+                    if (mostRecentFirst)
+                        command.CommandText = "SELECT * FROM competition ORDER BY startdate DESC";
+                    else
+                        command.CommandText = "SELECT * FROM competition ORDER BY startdate";
+
+                    //Create a data reader and Execute the command
+                    MySqlDataReader dataReader = command.ExecuteReader();
+
+                    //Read the data and store them in the list
+                    while (dataReader.Read())
+                        competitions.Add(DataToCompetitionObject(dataReader));
+
+                    //close Data Reader
+                    dataReader.Close();
+
+                    //close Connection
+                    databaseconnection.CloseConnection();
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("GetCompetitions, Error reading competition data: {0}", ex.Message));
+            }
+
+            return competitions;
         }
 
         public static List<S_Competition> GetCompetitionsByChallengeId(long id)
@@ -610,6 +748,44 @@ namespace NBF.Qubica.Managers
             return competitonplayers;
         }
 
+        public static bool ExistPlayerInCompetition(long competitionId, long userid)
+        {
+            bool result = false;
+
+            try
+            {
+                DatabaseConnection databaseconnection = new DatabaseConnection();
+
+                //Open connection
+                if (databaseconnection.OpenConnection())
+                {
+                    //Create Command
+                    MySqlCommand command = new MySqlCommand();
+                    command.Connection = databaseconnection.getConnection();
+                    command.CommandText = "SELECT * FROM competitionplayers WHERE competitionid=@competitionid and userid=@userid";
+                    command.Parameters.AddWithValue("@competitionid", Conversion.LongToSql(competitionId));
+                    command.Parameters.AddWithValue("@userid", Conversion.LongToSql(userid));
+                    //Create a data reader and Execute the command
+                    MySqlDataReader dataReader = command.ExecuteReader();
+
+                    //Read the data and store them in the list
+                    result = dataReader.HasRows;
+
+                    //close Data Reader
+                    dataReader.Close();
+
+                    //close Connection
+                    databaseconnection.CloseConnection();
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("ExistPlayerInCompetition, Error reading Player Competition data: {0}", ex.Message));
+            }
+
+            return result;
+        }
+
         public static List<S_Player> GetPlayersNotInCompetition(long id)
         {
             List<S_Player> players = new List<S_Player>();
@@ -624,7 +800,7 @@ namespace NBF.Qubica.Managers
                     //Create Command
                     MySqlCommand command = new MySqlCommand();
                     command.Connection = databaseconnection.getConnection();
-                    command.CommandText = "SELECT id FROM user where id not in (select userid from competitionplayers where competitionid=@competitionid)";
+                    command.CommandText = "SELECT id FROM user WHERE id not in (select userid from competitionplayers where competitionid=@competitionid)";
                     command.Parameters.AddWithValue("@competitionid", Conversion.LongToSql(id));
                     //Create a data reader and Execute the command
                     MySqlDataReader dataReader = command.ExecuteReader();

@@ -10,19 +10,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/NBF.Qubica.Classes.dll">
-      <publishTime>03/05/2017 17:25:46</publishTime>
+      <publishTime>07/30/2017 19:52:21</publishTime>
     </File>
     <File Include="bin/NBF.Qubica.Common.dll">
-      <publishTime>03/05/2017 17:25:46</publishTime>
+      <publishTime>07/30/2017 19:52:21</publishTime>
     </File>
     <File Include="bin/NBF.Qubica.Database.dll">
-      <publishTime>03/05/2017 17:25:46</publishTime>
+      <publishTime>07/30/2017 19:52:21</publishTime>
     </File>
     <File Include="bin/NBF.Qubica.Managers.dll">
-      <publishTime>03/05/2017 17:25:47</publishTime>
+      <publishTime>07/30/2017 19:52:22</publishTime>
     </File>
     <File Include="bin/NBF.Qubica.RestWebService.dll">
-      <publishTime>03/11/2017 14:56:44</publishTime>
+      <publishTime>08/03/2017 19:49:39</publishTime>
     </File>
     <File Include="bin/NLog.config">
       <publishTime>03/23/2015 14:47:02</publishTime>
@@ -40,7 +40,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/21/2014 16:09:40</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/11/2017 14:56:45</publishTime>
+      <publishTime>08/03/2017 19:49:39</publishTime>
     </File>
   </ItemGroup>
 </Project>

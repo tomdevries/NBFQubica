@@ -296,7 +296,7 @@ namespace NBF.Qubica.Managers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("GetUserByNamePasswordAndFrequentbowlernumber, Error reading user data: {0}", ex.Message));
+                logger.Error(string.Format("GetUserByNameAndPassword, Error reading user data: {0}", ex.Message));
             }
 
             return user;

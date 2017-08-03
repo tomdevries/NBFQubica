@@ -61,6 +61,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Competitie.aspx" />
+    <Content Include="CompetitieStanden.aspx" />
+    <Content Include="Contact.aspx" />
     <Content Include="css\bowling.css" />
     <Content Include="css\bowling.min.css" />
     <Content Include="default.aspx" />
@@ -134,6 +137,7 @@
     <Content Include="vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="vendor\font-awesome\scss\_variables.scss" />
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\to filesystem.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -145,6 +149,27 @@
   <ItemGroup>
     <Compile Include="..\VersionInfo.cs">
       <Link>Properties\VersionInfo.cs</Link>
+    </Compile>
+    <Compile Include="Competitie.aspx.cs">
+      <DependentUpon>Competitie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Competitie.aspx.designer.cs">
+      <DependentUpon>Competitie.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CompetitieStanden.aspx.cs">
+      <DependentUpon>CompetitieStanden.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CompetitieStanden.aspx.designer.cs">
+      <DependentUpon>CompetitieStanden.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
@@ -159,6 +184,10 @@
     <ProjectReference Include="..\NBF.Qubica.Classes\NBF.Qubica.Classes.csproj">
       <Project>{243f140f-840b-4eb5-aa1b-2da51e341253}</Project>
       <Name>NBF.Qubica.Classes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NBF.Qubica.Common\NBF.Qubica.Common.csproj">
+      <Project>{59f448ab-824a-4669-b4df-e12bd8634bf4}</Project>
+      <Name>NBF.Qubica.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\NBF.Qubica.Managers\NBF.Qubica.Managers.csproj">
       <Project>{d9198e8f-9c1e-4e77-ab4b-e63f361fdd8b}</Project>

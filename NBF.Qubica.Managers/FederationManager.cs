@@ -58,7 +58,7 @@ namespace NBF.Qubica.Managers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("GetFederarionById, Error reading user data: {0}", ex.Message));
+                logger.Error(string.Format("GetFederarionById, Error reading federation data: {0}", ex.Message));
             }
 
             return federation;
@@ -96,7 +96,7 @@ namespace NBF.Qubica.Managers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("GetFederarion, Error reading user data: {0}", ex.Message));
+                logger.Error(string.Format("GetFederarion, Error reading federation data: {0}", ex.Message));
             }
 
             return federation;
