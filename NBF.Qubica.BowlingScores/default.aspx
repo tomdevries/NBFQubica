@@ -101,26 +101,34 @@
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-arrow-circle-o-down fa-stack-1x fa-inverse"></i>
+                        <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
                     </span>
-                    <h4 class="service-heading">Installeer de App</h4>
-                    <p class="text-muted">Ga naar de App-store, Play-store of Windows-store en installeer de NBF Scores App. Voordat je de App kunt gebruiken moet je eerst een Frequent Bowler Account aanmaken.</p>
+                    <h4 class="service-heading">Meld je aan</h4>
+                    <p class="text-muted">Aanmelden als Frequent Bowler doe je op het aanmeldformulier. Het gegenereerde ID moet je gebruiken bij de bowling samen met je eigen Frequent Bowler Naam <a class="page-scroll" href="#aanmelden">Meld je aan</a></p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+                        <i class="fa fa-arrow-circle-o-down fa-stack-1x fa-inverse"></i>
                     </span>
-                    <h4 class="service-heading">Meld je aan</h4>
-                    <p class="text-muted">Aanmelden als Frequent Bowler kun je doen via de App of via het aanmeldformulier. Hou je Frequent Bowler Nummer bij de hand, deze moet je gebruiken bij het aanmelden samen met je eigen gekozen Frequent Bowler Naam <a class="page-scroll" href="#aanmelden">Meld je aan</a></p>
+                    <h4 class="service-heading">Installeer de App</h4>
+                    <p class="text-muted">Ga naar de App-Store, Play PLay-Store of Windows-Store en installeer de NBF Scores App. Voordat je de App kunt gebruiken moet je eerst een Frequent Bowler Account aanmaken.</p>
                 </div>
+
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
                         <i class="fa fa-play fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="service-heading">Ga bowlen</h4>
-                    <p class="text-muted">Heb je de App geinstalleerd en heb je jezelf aangemeld? Ga dan naar een aangesloten bowling centrum en meld je aan met je Frequent Bowler Naam en Frequent Bowler Nummer. Wil je meedoen aan een competitie, geef je dan hiervoor op <a class="page-scroll" href="#competities">Meld je aan</a></p>
+                    <p class="text-muted">Heb je de App geïnstalleerd en heb je jezelf aangemeld? Ga dan naar een aangesloten bowling centrum en meld je aan met je Frequent Bowler Naam en Frequent Bowler Nummer. Wil je meedoen aan een competitie, geef je dan <a class="page-scroll" href="#competities">hier</a> op</p>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <h4 class="service-heading">Kies je Store</h4>
+                    <a href="https://www.apple.com/itunes/download/" target="_new"><img src="img/AppStore.jpg" width="178px" style="padding:2px 0"/></a>
+                    <a href="https://play.google.com/store/apps?hl=nl" target="_new"><img src="img/GooglePlay.jpg" width="178px" style="padding:2px 0" /></a>
                 </div>
             </div>
         </div>
@@ -221,7 +229,7 @@
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <a href="http://www.bowlingnbf.nl/" target="_new">
-                        <img src="../img/logo/nbf.jpg" class="img-responsive img-centered" alt="">
+                        <img src="/img/logo/nbf.jpg" class="img-responsive img-centered" alt="">
                     </a>
                 </div>
                 <div class="col-md-4 col-sm-6">
@@ -233,6 +241,21 @@
         </div>
     </aside>
 
+    <script type="text/javascript">
+        function CopyName(obj) {
+            obj.value = obj.value.toUpperCase();
+            var fbn = obj.value;
+            var allowedChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+            var newvalue = "";
+
+            for (var i = 0, len = fbn.length; i < len; i++) {
+                if (allowedChars.indexOf(fbn[i]) > -1) {
+                    newvalue = newvalue + fbn[i];
+                }
+            }
+            document.getElementById('meldfrequentbowlernaam').value = newvalue;
+        }
+    </script>
     <!-- Aanmelden Section -->
     <section id="aanmelden">
         <div class="container">
@@ -248,45 +271,35 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <asp:TextBox type="text" class="form-control" placeholder="Je naam *" id="meldnaam" runat="server" />
-                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldnaam" ErrorMessage="Geef je naam op." />
+                                    <asp:TextBox type="text" class="form-control" placeholder="Je voornaam *" id="meldvoornaam" runat="server" onblur="CopyName(this)"/>
+                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldvoornaam" ErrorMessage="Geef je voornaam op." />
+                                    <asp:RegularExpressionValidator class="help-block text-danger" runat="server" ControlToValidate="meldvoornaam" ErrorMessage="Alleen letters toegestaan zonder diacrieten" ValidationExpression="^[A-Za-z\- ]{1,40}$" />
                                 </div>
                                 <div class="form-group">
-                                    <asp:TextBox type="text" class="form-control" placeholder="Je adres *" id="meldadres" runat="server" />
-                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldadres" ErrorMessage="Geef je adres op." />
+                                    <asp:TextBox type="text" class="form-control" placeholder="Je achternaam *" id="meldachternaam" runat="server" />
+                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldachternaam" ErrorMessage="Geef je naam op." />
                                 </div>
-                                <div class="form-group">
-                                    <asp:TextBox type="text" class="form-control" placeholder="Je postcode *" id="meldpostcode" runat="server" />
-                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldpostcode" ErrorMessage="Geef je postcode op." />
-                                </div>
-                                <div class="form-group">
-                                    <asp:TextBox type="text" class="form-control" placeholder="Je woonplaats *" id="meldwoonplaats" runat="server" />
-                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldwoonplaats" ErrorMessage="Geef je woonplaats op." />
-                                </div>
-                                <div class="form-group">
-                                    <asp:TextBox type="text" class="form-control" placeholder="Je telefoonnummer *" id="meldtelefoon" runat="server" />
-                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldtelefoon" ErrorMessage="Geef je telefoonnummer op." />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
                                 <div class="form-group">
                                     <asp:TextBox type="text" class="form-control" placeholder="Je e-mail adres *" id="meldemail" runat="server" />
                                     <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldemail" ErrorMessage="Geef je e-mail adres op." />
                                 </div>
+                            </div>
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <asp:TextBox type="text" class="form-control" placeholder="Je Frequent Bowler Naam *" id="meldfrequentbowlernaam" runat="server" />
+                                    <asp:TextBox type="text" class="form-control" placeholder="Je Frequent Bowler Naam *" id="meldfrequentbowlernaam" runat="server" style="text-transform: uppercase;"/>
                                     <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldfrequentbowlernaam" ErrorMessage="Geef je Frequent Bowler Naam op." />
+                                    <asp:RegularExpressionValidator class="help-block text-danger" runat="server" ControlToValidate="meldfrequentbowlernaam" ErrorMessage="Alleen hoofdletters en cijfers" ValidationExpression="^[A-Z0-9]{1,40}$" />
                                 </div>
                                 <div class="form-group">
-                                    <asp:TextBox type="text" class="form-control" placeholder="Je Frequent Bowler Nummmer *" id="meldfrequentbowlernummmer" runat="server" />
-                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldfrequentbowlernummmer" ErrorMessage="Geef je Frequent Bowler Nummmer op." />
+                                    <asp:TextBox type="text" class="form-control" placeholder="Je ID *" id="meldfrequentbowlernummmer" runat="server" readonly/>
+                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldfrequentbowlernummmer" ErrorMessage="Geef je ID op." />
                                 </div>
                                 <div class="form-group">
                                     <asp:TextBox type="password" class="form-control" placeholder="Je wachtwoord *" id="meldwachtwoord" runat="server" />
                                     <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldwachtwoord" ErrorMessage="Geef je wachtwoord op." />
                                 </div>
                                 <div class="form-group">
-                                    <asp:TextBox type="password" class="form-control" placeholder="Je wachtwoord *" id="meldcontrole" runat="server" />
+                                    <asp:TextBox type="password" class="form-control" placeholder="Bevestig je wachtwoord *" id="meldcontrole" runat="server" />
                                     <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldcontrole" ErrorMessage="Geef je wachtwoord nogmaals op." />
                                 </div>
                             </div>

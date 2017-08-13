@@ -495,7 +495,6 @@ namespace NBF.Qubica.Managers
             return result;
         }
 
-
         public static bool UsernameHasGames(string username, long frequentbowlernumber)
         {
             bool result = false;

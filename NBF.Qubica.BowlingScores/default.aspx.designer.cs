@@ -40,49 +40,22 @@ namespace NBF.Qubica.BowlingScores {
         protected global::System.Web.UI.HtmlControls.HtmlForm meldForm;
         
         /// <summary>
-        /// meldnaam control.
+        /// meldvoornaam control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox meldnaam;
+        protected global::System.Web.UI.WebControls.TextBox meldvoornaam;
         
         /// <summary>
-        /// meldadres control.
+        /// meldachternaam control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox meldadres;
-        
-        /// <summary>
-        /// meldpostcode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox meldpostcode;
-        
-        /// <summary>
-        /// meldwoonplaats control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox meldwoonplaats;
-        
-        /// <summary>
-        /// meldtelefoon control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox meldtelefoon;
+        protected global::System.Web.UI.WebControls.TextBox meldachternaam;
         
         /// <summary>
         /// meldemail control.

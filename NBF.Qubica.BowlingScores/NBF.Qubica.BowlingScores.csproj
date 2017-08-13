@@ -67,11 +67,13 @@
     <Content Include="css\bowling.css" />
     <Content Include="css\bowling.min.css" />
     <Content Include="default.aspx" />
+    <Content Include="img\AppStore.jpg" />
     <Content Include="img\bowling\amsterdam.png" />
     <Content Include="img\bowling\harderwijk-full.png" />
     <Content Include="img\bowling\harderwijk.png" />
     <Content Include="img\bowling\veenendaal.png" />
     <Content Include="img\competities\1.png" />
+    <Content Include="img\GooglePlay.jpg" />
     <Content Include="img\header-bg.jpg" />
     <Content Include="img\logo\nbf.jpg" />
     <Content Include="img\map-image.png" />

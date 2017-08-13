@@ -3,7 +3,9 @@ using NBF.Qubica.Common;
 using NBF.Qubica.Managers;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -63,8 +65,23 @@ namespace NBF.Qubica.BowlingScores
 
                     cntr++;
                 }
+
+                long fbn = generateFrequentBowlerNumber();
+                int cnt = 0;
+                while (UserManager.UserExistByFrequentBowlerNumber(fbn) && cnt++ < 10)
+                    fbn = generateFrequentBowlerNumber();
+                meldfrequentbowlernummmer.Text = fbn.ToString();
             }
         }
+
+        private long generateFrequentBowlerNumber()
+        {
+            Random rnd = new Random();
+            int fbn = rnd.Next(100000, 999999);
+
+            return fbn;
+        }
+
 
         protected void buttonSubmitForm_Click(object sender, EventArgs e)
         {
@@ -81,7 +98,7 @@ namespace NBF.Qubica.BowlingScores
                     if (meldwachtwoord.Text.CompareTo(meldcontrole.Text) != 0) { result = "Het wachtwoord is niet twee keer hetzelfde ingevuld!"; validUser = false; }
                     if (string.IsNullOrEmpty(meldfrequentbowlernummmer.Text))
                     {
-                        result = result = "Vul een Frequent Bowler Nummer in!";
+                        result = result = "Vul een ID in!";
                         validUser = false;
                     }
                     else
@@ -90,22 +107,36 @@ namespace NBF.Qubica.BowlingScores
                         bool isNumeric = long.TryParse(meldfrequentbowlernummmer.Text, out n);
                         if (!isNumeric)
                         {
-                            result = "Vul een Frequent Bowler Nummer in!";
+                            result = "Vul een ID in!";
                             validUser = false;
                         }
                         else
                         {
                             if (UserManager.UserExistByFrequentBowlerNumber(n))
                             {
-                                result = "Kies een ander Frequent Bowler Nummer, deze bestaat reeds!";
+                                result = "Kies een ander ID, deze bestaat reeds!";
                                 validUser = false;
                             }
                         }
                     }
 
+                    if (string.IsNullOrEmpty(meldfrequentbowlernaam.Text))
+                    {
+                        result = "Vul een Frequent Bowler Naam in!";
+                        validUser = false;
+                    }
+                    else
+                    {
+                        if (UserManager.UserExistByUsername(meldfrequentbowlernaam.Text))
+                        {
+                            result = "Vul een andere Frequent Bowler Naam in, deze is reeds ingebruik!";
+                            validUser = false;
+                        }
+                    }
+
                     if (string.IsNullOrEmpty(meldemail.Text))
                     {
-                        result = result = "Vul een e-mail adres in!";
+                        result = "Vul een e-mail adres in!";
                         validUser = false;
                     }
                     else
@@ -120,12 +151,12 @@ namespace NBF.Qubica.BowlingScores
 
                     if (validUser)
                     {
-                        user.address = meldadres.Text;
-                        user.city = meldwoonplaats.Text;
+                        user.address = "";
+                        user.city = "";
                         user.email = meldemail.Text;
                         user.isMember = false;
                         user.isRegistrationConfirmed = true;
-                        user.name = meldnaam.Text;
+                        user.name = string.Concat(meldvoornaam.Text, " ", meldachternaam.Text).Trim();
                         user.password = meldwachtwoord.Text;
                         user.roleid = Role.USER;
                         user.username = meldfrequentbowlernaam.Text;
@@ -149,6 +180,35 @@ namespace NBF.Qubica.BowlingScores
 
                 meldsuccess.InnerHtml= result;
             }
+        }
+
+        protected void meldvoornaam_TextChanged(object sender, EventArgs e)
+        {
+            string fbn = meldfrequentbowlernaam.Text;
+            if (string.IsNullOrEmpty(fbn))
+            {
+                string voornaam = meldvoornaam.Text;
+                string nospacevoornaam = new string(voornaam.ToCharArray().Where(c => !Char.IsWhiteSpace(c)).ToArray());
+                string nohyphennospacevoornaam = new string(voornaam.ToCharArray().Where(c => c != '\x002D').ToArray());
+                meldfrequentbowlernaam.Text = RemoveDiacritics(nohyphennospacevoornaam);
+            }
+        }
+
+        static string RemoveDiacritics(string text)
+        {
+            var normalizedString = text.Normalize(NormalizationForm.FormD);
+            var stringBuilder = new StringBuilder();
+
+            foreach (var c in normalizedString)
+            {
+                var unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(c);
+                if (unicodeCategory != UnicodeCategory.NonSpacingMark)
+                {
+                    stringBuilder.Append(c);
+                }
+            }
+
+            return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
         }
     }
 }
