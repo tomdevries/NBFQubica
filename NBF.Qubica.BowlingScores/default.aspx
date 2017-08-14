@@ -164,7 +164,7 @@
                     <a href="#BowlingCentraModal1" class="portfolio-link" data-toggle="modal">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content">
-                                <i class="fa fa-play fa-3x"></i>
+                                <i class="fa fa-3x">INFO</i>
                             </div>
                         </div>
                         <img src="img/bowling/harderwijk.png" class="img-responsive" alt="">
@@ -355,10 +355,11 @@
                         <div class="col-lg-8 col-lg-offset-2">
                             <div class="modal-body">
                                 <!-- Bowling Centra Details Go Here -->
-                                <h2>Bowling Centrum Harderwijk</h2>
+                                <h2>Bowling Harderwijk</h2>
                                 <p class="item-intro text-muted"></p>
-                                <img class="img-responsive img-centered" src="img/bowling/harderwijk-full.png" alt="">
-                                <p></p>
+                                <!--img class="img-responsive img-centered" src="img/bowling/harderwijk-full.png" alt=""-->
+                                <iframe src="http://bowlingharderwijk.nl/" width="640" height="420px" scrolling="auto"></iframe>
+                                <p><a href="http://bowlingharderwijk.nl/" target="_new">Bowling Harderwijk</a> | Kolbaanweg 1 | 3845 LJ Harderwijk | Tel. 0341 – 420788 | <a href="mailto:info@bowlingharderwijk.nl">info@bowlingharderwijk.nl</a></p>
                                 <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Sluiten</button>
                             </div>
                         </div>
