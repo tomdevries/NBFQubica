@@ -5,8 +5,12 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
+using System.Threading;
 using System.Web;
+using System.Web.Routing;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -15,28 +19,43 @@ namespace NBF.Qubica.BowlingScores
     public partial class _default : System.Web.UI.Page
     {
         protected string _content;
+        protected string _login_out;
+        protected string _account;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.MaintainScrollPositionOnPostBack = true; 
 
+            bool auth = Convert.ToBoolean(Session["auth"]);
+
+            if (!auth)
+            {
+                _login_out = "<a class='portfolio-link' href='./Login.aspx'  data-toggle='modal' id='login'>Login</a>";
+                _account = "";
+            }
+            else
+            {
+                _login_out = "<a class='portfolio-link' href='./Logout.aspx'  data-toggle='modal' id='login'>Logout</a>";
+                _account = "<a class='portfolio-link' href='./Profile.aspx'  data-toggle='modal' id='profile'>Profiel</a>";
+            }
+
+            List<S_Text> texts = TextManager.GetTexts();
+
+            foreach (S_Text st in texts)
+            {
+                switch (st.label)
+                {
+                    case "Web Site Titel":
+                        web_site_title.Text = st.text;
+                        break;
+                    case "Home":
+                        home.Text = st.text;
+                        break;
+                }
+            }
+
             if (!this.IsPostBack)
             {
-                List<S_Text> texts = TextManager.GetTexts();
-
-                foreach (S_Text st in texts)
-                {
-                    switch (st.label)
-                    {
-                        case "Web Site Titel":
-                            web_site_title.Text = st.text;
-                            break;
-                        case "Home":
-                            home.Text = st.text;
-                            break;
-                    }
-                }
-
                 List<S_Competition> competitions = CompetitionManager.GetRunningCompetitions(true);
 
                 int cntr = 0;
@@ -81,7 +100,6 @@ namespace NBF.Qubica.BowlingScores
 
             return fbn;
         }
-
 
         protected void buttonSubmitForm_Click(object sender, EventArgs e)
         {

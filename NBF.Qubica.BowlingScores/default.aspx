@@ -70,10 +70,15 @@
                     <li>
                         <a class="portfolio-link" href="./Contact.aspx"  data-toggle="modal">Contact</a>
                     </li>
+                    <li id="account" runat="server">
+                        <%= _account %>
+                    </li>
+                    <li>
+                        <%= _login_out %>
+                    </li>
                 </ul>
             </div>
-            <!-- /.navbar-collapse -->
-        </div>
+
         <!-- /.container-fluid -->
     </nav>
 
@@ -229,7 +234,7 @@
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <a href="http://www.bowlingnbf.nl/" target="_new">
-                        <img src="/img/logo/nbf.jpg" class="img-responsive img-centered" alt="">
+                        <img src="img/logo/nbf.jpg" class="img-responsive img-centered" alt="">
                     </a>
                 </div>
                 <div class="col-md-4 col-sm-6">
@@ -272,38 +277,38 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <asp:TextBox type="text" class="form-control" placeholder="Je voornaam *" id="meldvoornaam" runat="server" onblur="CopyName(this)"/>
-                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldvoornaam" ErrorMessage="Geef je voornaam op." />
-                                    <asp:RegularExpressionValidator class="help-block text-danger" runat="server" ControlToValidate="meldvoornaam" ErrorMessage="Alleen letters toegestaan zonder diacrieten" ValidationExpression="^[A-Za-z\- ]{1,40}$" />
+                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldvoornaam" ErrorMessage="Geef je voornaam op." Display="Dynamic" />
+                                    <asp:RegularExpressionValidator class="help-block text-danger" runat="server" ControlToValidate="meldvoornaam" ErrorMessage="Alleen letters toegestaan zonder diacrieten" ValidationExpression="^[A-Za-z\- ]{1,40}$" Display="Dynamic"/>
                                 </div>
                                 <div class="form-group">
                                     <asp:TextBox type="text" class="form-control" placeholder="Je achternaam *" id="meldachternaam" runat="server" />
-                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldachternaam" ErrorMessage="Geef je naam op." />
+                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldachternaam" ErrorMessage="Geef je naam op." Display="Dynamic"/>
                                 </div>
                                 <div class="form-group">
                                     <asp:TextBox type="text" class="form-control" placeholder="Je e-mail adres *" id="meldemail" runat="server" />
-                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldemail" ErrorMessage="Geef je e-mail adres op." />
+                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldemail" ErrorMessage="Geef je e-mail adres op." Display="Dynamic"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <asp:TextBox type="text" class="form-control" placeholder="Je Frequent Bowler Naam *" id="meldfrequentbowlernaam" runat="server" style="text-transform: uppercase;"/>
-                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldfrequentbowlernaam" ErrorMessage="Geef je Frequent Bowler Naam op." />
-                                    <asp:RegularExpressionValidator class="help-block text-danger" runat="server" ControlToValidate="meldfrequentbowlernaam" ErrorMessage="Alleen hoofdletters en cijfers" ValidationExpression="^[A-Z0-9]{1,40}$" />
+                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldfrequentbowlernaam" ErrorMessage="Geef je Frequent Bowler Naam op." Display="Dynamic"/>
+                                    <asp:RegularExpressionValidator class="help-block text-danger" runat="server" ControlToValidate="meldfrequentbowlernaam" ErrorMessage="Alleen hoofdletters en cijfers" ValidationExpression="^[A-Z0-9]{1,40}$" Display="Dynamic"/>
                                 </div>
                                 <div class="form-group">
                                     <asp:TextBox type="text" class="form-control" placeholder="Je ID *" id="meldfrequentbowlernummmer" runat="server" readonly/>
-                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldfrequentbowlernummmer" ErrorMessage="Geef je ID op." />
                                 </div>
                                 <div class="form-group">
                                     <asp:TextBox type="password" class="form-control" placeholder="Je wachtwoord *" id="meldwachtwoord" runat="server" />
-                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldwachtwoord" ErrorMessage="Geef je wachtwoord op." />
+                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldwachtwoord" ErrorMessage="Geef je wachtwoord op." Display="Dynamic"/>
                                 </div>
                                 <div class="form-group">
                                     <asp:TextBox type="password" class="form-control" placeholder="Bevestig je wachtwoord *" id="meldcontrole" runat="server" />
-                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldcontrole" ErrorMessage="Geef je wachtwoord nogmaals op." />
+                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldcontrole" ErrorMessage="Geef je wachtwoord nogmaals op." Display="Dynamic"/>
                                 </div>
                             </div>
-                            <div class="clearfix"></div>
+                            <div class="clearfix">
+                            </div>
                             <div class="col-lg-12 text-center">
                                 <div id="meldsuccess" runat="server"></div>
                                 <asp:Button type="submit" class="btn btn-xl" Text="Verstuur" runat="server" ID="buttonSubmitForm" OnClick="buttonSubmitForm_Click"/>
