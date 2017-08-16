@@ -54,7 +54,7 @@
 							<td>&nbsp;</td>
 						</tr>
 						<tr>
-							<td class="label">Gebruiker</td>
+							<td class="label">ID-Naam</td>
 						</tr>
 						<tr>
 							<td><input id="username" type="text" placeholder="gebruikersnaam" runat="server" style="text-transform:uppercase;" /></td>
@@ -72,7 +72,7 @@
 							<td><input id="confirmpwd" type="password" runat="server" /></td>
 						</tr>
 						<tr>
-							<td class="label">Frequent bowler nummer</td>
+							<td class="label">ID-Nummer</td>
 						</tr>
 						<tr>
 							<td><input id="frequentbowlernumber" type="text" placeholder="1234567890" runat="server" /></td>

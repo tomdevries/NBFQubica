@@ -25,7 +25,7 @@
             </li>
             <li>
                 @Html.LabelFor(m => m.AdvertisementUrl,"Link naar de banner")
-                @Html.TextBoxFor(m => m.AdvertisementUrl, new { @class = "wide", @readonly = true })
+                @Html.TextBoxFor(m => m.AdvertisementUrl, new { @class = "wide", @readonly = "readonly" })
                 @Html.ValidationMessageFor(m => m.AdvertisementUrl)
             </li>
             <li>

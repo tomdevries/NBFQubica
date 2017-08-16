@@ -62,13 +62,13 @@
                 <table><tr><td>@Html.CheckBoxFor(m => m.IsMember)</td><td>Is lid van een bowlingbond?</td></tr></table>
             </li>
             <li>
-                @Html.LabelFor(m => m.FrequentBowlerNumber)
-                @Html.TextBoxFor(m => m.FrequentBowlerNumber, new { onkeydown = "return ValidateNumber(event);" })
-            </li>
-            <li>
                 @Html.LabelFor(m => m.MemberNumber)
                 @Html.TextBoxFor(m => m.MemberNumber)
             </li>        
+            <li>
+                @Html.LabelFor(m => m.FrequentBowlerNumber)
+                @Html.TextBoxFor(m => m.FrequentBowlerNumber, new { onkeydown = "return ValidateNumber(event);", @readonly = "readonly" })
+            </li>
         </ol>
         <input type="submit" value="Maak aan" />
         <input type="button" value="Ga terug" onclick="javascript: window.history.go(-1); return false;" />

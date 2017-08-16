@@ -61,6 +61,44 @@ namespace NBF.Qubica.Managers
             return texts;
         }
 
+        public static S_Text GetTextById(long id)
+        {
+            S_Text text = null;
+
+            try
+            {
+                DatabaseConnection databaseconnection = new DatabaseConnection();
+
+                //Open connection
+                if (databaseconnection.OpenConnection())
+                {
+                    //Create Command
+                    MySqlCommand command = new MySqlCommand();
+                    command.Connection = databaseconnection.getConnection();
+                    command.CommandText = "SELECT * FROM text WHERE id=@id";
+                    command.Parameters.AddWithValue("@id", Conversion.LongToSql(id));
+
+                    //Create a data reader and Execute the command
+                    MySqlDataReader dataReader = command.ExecuteReader();
+
+                    //Read the data and store them in the object
+                    if (dataReader.Read())
+                        text = DataToObject(dataReader);
+
+                    //close Data Reader
+                    dataReader.Close();
+
+                    //close Connection
+                    databaseconnection.CloseConnection();
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("GetTextsById, Error reading text data: {0}", ex.Message));
+            }
+
+            return text;
+        }
         //Insert statement
         public static long? Insert(S_Text text)
         {

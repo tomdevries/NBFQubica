@@ -1,0 +1,40 @@
+﻿@model NBF.Qubica.CMS.Models.TextModel
+@{
+    ViewBag.Title = "Wijzigen Tekst";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+</hgroup>
+
+<section id="textForm">
+    <h2></h2>
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>Tekst Form</legend>
+            <ol>
+                <li>
+                    @Html.LabelFor(m => m.label)
+                    @Html.TextBoxFor(m => m.label, new { @readonly = "readonly" })
+                    @Html.ValidationMessageFor(m => m.label)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.text)
+                    @Html.TextBoxFor(m => m.text)
+                    @Html.ValidationMessageFor(m => m.text)
+                </li>
+            </ol>
+            <input type="submit" value="Sla op" />
+            <input type="button" value="Ga terug" onclick="javascript: window.history.go(-1); return false;" />
+        </fieldset>
+    }
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" src="@Url.Content("/Scripts/CustomScripts.js")"></script>
+}

@@ -11,9 +11,13 @@ namespace NBF.Qubica.CMS.Models
 {
     public class LoginModel
     {
-        [Required(ErrorMessage="De gebruikersnaam is verplicht")]
-        [Display(Name = "Gebruikersnaam")]
+        [Required(ErrorMessage="De ID-Naam is verplicht")]
+        [Display(Name = "ID-Naam")]
         public string UserName { get; set; }
+
+        [Required(ErrorMessage = "Het ID-Nummer is verplicht")]
+        [Display(Name = "ID-nummer")]
+        public long FrequentBowlerNumber { get; set; }
 
         [Required(ErrorMessage = "Het wachtwoord is verplicht")]
         [DataType(DataType.Password)]
@@ -39,8 +43,8 @@ namespace NBF.Qubica.CMS.Models
         [Display(Name = "Plaats")]
         public string City { get; set; }
         
-        [Required(ErrorMessage = "De gebruikersnaam is verplicht")]
-        [Display(Name = "Gebruikersnaam")]
+        [Required(ErrorMessage = "De ID-Naam is verplicht")]
+        [Display(Name = "ID-Naam")]
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "Het wachtwoord is verplicht")]
@@ -60,7 +64,7 @@ namespace NBF.Qubica.CMS.Models
         [Display(Name = "Lidmaatschapnummer")]
         public int MemberNumber { get; set; }
 
-        [Display(Name = "Frequentbowlernummer")]
+        [Display(Name = "ID-Nummer")]
         public long FrequentBowlerNumber { get; set; }
     }
 
@@ -84,8 +88,8 @@ namespace NBF.Qubica.CMS.Models
         [Display(Name = "Plaats")]
         public string City { get; set; }
 
-        [Required(ErrorMessage = "De gebruikersnaam is verplicht")]
-        [Display(Name = "Gebruikersnaam")]
+        [Required(ErrorMessage = "De ID-Naam is verplicht")]
+        [Display(Name = "ID-Naam")]
         public string UserName { get; set; }
 
         [DataType(DataType.Password)]
@@ -97,7 +101,7 @@ namespace NBF.Qubica.CMS.Models
         [Compare("Password", ErrorMessage = "Het wachtwoord en het bevestigde wachtwoord komen niet overeen.")]
         public string ConfirmPassword { get; set; }
 
-        [Display(Name = "Frequentbowlernummer")]
+        [Display(Name = "ID-Nummer")]
         public long FrequentBowlerNumber { get; set; }
 
         [Display(Name = "Rol")]

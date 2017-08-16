@@ -75,7 +75,7 @@ namespace NBF.Qubica.CMS.Controllers
         {
             if (ModelState.IsValid)
             {
-                S_User user = UserManager.GetUserByNameAndPassword(model.UserName, model.Password);
+                S_User user = UserManager.GetUserByNamePasswordAndFrequentbowlernumber(model.UserName, model.Password, model.FrequentBowlerNumber);
                 if (user != null && user.roleid == 0 && user.isRegistrationConfirmed)
                 {
                     FormsAuthentication.SetAuthCookie(user.name, false);
@@ -84,7 +84,7 @@ namespace NBF.Qubica.CMS.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "De gebruikersnaam of het wachtwoord is niet correct.");
+            ModelState.AddModelError("", "De ID-Naam of het wachtwoord is niet correct.");
             return View(model);
         }
 
@@ -105,7 +105,18 @@ namespace NBF.Qubica.CMS.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            RegisterModel rm = new RegisterModel();
+            rm.FrequentBowlerNumber = generateFrequentBowlerNumber();
+
+            return View(rm);
+        }
+
+        private long generateFrequentBowlerNumber()
+        {
+            Random rnd = new Random();
+            int fbn = rnd.Next(100000, 999999);
+
+            return fbn;
         }
 
         //
@@ -153,7 +164,10 @@ namespace NBF.Qubica.CMS.Controllers
         [Authorize]
         public ActionResult Insert()
         {
-            return View();
+            AccountModel ac = new AccountModel();
+            ac.FrequentBowlerNumber = generateFrequentBowlerNumber();
+
+            return View(ac);
         }
 
         //
@@ -308,10 +322,10 @@ namespace NBF.Qubica.CMS.Controllers
             switch (createStatus)
             {
                 case MembershipCreateStatus.DuplicateUserName:
-                    return "Gebruikersnaam bestaat reeds. Kies een andere gebruikersnaam.";
+                    return "ID-Naam bestaat reeds. Kies een andere ID-Naam.";
 
                 case MembershipCreateStatus.DuplicateEmail:
-                    return "Een gebruikersnaam voor het gekozen e-mailadres bestaat reeds. Kies een ander e-mailadres";
+                    return "Een ID-Naam voor het gekozen e-mailadres bestaat reeds. Kies een ander e-mailadres";
 
                 case MembershipCreateStatus.InvalidPassword:
                     return "Het wachtwoord is incorrect, kies een correct wachtwoord";
@@ -326,7 +340,7 @@ namespace NBF.Qubica.CMS.Controllers
                     return "De wachtwoord herstel vraag is niet correct. Controleer de waarde en probeer het opnieuw.";
 
                 case MembershipCreateStatus.InvalidUserName:
-                    return "De gebruikersnaam is niet correct. Controleer de waarde en probeer het opnieuw.";
+                    return "De ID-Naam is niet correct. Controleer de waarde en probeer het opnieuw.";
 
                 case MembershipCreateStatus.ProviderError:
                     return "De authenticatie provider levert een fout op. Controleer de waarden en probeer het opnieuw. Indien het probleem blijft bestaan, neem dan contact op met de beheerder.";

@@ -35,14 +35,14 @@ namespace NBF.Qubica.Registration
                 if (string.IsNullOrEmpty(email.Value)) { result = new Result("Vul een e-mail adres in!"); inputValid=false; }
                 if (string.IsNullOrEmpty(name.Value)) { result = new Result("Vul een naam in!"); inputValid=false; }
                 if (string.IsNullOrEmpty(password.Value)) { result = new Result("Vul een wachtwoord in!"); inputValid=false; }
-                if (string.IsNullOrEmpty(username.Value)) { result = new Result("Vul een gebruikersnaam in!"); inputValid=false; }
+                if (string.IsNullOrEmpty(username.Value)) { result = new Result("Vul een ID-Naam in!"); inputValid = false; }
 
                 //if (!string.IsNullOrEmpty(username.Value))
                 //{
                 //    if (UserManager.UserExistByUsername(username.Value))
-                //    { result = new Result("Kies een andere gebruikersnaam, deze bestaat reeds!"); inputValid = false; }
+                //    { result = new Result("Kies een andere ID-Naam, deze bestaat reeds!"); inputValid = false; }
                 //    if (UserManager.UsernameHasGames(username.Value))
-                //    { result = new Result("Kies een andere gebruikersnaam, deze bestaat reeds!"); inputValid = false; }
+                //    { result = new Result("Kies een andere ID-Naam, deze bestaat reeds!"); inputValid = false; }
                 //}
 
                 if (password.Value.CompareTo(confirmpwd.Value) != 0) { result = new Result("Het wachtwoord is net twee keer herzelfde ingevuld!"); inputValid = false; }

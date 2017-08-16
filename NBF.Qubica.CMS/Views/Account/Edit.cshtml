@@ -23,7 +23,7 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Bowlinghuis Form</legend>
+        <legend>Account Form</legend>
         <ol>
             <li>
                 @Html.LabelFor(m => m.Name)
@@ -44,7 +44,7 @@
             <hr />
             <li>
                 @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName, new { @readonly = "readonly" })
             </li>
             <li>
                 @Html.LabelFor(m => m.Password)
@@ -67,7 +67,7 @@
             </li> 
             <li>
                 @Html.LabelFor(m => m.FrequentBowlerNumber)
-                @Html.TextBoxFor(m => m.FrequentBowlerNumber, new { onkeydown = "return ValidateNumber(event);" })
+                @Html.TextBoxFor(m => m.FrequentBowlerNumber, new { onkeydown = "return ValidateNumber(event);", @readonly = "readonly" })
             </li>
             <li>
                 <table><tr><td>@Html.CheckBoxFor(m => m.IsRegistrationConfirmed)</td><td>Registratie compleet?</td></tr></table>

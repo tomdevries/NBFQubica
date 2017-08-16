@@ -33,7 +33,7 @@
                         grid.Column("Address", "Adres"),
                         grid.Column("City", "Plaats"),
                         grid.Column("Email", "E-mail"),
-                        grid.Column("Frequentbowlernumber", "Frequentbowlernummer"),
+                        grid.Column("Frequentbowlernumber", "ID-nummer"),
                         grid.Column(format: (item) => Html.ActionLink("Verwijderen", "Delete", new { id = item.id }, new { onclick = "return confirm('Weet je het zeker?');" }))
                     )
             )

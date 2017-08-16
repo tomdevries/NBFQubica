@@ -54,7 +54,7 @@
                             <div class="modal-body">
                                 <!-- Aanmelden Competitie Details Go Here -->
                                 <h2>Doe mee met een Competitie</h2>
-                                <p class="item-intro text-muted">Selecteer een competitie en schrijf je in met je Frequent Bowler Naam en ID. Nog geen Frequent Bowler Naam en ID? Meld je eerst aan!</p>
+                                <p class="item-intro text-muted">Selecteer een competitie en schrijf je in met je ID-Naam en ID-Nummer. Nog geen ID-Naam en ID-nummer? Meld je eerst aan!</p>
                                 <form name="sentMessage" id="registerForm" novalidate runat="server">
                                     <div class="row">
                                         <div class="col-md-6">

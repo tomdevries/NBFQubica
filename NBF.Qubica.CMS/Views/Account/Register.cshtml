@@ -62,7 +62,7 @@
             </li> 
             <li>
                 @Html.LabelFor(m => m.FrequentBowlerNumber)
-                @Html.TextBoxFor(m => m.FrequentBowlerNumber, new { onkeydown = "return ValidateNumber(event);" })
+                @Html.TextBoxFor(m => m.FrequentBowlerNumber, new { onkeydown = "return ValidateNumber(event);", @readonly = "readonly" })
             </li>
         </ol>
         <input type="submit" value="Registeer" />
