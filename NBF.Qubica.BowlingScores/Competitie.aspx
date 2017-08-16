@@ -63,14 +63,14 @@
                                                 <asp:CompareValidator class="help-block text-danger" runat="server" ControlToValidate="compCompetitie" ErrorMessage="Kies een competitie." Operator="NotEqual" ValueToCompare="0" Type="Integer"/>
                                             </div>
                                             <div class="form-group">
-                                                <asp:TextBox type="text" class="form-control" placeholder="Je Frequent Bowler Naam *" id="compFrequentBowlerNaam" runat="server" />
-                                                <asp:RequiredFieldValidator class="help-block text-danger" runat="server" ControlToValidate="compFrequentBowlerNaam" ErrorMessage="Geef je frequentbowlernaam op." />
+                                                <asp:TextBox type="text" class="form-control" placeholder="Je ID-Naam *" id="compFrequentBowlerNaam" runat="server" />
+                                                <asp:RequiredFieldValidator class="help-block text-danger" runat="server" ControlToValidate="compFrequentBowlerNaam" ErrorMessage="Geef je ID-Naam op." />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <asp:TextBox type="number" class="form-control" placeholder="Je ID *" id="compFrequentBowlerNummer" runat="server" />
-                                                <asp:RequiredFieldValidator class="help-block text-danger" runat="server" ControlToValidate="compFrequentBowlerNummer" ErrorMessage="Geef je ID op." />
+                                                <asp:TextBox type="number" class="form-control" placeholder="Je ID-nummer *" id="compFrequentBowlerNummer" runat="server" />
+                                                <asp:RequiredFieldValidator class="help-block text-danger" runat="server" ControlToValidate="compFrequentBowlerNummer" ErrorMessage="Geef je ID-nummer op." />
                                             </div>
                                             <div class="form-group">
                                                 <asp:TextBox type="password" class="form-control" placeholder="Je wachtwoord *" id="compWachtwoord" runat="server" />
