@@ -40,6 +40,33 @@ namespace NBF.Qubica.BowlingScores {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl account;
         
         /// <summary>
+        /// meldjeaan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal meldjeaan;
+        
+        /// <summary>
+        /// installeerdeapp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal installeerdeapp;
+        
+        /// <summary>
+        /// gabowlen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal gabowlen;
+        
+        /// <summary>
         /// meldForm control.
         /// </summary>
         /// <remarks>

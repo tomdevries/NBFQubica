@@ -68,7 +68,7 @@
                         <a class="page-scroll" href="#aanmelden">Meld je aan</a>
                     </li>
                     <li>
-                        <a class="portfolio-link" href="./Contact.aspx"  data-toggle="modal">Contact</a>
+                        <a class="portfolio-link" href="./Contact.aspx">Contact</a>
                     </li>
                     <li id="account" runat="server">
                         <%= _account %>
@@ -109,7 +109,7 @@
                         <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="service-heading">Meld je aan</h4>
-                    <p class="text-muted">Aanmelden als Frequent Bowler doe je op het aanmeldformulier. Het gegenereerde ID moet je gebruiken bij de bowling samen met je eigen Frequent Bowler Naam <a class="page-scroll" href="#aanmelden">Meld je aan</a></p>
+                    <p class="text-muted"><asp:Literal ID="meldjeaan" runat="server" /></p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
@@ -117,7 +117,7 @@
                         <i class="fa fa-arrow-circle-o-down fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="service-heading">Installeer de App</h4>
-                    <p class="text-muted">Ga naar de App-Store, Play PLay-Store of Windows-Store en installeer de NBF Scores App. Voordat je de App kunt gebruiken moet je eerst een Frequent Bowler Account aanmaken.</p>
+                    <p class="text-muted"><asp:Literal ID="installeerdeapp" runat="server" /></p>
                 </div>
 
                 <div class="col-md-4">
@@ -126,7 +126,7 @@
                         <i class="fa fa-play fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="service-heading">Ga bowlen</h4>
-                    <p class="text-muted">Heb je de App geïnstalleerd en heb je jezelf aangemeld? Ga dan naar een aangesloten bowling centrum en meld je aan met je Frequent Bowler Naam en Frequent Bowler Nummer. Wil je meedoen aan een competitie, geef je dan <a class="page-scroll" href="#competities">hier</a> op</p>
+                    <p class="text-muted"><asp:Literal ID="gabowlen" runat="server" /></p>
                 </div>
             </div>
             <div class="row text-center">
@@ -205,7 +205,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Competities</h2>
-                    <h3 class="section-subheading text-muted">Wil je meedoen met een competitie? Schrijf je in en ga bowlen bij een aangesloten bowlingcentrum. Bekijk de <a href='./CompetitieStanden.aspx' class='portfolio-link' data-toggle='modal'>hier</a> de active en gespeelde competitie standen.</h3>
+                    <h3 class="section-subheading text-muted">Wil je meedoen met een competitie? Schrijf je in en ga bowlen bij een aangesloten bowlingcentrum. Bekijk de <a href='./CompetitieStanden.aspx' class='portfolio-link'>hier</a> de active en gespeelde competitie standen.</h3>
                 </div>
             </div>
             <div class="row">
@@ -267,7 +267,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Meld je aan</h2>
-                    <h3 class="section-subheading text-muted">Vul je gegevens in om als Frequent Bowler gebruik te maken van de App en deel te nemen aan de verschillende competities</h3>
+                    <h3 class="section-subheading text-muted">Vul je gegevens in om als bowler gebruik te maken van de App en deel te nemen aan de verschillende competities</h3>
                 </div>
             </div>
             <div class="row">
@@ -291,12 +291,12 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <asp:TextBox type="text" class="form-control" placeholder="Je Frequent Bowler Naam *" id="meldfrequentbowlernaam" runat="server" style="text-transform: uppercase;"/>
-                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldfrequentbowlernaam" ErrorMessage="Geef je Frequent Bowler Naam op." Display="Dynamic"/>
+                                    <asp:TextBox type="text" class="form-control" placeholder="Je ID-Naam *" id="meldfrequentbowlernaam" runat="server" style="text-transform: uppercase;"/>
+                                    <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldfrequentbowlernaam" ErrorMessage="Geef je ID-Naam op." Display="Dynamic"/>
                                     <asp:RegularExpressionValidator class="help-block text-danger" runat="server" ControlToValidate="meldfrequentbowlernaam" ErrorMessage="Alleen hoofdletters en cijfers" ValidationExpression="^[A-Z0-9]{1,40}$" Display="Dynamic"/>
                                 </div>
                                 <div class="form-group">
-                                    <asp:TextBox type="text" class="form-control" placeholder="Je ID *" id="meldfrequentbowlernummmer" runat="server" readonly/>
+                                    <asp:TextBox type="text" class="form-control" placeholder="Je ID-nummer *" id="meldfrequentbowlernummmer" runat="server" readonly/>
                                 </div>
                                 <div class="form-group">
                                     <asp:TextBox type="password" class="form-control" placeholder="Je wachtwoord *" id="meldwachtwoord" runat="server" />

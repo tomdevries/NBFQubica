@@ -21,6 +21,7 @@ namespace NBF.Qubica.BowlingScores
         protected string _content;
         protected string _login_out;
         protected string _account;
+        protected string _meld_je_aan;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,13 +31,13 @@ namespace NBF.Qubica.BowlingScores
 
             if (!auth)
             {
-                _login_out = "<a class='portfolio-link' href='./Login.aspx'  data-toggle='modal' id='login'>Login</a>";
+                _login_out = "<a class='portfolio-link' href='./Login.aspx' id='login'>Login</a>";
                 _account = "";
             }
             else
             {
-                _login_out = "<a class='portfolio-link' href='./Logout.aspx'  data-toggle='modal' id='login'>Logout</a>";
-                _account = "<a class='portfolio-link' href='./Profile.aspx'  data-toggle='modal' id='profile'>Profiel</a>";
+                _login_out = "<a class='portfolio-link' href='./Logout.aspx' id='login'>Logout</a>";
+                _account = "<a class='portfolio-link' href='./Profile.aspx' id='profile'>Profiel</a>";
             }
 
             List<S_Text> texts = TextManager.GetTexts();
@@ -50,6 +51,15 @@ namespace NBF.Qubica.BowlingScores
                         break;
                     case "Home":
                         home.Text = st.text;
+                        break;
+                    case "Meld je aan":
+                        meldjeaan.Text = st.text;
+                        break;
+                    case "Installeer de app":
+                        installeerdeapp.Text = st.text;
+                        break;
+                    case "Ga bowlen":
+                        gabowlen.Text = st.text;
                         break;
                 }
             }
@@ -77,7 +87,7 @@ namespace NBF.Qubica.BowlingScores
                                 "         <h4 class='subheading'>" + Conversion.DateToTitle(competition.startdate, competition.enddate) + "</h4> " +
                                 "     </div> " +
                                 "     <div class='timeline-body'> " +
-                                "         <p class='text-muted'>" + competition.description + " <a href='./Competitie.aspx' class='portfolio-link' data-toggle='modal'>Doe mee!</a></p> " +
+                                "         <p class='text-muted'>" + competition.description + " <a href='./Competitie.aspx' class='portfolio-link'>Doe mee!</a></p> " +
                                 "     </div> " +
                                 " </div> " +
                                 "</li> ";
