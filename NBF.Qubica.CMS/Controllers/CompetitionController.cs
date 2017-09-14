@@ -320,7 +320,7 @@ namespace NBF.Qubica.CMS.Controllers
 
             try
             {
-                CompetitionManager.DeletePlayer(c.id);
+                CompetitionManager.DeletePlayerByID(c.id);
                 TempData["message"] = "De deelnemer is verwijderd.";
             }
             catch (Exception e)

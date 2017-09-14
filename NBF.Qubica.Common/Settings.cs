@@ -120,6 +120,14 @@ namespace NBF.Qubica.Common
                 return GetSetting("MAILPASSWORD");
             }
         }
+
+        public static string MailNBF
+        {
+            get
+            {
+                return GetSetting("NBFMAIL");
+            }
+        }
         #endregion
 
         #region WebSite

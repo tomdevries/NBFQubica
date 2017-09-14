@@ -55,12 +55,17 @@ namespace NBF.Qubica.BowlingScores
                         Session["auth"] = "true";
                         Session["uid"] = user.id;
 
-                        Response.Redirect("default.aspx");
+                        Response.Redirect("~/default.aspx");
                     }
                 }
 
                 meldSuccess.InnerHtml = result;
             }
+        }
+
+        protected void forgotten_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Forgotten.aspx");
         }
     }
 }

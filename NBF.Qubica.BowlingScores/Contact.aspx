@@ -54,28 +54,28 @@
                             <div class="modal-body">
                                 <!-- Project Details Go Here -->
                                 <h2>Contact</h2>
-                                <p class="item-intro text-muted">Stel uw vraag door het formulier in te vullen.</a></p>
+                                <p class="item-intro text-muted">Stel uw vraag door het formulier in te vullen.</p>
                                 <form name="sentMessage" id="contactForm" novalidate runat="server">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <asp:TextBox type="text" class="form-control" placeholder="Je Naam *" id="contNaam" runat="server" />
-                                                <asp:RequiredFieldValidator class="help-block text-danger" runat="server" ControlToValidate="contNaam" ErrorMessage="Geef je naam op." />
+                                                <asp:TextBox type="text" class="form-control" placeholder="Je Naam *" id="contactNaam" runat="server" />
+                                                <asp:RequiredFieldValidator class="help-block text-danger" runat="server" ControlToValidate="contactNaam" ErrorMessage="Geef je naam op." />
                                             </div>
                                             <div class="form-group">
-                                                <asp:TextBox type="text" class="form-control" placeholder="Je E-mail adres *" id="contEmail" runat="server" />
-                                                <asp:RegularExpressionValidator class="help-block text-danger" runat="server" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="contEmail" ErrorMessage="Geef je E-mail adres op." />
+                                                <asp:TextBox type="text" class="form-control" placeholder="Je E-mail adres *" id="contactEmail" runat="server" />
+                                                <asp:RegularExpressionValidator class="help-block text-danger" runat="server" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="contactEmail" ErrorMessage="Geef je E-mail adres op." />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <asp:TextBox type="text" TextMode="multiline" Columns="50" Rows="5" class="form-control" placeholder="Je bericht *" id="contMessage" runat="server" />
-                                                <asp:RequiredFieldValidator class="help-block text-danger" runat="server" ControlToValidate="contMessage" ErrorMessage="Stel een vraag of stuur een bericht." />
+                                                <asp:TextBox type="text" TextMode="multiline" Columns="50" Rows="5" class="form-control" placeholder="Je bericht *" id="contactMessage" runat="server" />
+                                                <asp:RequiredFieldValidator class="help-block text-danger" runat="server" ControlToValidate="contactMessage" ErrorMessage="Stel een vraag of stuur een bericht." />
                                             </div>
                                         </div>
                                         <div class="clearfix"></div>
                                         <div class="col-lg-12 text-center">
-                                            <div id="meldSuccess" runat="server"></div>
+                                            <div id="meldSuccess" runat="server"></div><br /><br />
                                             <asp:Button type="submit" class="btn btn-xl" Text="Verstuur" runat="server" ID="buttonSubmitForm" OnClick="buttonSubmitForm_Click"/>
                                         </div>
                                     </div>

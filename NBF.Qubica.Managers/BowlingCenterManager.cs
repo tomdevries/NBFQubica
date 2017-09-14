@@ -90,7 +90,7 @@ namespace NBF.Qubica.Managers
                     //Create Command
                     MySqlCommand command = new MySqlCommand();
                     command.Connection = databaseconnection.getConnection();
-                    command.CommandText = "SELECT * FROM bowlingcenter WHERE name LIKE '%" + name + "%'";
+                    command.CommandText = "SELECT * FROM bowlingcenter WHERE email LIKE '%" + name + "%'";
 
                     //Create a data reader and Execute the command
                     MySqlDataReader dataReader = command.ExecuteReader();
@@ -128,8 +128,8 @@ namespace NBF.Qubica.Managers
                     //Create Command
                     MySqlCommand command = new MySqlCommand();
                     command.Connection = databaseconnection.getConnection();
-                    command.CommandText = "SELECT * FROM bowlingcenter WHERE name=@name";
-                    command.Parameters.AddWithValue("@name", Conversion.StringToSql(name));
+                    command.CommandText = "SELECT * FROM bowlingcenter WHERE email=@email";
+                    command.Parameters.AddWithValue("@email", Conversion.StringToSql(name));
 
                     //Create a data reader and Execute the command
                     MySqlDataReader dataReader = command.ExecuteReader();
@@ -244,8 +244,8 @@ namespace NBF.Qubica.Managers
                     //Create Command
                     MySqlCommand command = new MySqlCommand();
                     command.Connection = databaseconnection.getConnection();
-                    command.CommandText = "SELECT * FROM bowlingcenter WHERE name=@name";
-                    command.Parameters.AddWithValue("@name", Conversion.StringToSql(name));
+                    command.CommandText = "SELECT * FROM bowlingcenter WHERE email=@email";
+                    command.Parameters.AddWithValue("@email", Conversion.StringToSql(name));
 
                     //Create a data reader and Execute the command
                     MySqlDataReader dataReader = command.ExecuteReader();
@@ -283,10 +283,10 @@ namespace NBF.Qubica.Managers
                     MySqlCommand command = new MySqlCommand();
                     command.Connection = databaseconnection.getConnection();
 
-                    command.CommandText = "INSERT INTO bowlingcenter ( name,  uri,  centerId,  apiversion,  numberoflanes,  lastsyncdate, address, city, email, logo, phonenumber, website, zipcode, appname, secretkey) " +
-                                                             "VALUES (@name, @uri, @centerId, @apiversion, @numberoflanes, @lastsyncdate, @address, @city, @email, @logo, @phonenumber, @website, @zipcode, @appname, @secretkey)";
+                    command.CommandText = "INSERT INTO bowlingcenter ( email,  uri,  centerId,  apiversion,  numberoflanes,  lastsyncdate, address, city, email, logo, phonenumber, website, zipcode, appname, secretkey) " +
+                                                             "VALUES (@email, @uri, @centerId, @apiversion, @numberoflanes, @lastsyncdate, @address, @city, @email, @logo, @phonenumber, @website, @zipcode, @appname, @secretkey)";
 
-                    command.Parameters.AddWithValue("@name", Conversion.StringToSql(bowlingCenter.name));
+                    command.Parameters.AddWithValue("@email", Conversion.StringToSql(bowlingCenter.name));
                     command.Parameters.AddWithValue("@uri", Conversion.StringToSql(bowlingCenter.uri));
                     command.Parameters.AddWithValue("@centerId", Conversion.IntToSql(bowlingCenter.centerId));
                     command.Parameters.AddWithValue("@apiversion", Conversion.StringToSql(bowlingCenter.APIversion));
@@ -333,10 +333,10 @@ namespace NBF.Qubica.Managers
                     MySqlCommand command = new MySqlCommand();
                     command.Connection = databaseconnection.getConnection();
 
-                    command.CommandText = "UPDATE bowlingcenter SET name=@name, uri=@uri, centerId=@centerId, apiversion=@apiversion, numberoflanes=@numberoflanes, lastsyncdate=@lastsyncdate, address=@address, city=@city, email=@email , logo=@logo, phonenumber=@phonenumber, website=@website, zipcode=@zipcode, appname=@appname, secretkey=@secretkey WHERE id=@id ";
+                    command.CommandText = "UPDATE bowlingcenter SET email=@email, uri=@uri, centerId=@centerId, apiversion=@apiversion, numberoflanes=@numberoflanes, lastsyncdate=@lastsyncdate, address=@address, city=@city, email=@email , logo=@logo, phonenumber=@phonenumber, website=@website, zipcode=@zipcode, appname=@appname, secretkey=@secretkey WHERE id=@id ";
 
                     command.Parameters.AddWithValue("@id", Conversion.LongToSql(bowlingCenter.id));
-                    command.Parameters.AddWithValue("@name", Conversion.StringToSql(bowlingCenter.name));
+                    command.Parameters.AddWithValue("@email", Conversion.StringToSql(bowlingCenter.name));
                     command.Parameters.AddWithValue("@uri", Conversion.StringToSql(bowlingCenter.uri));
                     command.Parameters.AddWithValue("@centerId", Conversion.IntToSql(bowlingCenter.centerId));
                     command.Parameters.AddWithValue("@apiversion", Conversion.StringToSql(bowlingCenter.APIversion));

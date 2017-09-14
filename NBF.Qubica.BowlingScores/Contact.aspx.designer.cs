@@ -31,31 +31,31 @@ namespace NBF.Qubica.BowlingScores {
         protected global::System.Web.UI.HtmlControls.HtmlForm contactForm;
         
         /// <summary>
-        /// contNaam control.
+        /// contactNaam control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox contNaam;
+        protected global::System.Web.UI.WebControls.TextBox contactNaam;
         
         /// <summary>
-        /// contEmail control.
+        /// contactEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox contEmail;
+        protected global::System.Web.UI.WebControls.TextBox contactEmail;
         
         /// <summary>
-        /// contMessage control.
+        /// contactMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox contMessage;
+        protected global::System.Web.UI.WebControls.TextBox contactMessage;
         
         /// <summary>
         /// meldSuccess control.

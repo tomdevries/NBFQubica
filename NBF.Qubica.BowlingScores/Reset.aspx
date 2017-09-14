@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Competitie.aspx.cs" Inherits="NBF.Qubica.BowlingScores.Competitie" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Reset.aspx.cs" Inherits="NBF.Qubica.BowlingScores.Reset" %>
 
 <!DOCTYPE html>
 
@@ -36,11 +36,11 @@
 
 </head>
 <body>
-    <!-- Modal Aanmelden Competitie -->
-    <div class="portfolio-modal" id="AanmeldenModal" role="dialog" aria-hidden="false">
+    <!-- Modals Contact formulier -->
+    <div class="portfolio-modal" id="ContactModal" role="dialog" aria-hidden="false">
         <div class="modal-dialog">
             <div class="modal-content">
-                <a href="default.aspx#competities">
+                <a href="default.aspx">
                 <div class="close-modal" data-dismiss="modal">
                     <div class="lr">
                         <div class="rl">
@@ -52,34 +52,26 @@
                     <div class="row">
                         <div class="col-lg-8 col-lg-offset-2">
                             <div class="modal-body">
-                                <!-- Aanmelden Competitie Details Go Here -->
-                                <h2>Doe mee met een Competitie</h2>
-                                <p class="item-intro text-muted">Selecteer een competitie en schrijf je in met je ID-Naam en ID-Nummer. Nog geen ID-Naam en ID-nummer? Meld je eerst aan!</p>
-                                <form name="sentMessage" id="registerForm" novalidate runat="server">
+                                <!-- Project Details Go Here -->
+                                <h2>Reset je wachtwoord</h2>
+                                <p class="item-intro text-muted"><asp:Label ID="confirmText" runat="server" /></p>
+                                <form name="sentMessage" id="contactForm" novalidate runat="server">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <asp:DropDownList class="form-control" id="compCompetitie" runat="server"/>
-                                                <asp:CompareValidator class="help-block text-danger" runat="server" ControlToValidate="compCompetitie" ErrorMessage="Kies een competitie." Operator="NotEqual" ValueToCompare="0" Type="Integer"/>
-                                            </div>
-                                            <div class="form-group">
-                                                <asp:TextBox type="text" class="form-control" placeholder="Je ID-Naam *" id="compFrequentBowlerNaam" runat="server" style="text-transform: uppercase;"/>
-                                                <asp:RequiredFieldValidator class="help-block text-danger" runat="server" ControlToValidate="compFrequentBowlerNaam" ErrorMessage="Geef je ID-Naam op." />
+                                                <asp:TextBox type="password" class="form-control" placeholder="Je wachtwoord *" id="meldwachtwoord" runat="server" />
+                                                <asp:RequiredFieldValidator class="help-block text-danger" runat="server" ControlToValidate="meldwachtwoord" ErrorMessage="Geef je wachtwoord op." Display="Dynamic"/>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <asp:TextBox type="number" class="form-control" placeholder="Je ID-nummer *" id="compFrequentBowlerNummer" runat="server" />
-                                                <asp:RequiredFieldValidator class="help-block text-danger" runat="server" ControlToValidate="compFrequentBowlerNummer" ErrorMessage="Geef je ID-nummer op." />
-                                            </div>
-                                            <div class="form-group">
-                                                <asp:TextBox type="password" class="form-control" placeholder="Je wachtwoord *" id="compWachtwoord" runat="server" />
-                                                <asp:RequiredFieldValidator class="help-block text-danger" runat="server" ControlToValidate="compWachtwoord" ErrorMessage="Geef je wachtwoord op." />
+                                                <asp:TextBox type="password" class="form-control" placeholder="Bevestig je wachtwoord *" id="meldcontrole" runat="server" />
+                                                <asp:RequiredFieldValidator class="help-block text-danger" runat="server" ControlToValidate="meldcontrole" ErrorMessage="Geef je wachtwoord nogmaals op." Display="Dynamic"/>
                                             </div>
                                         </div>
                                         <div class="clearfix"></div>
                                         <div class="col-lg-12 text-center">
-                                            <div id="meldSuccess" runat="server"></div><br /><br />
+                                            <div id="meldSuccess" runat="server"></div>
                                             <asp:Button type="submit" class="btn btn-xl" Text="Verstuur" runat="server" ID="buttonSubmitForm" OnClick="buttonSubmitForm_Click"/>
                                         </div>
                                     </div>

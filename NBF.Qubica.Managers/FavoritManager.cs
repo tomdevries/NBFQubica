@@ -141,6 +141,30 @@ namespace NBF.Qubica.Managers
             return isfavorit;
         }
 
+        public static void DeleteFavoritsByUserId(long userid)
+        {
+            try
+            {
+                DatabaseConnection databaseconnection = new DatabaseConnection();
+
+                if (databaseconnection.OpenConnection())
+                {
+                    MySqlCommand command = new MySqlCommand();
+                    command.Connection = databaseconnection.getConnection();
+                    command.CommandText = "DELETE FROM favorit WHERE userid=@userid ";
+                    command.Parameters.AddWithValue("@userid", Conversion.LongToSql(userid));
+
+                    command.ExecuteNonQuery();
+
+                    databaseconnection.CloseConnection();
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Delete, Error deleting DeleteCompetitionPlayer data: {0}", ex.Message));
+            }
+        }
+
         public static bool IsUserFavoritOfUser(long userid, long favorituserid)
         {
             bool isfavorit = false;

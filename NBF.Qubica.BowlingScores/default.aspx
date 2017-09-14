@@ -248,8 +248,8 @@
 
     <script type="text/javascript">
         function CopyName(obj) {
-            obj.value = obj.value.toUpperCase();
-            var fbn = obj.value;
+            var name = obj.value.toUpperCase();
+            var fbn = name;
             var allowedChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
             var newvalue = "";
 
@@ -293,7 +293,7 @@
                                 <div class="form-group">
                                     <asp:TextBox type="text" class="form-control" placeholder="Je ID-Naam *" id="meldfrequentbowlernaam" runat="server" style="text-transform: uppercase;"/>
                                     <asp:RequiredFieldValidator class="help-block text-danger" runat=server ControlToValidate="meldfrequentbowlernaam" ErrorMessage="Geef je ID-Naam op." Display="Dynamic"/>
-                                    <asp:RegularExpressionValidator class="help-block text-danger" runat="server" ControlToValidate="meldfrequentbowlernaam" ErrorMessage="Alleen hoofdletters en cijfers" ValidationExpression="^[A-Z0-9]{1,40}$" Display="Dynamic"/>
+                                    <asp:RegularExpressionValidator class="help-block text-danger" runat="server" ControlToValidate="meldfrequentbowlernaam" ErrorMessage="Alleen hoofdletters en cijfers" ValidationExpression="^[a-zA-Z0-9]{1,40}$" Display="Dynamic"/>
                                 </div>
                                 <div class="form-group">
                                     <asp:TextBox type="text" class="form-control" placeholder="Je ID-nummer *" id="meldfrequentbowlernummmer" runat="server" readonly/>

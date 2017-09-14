@@ -33,7 +33,7 @@ namespace NBF.Qubica.BowlingScores
 
                     //item = new ListItem();
                     //item.Value = competition.id.ToString();
-                    //item.Text = Conversion.DateToTitle(competition.startdate, competition.enddate) + " : " + challenge.name;
+                    //item.Text = Conversion.DateToTitle(competition.startdate, competition.enddate) + " : " + challenge.email;
                     //compCompetitie.Items.Add(item);
 
                     List<S_CompetitionPlayers> playerList;

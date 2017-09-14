@@ -22,7 +22,7 @@ namespace NBF.Qubica.Registration {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// name control.
+        /// email control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.

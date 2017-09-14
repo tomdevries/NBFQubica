@@ -104,11 +104,11 @@ namespace NBF.Qubica.Registration
         {
             if (result.stored == true)
             {
-                Response.Redirect("Succes.aspx");
+                Response.Redirect("~/Succes.aspx");
             }
             else
             {
-                Response.Redirect("Fout.aspx?message="+result.message);
+                Response.Redirect("~/Fout.aspx?message="+result.message);
             }
         }
     }

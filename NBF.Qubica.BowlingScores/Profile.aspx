@@ -88,13 +88,399 @@
                                         </div>
                                         <div class="clearfix"></div>
                                         <div class="col-lg-12 text-center">
-                                            <div id="profileSuccess" runat="server"></div>
-                                            <asp:Button type="submit" class="btn btn-xl" Text="Verstuur" runat="server" ID="buttonSubmitForm" OnClick="buttonSubmitForm_Click"/>
+                                            <div id="profileSuccess" runat="server"></div><br /><br />
+                                            <asp:Button type="submit" class="btn btn-xl" Text="Sla op" runat="server" ID="buttonSubmitForm" OnClick="buttonSubmitForm_Click"/>
+                                        </div>
+                                        <div class="clearfix">&nbsp;</div>
+                                        <div class="col-lg-12 text-center">
+                                            Klik <asp:LinkButton Text="hier" runat="server" ID="btnRemoveAccount" OnClientClick="return confirm('Weet jezeker dat je jouw account wilt verwijderen?')" OnClick="btnRemoveAccount_Click"/> om je account te verwijderen.
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <%=_competitions%>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <%=_scores%>
+                        <!--
+                        <div class="col-lg-8 col-lg-offset-2">
+                            <h2>Bowling Harderwijk</h2>
+                            <div class="row">
+                                <div class="col-lg-2">Datum</div>
+                                <div class="col-lg-6"></div>
+                                <div class="col-lg-2">Hi-Score</div>
+                                <div class="col-lg-1">&nbsp;</div>
+                                <div class="col-lg-1">&nbsp;</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-2">01-01-2017</div>
+                                <div class="col-lg-6">Baan 1</div>
+                                <div class="col-lg-2">300</div>
+                                <div class="col-lg-1">&nbsp;</div>
+                                <div class="col-lg-1">&nbsp;</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-1" style="border-width: 1px 0 0 1px; border-style: solid; border-color: black;">1</div>
+                                <div class="col-lg-1" style="border-width: 1px 0 0 1px; border-style: solid; border-color: black;">2</div>
+                                <div class="col-lg-1" style="border-width: 1px 0 0 1px; border-style: solid; border-color: black;">3</div>
+                                <div class="col-lg-1" style="border-width: 1px 0 0 1px; border-style: solid; border-color: black;">4</div>
+                                <div class="col-lg-1" style="border-width: 1px 0 0 1px; border-style: solid; border-color: black;">5</div>
+                                <div class="col-lg-1" style="border-width: 1px 0 0 1px; border-style: solid; border-color: black;">6</div>
+                                <div class="col-lg-1" style="border-width: 1px 0 0 1px; border-style: solid; border-color: black;">7</div>
+                                <div class="col-lg-1" style="border-width: 1px 0 0 1px; border-style: solid; border-color: black;">8</div>
+                                <div class="col-lg-1" style="border-width: 1px 0 0 1px; border-style: solid; border-color: black;">9</div>
+                                <div class="col-lg-1" style="border-width: 1px 0 0 1px; border-style: solid; border-color: black;">10</div>
+                                <div class="col-lg-1" style="border-width: 1px 1px 0 1px; border-style: solid; border-color: black;">Total</div>
+                                <div class="col-lg-1" style="border-width: 0 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-1" style="border-width: 0 0 0 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">X</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">&nbsp;</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">20</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 0 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">8</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">/</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">39</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 0 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">9</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">/</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">57</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 0 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">8</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">-</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">65</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 0 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">X</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">&nbsp;</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">94</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 0 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">X</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">&nbsp;</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">114</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 0 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">9</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">/</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">133</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 0 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">9</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">/</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">153</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 0 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">X</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">&nbsp;</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">182</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 0 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">X</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">9</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">202</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 1px 0 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 1px 1px 0; border-style: solid; border-color: black;">/</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">202</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 0 0; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <img src="img/Facebook-Share.jpg" width="50px"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-1" style="border-width: 0 0 0 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">7</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">/</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">20</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 0 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">X</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">&nbsp;</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">48</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 0 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">X</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">&nbsp;</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">67</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 0 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">8</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">1</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">76</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 0 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">9</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">/</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">94</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 0 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">8</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">1</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">103</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 0 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">X</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">&nbsp;</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">123</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 0 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">9</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">/</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">141</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 0 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">8</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">/</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">157</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 0 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">6</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">1</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">164</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 1px 0 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 1px 1px 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">164</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-1" style="border-width: 0 0 1px 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">X</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">&nbsp;</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">30</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 1px 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">X</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">&nbsp;</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">60</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 1px 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">X</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">&nbsp;</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">90</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 1px 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">X</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">&nbsp;</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">120</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 1px 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">X</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">&nbsp;</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">150</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 1px 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">X</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">&nbsp;</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">180</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 1px 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">X</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">&nbsp;</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">210</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 1px 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">X</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">&nbsp;</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">240</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 1px 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">X</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">&nbsp;</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">270</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 0 1px 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">X</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 1px 1px; border-style: solid; border-color: black;">X</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">300</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1" style="border-width: 0 1px 1px 1px; border-style: solid; border-color: black;">
+                                    <div class="row">
+                                        <div style="float:left;width:34%;border-width: 1px 1px 1px 0; border-style: solid; border-color: black;">X</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                        <div style="float:left;width:33%;border-width: 1px 0 0 0; border-style: solid; border-color: black;">&nbsp;</div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="border-width: 0 0 0 0; border-style: solid; border-color: black;font-size:24px">300</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        -->
                     </div>
                 </div>
             </div>

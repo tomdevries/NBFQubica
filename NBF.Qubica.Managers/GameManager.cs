@@ -367,7 +367,7 @@ namespace NBF.Qubica.Managers
                     //Create Command
                     MySqlCommand command = new MySqlCommand();
                     command.Connection = databaseconnection.getConnection();
-                    command.CommandText = "SELECT b.id, b.name, DATE(g.startdatetime) as date, sum(w.isstrike) as strikes, sum(w.isspare) as spares, max(g.total) as bestgame " +
+                    command.CommandText = "SELECT b.id, b.email, DATE(g.startdatetime) as date, sum(w.isstrike) as strikes, sum(w.isspare) as spares, max(g.total) as bestgame " +
                                           "FROM bowlingcenter as b, " +
                                           "	    scores as s,  " +
                                           "     event as e, " +
@@ -381,7 +381,7 @@ namespace NBF.Qubica.Managers
                                           "  AND f.id = w.frameid " +
                                           "  AND g.playername = @username " +
                                           "  AND g.freeentrycode = @frequentbowlernumber " +
-                                          "GROUP BY b.id, b.name, DATE(g.startdatetime) " +
+                                          "GROUP BY b.id, b.email, DATE(g.startdatetime) " +
                                           "ORDER BY date DESC";
                     command.Parameters.AddWithValue("@username", Conversion.StringToSql(user.username));
                     command.Parameters.AddWithValue("@frequentbowlernumber", Conversion.LongToSql(user.frequentbowlernumber));
@@ -400,7 +400,7 @@ namespace NBF.Qubica.Managers
                     {
                         Games games = new Games();
                         games.bowlingcenterid = Conversion.SqlToLongOrNull(dataReader["id"]).Value;
-                        games.bowlingcenterName = Conversion.SqlToString(dataReader["name"]);
+                        games.bowlingcenterName = Conversion.SqlToString(dataReader["email"]);
                         games.bowlDate = Conversion.SqlToDateTimeOrNull(dataReader["date"]).Value;
                         games.scores = new GameScores();
                         games.scores.strikes = Conversion.SqlToIntOrNull(dataReader["strikes"]).Value;
@@ -441,7 +441,7 @@ namespace NBF.Qubica.Managers
                     //Create Command
                     MySqlCommand command = new MySqlCommand();
                     command.Connection = databaseconnection.getConnection();
-                    command.CommandText = "SELECT b.id, b.name, DATE(g.startdatetime) as date, g.total, sum(w.isstrike) as strikes, sum(w.isspare) as spares, g.id as gameid, g.gamecode " +
+                    command.CommandText = "SELECT b.id, b.email, DATE(g.startdatetime) as date, g.total, sum(w.isstrike) as strikes, sum(w.isspare) as spares, g.id as gameid, g.gamecode " +
                                           "FROM bowlingcenter as b, " +
                                           "	    scores as s,  " +
                                           "     event as e, " +
@@ -457,8 +457,8 @@ namespace NBF.Qubica.Managers
                                           "AND g.playername = @username " +
                                           "AND g.freeentrycode = @frequentbowlernumber " +
                                           "AND DATE(g.startdatetime) = @gamedate " +
-                                          "GROUP BY b.id, b.name, DATE(g.startdatetime), g.id " +
-                                          "ORDER BY b.name, date DESC";
+                                          "GROUP BY b.id, b.email, DATE(g.startdatetime), g.id " +
+                                          "ORDER BY b.email, date DESC";
                     command.Parameters.AddWithValue("@bowlingcenterid", Conversion.LongToSql(bowlingcenter.id));
                     command.Parameters.AddWithValue("@username", Conversion.StringToSql(user.username));
                     command.Parameters.AddWithValue("@frequentbowlernumber", Conversion.LongToSql(user.frequentbowlernumber));
@@ -520,7 +520,7 @@ namespace NBF.Qubica.Managers
                     //Create Command
                     MySqlCommand command = new MySqlCommand();
                     command.Connection = databaseconnection.getConnection();
-                    command.CommandText = "select b.id as bowlingcenterid, b.name, DATE(g.startdatetime) as date  " +
+                    command.CommandText = "select b.id as bowlingcenterid, b.email, DATE(g.startdatetime) as date  " +
                                           "from game g, " +
                                           "     event e, " +
                                           "     scores s, " +
@@ -538,7 +538,7 @@ namespace NBF.Qubica.Managers
                     if (dataReader.Read())
                     {
                         game.bowlingcenterid = Conversion.SqlToLongOrNull(dataReader["bowlingcenterid"]).Value;
-                        game.bowlingcenterName = Conversion.SqlToString(dataReader["name"]);
+                        game.bowlingcenterName = Conversion.SqlToString(dataReader["email"]);
                         game.datePlayed = Conversion.SqlToDateTimeOrNull(dataReader["date"]).Value;
                         game.game = new SingleGame();
                     }

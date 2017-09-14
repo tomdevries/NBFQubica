@@ -15,7 +15,7 @@ namespace NBF.Qubica.BowlingScores
             Session["auth"] = "false";
             Session["uid"] = null;
 
-            Response.Redirect("default.aspx");
+            Response.Redirect("~/default.aspx");
         }
     }
 }

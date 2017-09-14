@@ -137,7 +137,7 @@ namespace NBF.Qubica.RestWebService
 
                     logger.Trace("Return: userid: " + profile.user.userid);
                     logger.Trace("Return: city: " + profile.user.city);
-                    logger.Trace("Return: name: " + profile.user.name);
+                    logger.Trace("Return: email: " + profile.user.name);
                     logger.Trace("Return: username: " + profile.user.username);
                     logger.Trace("Return: is_favorite: " + profile.user.is_favorite);
                     return profile;

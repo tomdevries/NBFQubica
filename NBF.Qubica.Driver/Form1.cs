@@ -218,7 +218,7 @@ namespace NBF.Qubica.Driver
                     MessageBox.Show("Scores exists, cannot delete");
             }
             else
-                MessageBox.Show("BowlingCenter does not exists by name");
+                MessageBox.Show("BowlingCenter does not exists by id");
         }
         #endregion
 

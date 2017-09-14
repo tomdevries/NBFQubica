@@ -59,6 +59,7 @@
     <Compile Include="S_Advert.cs" />
     <Compile Include="S_Bowl.cs" />
     <Compile Include="S_BowlingCenter.cs" />
+    <Compile Include="S_BowlScore.cs" />
     <Compile Include="S_Challenge.cs" />
     <Compile Include="S_Competition.cs" />
     <Compile Include="S_CompetitionBowlingcenter.cs" />

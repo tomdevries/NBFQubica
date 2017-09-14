@@ -155,7 +155,7 @@ namespace NBF.Qubica.BowlingScores
                     }
                     else
                     {
-                        if (UserManager.UserExistByUsername(meldfrequentbowlernaam.Text))
+                        if (UserManager.UserExistByUsername(meldfrequentbowlernaam.Text.ToUpper()))
                         {
                             result = "Vul een andere Frequent Bowler Naam in, deze is reeds ingebruik!";
                             validUser = false;
@@ -183,17 +183,18 @@ namespace NBF.Qubica.BowlingScores
                         user.city = "";
                         user.email = meldemail.Text;
                         user.isMember = false;
-                        user.isRegistrationConfirmed = true;
+                        user.isRegistrationConfirmed = false;
                         user.name = string.Concat(meldvoornaam.Text, " ", meldachternaam.Text).Trim();
                         user.password = meldwachtwoord.Text;
                         user.roleid = Role.USER;
-                        user.username = meldfrequentbowlernaam.Text;
+                        user.username = meldfrequentbowlernaam.Text.ToUpper();
                         long n;
                         long.TryParse(meldfrequentbowlernummmer.Text, out n);
                         user.frequentbowlernumber = n;
 
                         UserManager.Insert(user);
-                        result = "Het aanmelden is geslaagd, ga bowlen of schrijf je eerst in voor een competitie";
+                        result = "Het aanmelden is geslaagd, check je e-mail, ga bowlen of schrijf je eerst in voor een competitie";
+                        Mail.SendRegistrationMessage(user.email, user.name, user.username, user.frequentbowlernumber);
                     }
                 }
                 catch (Exception ex)

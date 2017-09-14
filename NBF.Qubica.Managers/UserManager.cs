@@ -223,6 +223,45 @@ namespace NBF.Qubica.Managers
             return user;
         }
 
+        public static S_User GetUserByEmail(string email)
+        {
+            S_User user = null;
+
+            try
+            {
+                DatabaseConnection databaseconnection = new DatabaseConnection();
+
+                //Open connection
+                if (databaseconnection.OpenConnection())
+                {
+                    //Create Command
+                    MySqlCommand command = new MySqlCommand();
+                    command.Connection = databaseconnection.getConnection();
+                    command.CommandText = "SELECT * FROM user WHERE email=@email";
+                    command.Parameters.AddWithValue("@email", Conversion.StringToSql(email));
+
+                    //Create a data reader and Execute the command
+                    MySqlDataReader dataReader = command.ExecuteReader();
+
+                    //Read the data and store them in the list
+                    if (dataReader.Read())
+                        user = DataToObject(dataReader);
+
+                    //close Data Reader
+                    dataReader.Close();
+
+                    //close Connection
+                    databaseconnection.CloseConnection();
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("GetUserByEmail, Error reading user data: {0}", ex.Message));
+            }
+
+            return user;
+        }
+
         public static S_User GetUserById(long id)
         {
             S_User user = null;
@@ -338,6 +377,45 @@ namespace NBF.Qubica.Managers
             catch (Exception ex)
             {
                 logger.Error(string.Format("GetUserByNamePasswordAndFrequentbowlernumber, Error reading user data: {0}", ex.Message));
+            }
+
+            return user;
+        }
+
+        public static S_User GetUserByFrequentbowlernumber(long frequentbowlernumber)
+        {
+            S_User user = null;
+
+            try
+            {
+                DatabaseConnection databaseconnection = new DatabaseConnection();
+
+                //Open connection
+                if (databaseconnection.OpenConnection())
+                {
+                    //Create Command
+                    MySqlCommand command = new MySqlCommand();
+                    command.Connection = databaseconnection.getConnection();
+                    command.CommandText = "SELECT * FROM user WHERE frequentbowlernumber=@frequentbowlernumber";
+                    command.Parameters.AddWithValue("@frequentbowlernumber", Conversion.LongToSql(frequentbowlernumber));
+
+                    //Create a data reader and Execute the command
+                    MySqlDataReader dataReader = command.ExecuteReader();
+
+                    //Read the data and store them in the list
+                    if (dataReader.Read())
+                        user = DataToObject(dataReader);
+
+                    //close Data Reader
+                    dataReader.Close();
+
+                    //close Connection
+                    databaseconnection.CloseConnection();
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("GetUserByFrequentbowlernumber, Error reading user data: {0}", ex.Message));
             }
 
             return user;

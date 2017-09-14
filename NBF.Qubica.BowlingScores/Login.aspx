@@ -59,7 +59,7 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-group center-input">
-                                                <asp:TextBox type="text" class="form-control" placeholder="Je ID-Naam *" id="loginFrequentBowlerNaam" runat="server" />
+                                                <asp:TextBox type="text" class="form-control" placeholder="Je ID-Naam *" id="loginFrequentBowlerNaam" runat="server" style="text-transform: uppercase;"/>
                                                 <asp:RequiredFieldValidator class="help-block text-danger" runat="server" ControlToValidate="loginFrequentBowlerNaam" ErrorMessage="Geef je ID-Naam op." />
                                             </div>
                                             <div class="form-group center-input">
@@ -69,6 +69,9 @@
                                             <div class="form-group center-input">
                                                 <asp:TextBox type="password" class="form-control" placeholder="Je wachtwoord *" id="loginWachtwoord" runat="server" />
                                                 <asp:RequiredFieldValidator class="help-block text-danger" runat="server" ControlToValidate="loginWachtwoord" ErrorMessage="Geef je wachtwoord op." />
+                                            </div>
+                                            <div class="form-group center-input">
+                                                <asp:LinkButton ID="forgotten" runat="server" Text="Wachtwoord vergeten?" onclick="forgotten_Click" CausesValidation="False"/>
                                             </div>
                                         </div>
                                         <div class="clearfix"></div>

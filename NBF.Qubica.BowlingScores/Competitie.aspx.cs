@@ -142,6 +142,10 @@ namespace NBF.Qubica.BowlingScores
                             {
                                 CompetitionManager.AddPlayer(user.id, competitionId);
                                 result = result = "Je bent ingeschreven voor deze competitie!";
+                                compCompetitie.Visible = false;
+                                compFrequentBowlerNaam.Visible = false;
+                                compFrequentBowlerNummer.Visible = false;
+                                compWachtwoord.Visible = false;
                             }
                         }
 

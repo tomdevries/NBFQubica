@@ -63,16 +63,19 @@
   <ItemGroup>
     <Content Include="Competitie.aspx" />
     <Content Include="CompetitieStanden.aspx" />
+    <Content Include="Confirm.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="css\bowling.css" />
     <Content Include="css\bowling.min.css" />
     <Content Include="default.aspx" />
+    <Content Include="Forgotten.aspx" />
     <Content Include="img\AppStore.jpg" />
     <Content Include="img\bowling\amsterdam.png" />
     <Content Include="img\bowling\harderwijk-full.png" />
     <Content Include="img\bowling\harderwijk.png" />
     <Content Include="img\bowling\veenendaal.png" />
     <Content Include="img\competities\1.png" />
+    <Content Include="img\Facebook-Share.jpg" />
     <Content Include="img\GooglePlay.jpg" />
     <Content Include="img\header-bg.jpg" />
     <Content Include="img\logo\nbf.jpg" />
@@ -83,6 +86,7 @@
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="Profile.aspx" />
+    <Content Include="Reset.aspx" />
     <Content Include="vendor\bootstrap\css\bootstrap.css" />
     <Content Include="vendor\bootstrap\css\bootstrap.min.css" />
     <Content Include="vendor\bootstrap\fonts\glyphicons-halflings-regular.svg" />
@@ -169,6 +173,13 @@
     <Compile Include="CompetitieStanden.aspx.designer.cs">
       <DependentUpon>CompetitieStanden.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Confirm.aspx.cs">
+      <DependentUpon>Confirm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Confirm.aspx.designer.cs">
+      <DependentUpon>Confirm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -182,6 +193,13 @@
     </Compile>
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forgotten.aspx.cs">
+      <DependentUpon>Forgotten.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forgotten.aspx.designer.cs">
+      <DependentUpon>Forgotten.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -205,6 +223,13 @@
       <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reset.aspx.cs">
+      <DependentUpon>Reset.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reset.aspx.designer.cs">
+      <DependentUpon>Reset.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NBF.Qubica.Classes\NBF.Qubica.Classes.csproj">

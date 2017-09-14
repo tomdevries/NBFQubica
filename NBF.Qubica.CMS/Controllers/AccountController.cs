@@ -146,7 +146,7 @@ namespace NBF.Qubica.CMS.Controllers
 
                     UserManager.Insert(user);
 
-                    //return RedirectToAction("Index", "Home", new { name = user.name });
+                    //return RedirectToAction("Index", "Home", new { email = user.email });
                     return RedirectToAction("RegisterResult", "Account", new { name = user.name} );
                 }
                 catch (MembershipCreateUserException e)
@@ -210,7 +210,7 @@ namespace NBF.Qubica.CMS.Controllers
         }
 
         //
-        // Get: /Account/RegisterResult/<name>
+        // Get: /Account/RegisterResult/<email>
         [AllowAnonymous]
         public ActionResult RegisterResult(string name)
         {

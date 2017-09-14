@@ -10,7 +10,7 @@ namespace NBF.Qubica.Pollservice
         /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param email="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,11 +20,11 @@ namespace NBF.Qubica.Pollservice
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
+        #region Component Designer generated idnummer
 
         /// <summary>
         /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        /// the contents of this method with the idnummer editor.
         /// </summary>
         private void InitializeComponent()
         {

@@ -111,6 +111,45 @@ namespace NBF.Qubica.Managers
             return competitionplayer;
         }
 
+        public static List<S_Competition> GetCompetitionsByPlayer(long userid)
+        {
+            List<S_Competition> compititions = new List<S_Competition>();
+
+            try
+            {
+                DatabaseConnection databaseconnection = new DatabaseConnection();
+
+                //Open connection
+                if (databaseconnection.OpenConnection())
+                {
+                    //Create Command
+                    MySqlCommand command = new MySqlCommand();
+                    command.Connection = databaseconnection.getConnection();
+                    command.CommandText = "SELECT competition.* FROM competitionplayers, competition WHERE userid = @userid AND competition.id = competitionplayers.competitionid";
+                    command.Parameters.AddWithValue("@userid", Conversion.LongToSql(userid));
+
+                    //Create a data reader and Execute the command
+                    MySqlDataReader dataReader = command.ExecuteReader();
+
+                    //Read the data and store them in the list
+                    while (dataReader.Read())
+                        compititions.Add(DataToCompetitionObject(dataReader));
+
+                    //close Data Reader
+                    dataReader.Close();
+
+                    //close Connection
+                    databaseconnection.CloseConnection();
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("GetCompetitionPlayer, Error reading competitionplayersranking data: {0}", ex.Message));
+            }
+
+            return compititions;
+        }
+
         public static List<S_CompetitionPlayersRanking> GetCompetitionPlayersRanking(long challangeid, long competitionid, List<S_CompetitionPlayers> playerList, DateTime startdate, DateTime enddate)
         {
             List<S_CompetitionPlayersRanking> competitionplayersranking = new List<S_CompetitionPlayersRanking>();
@@ -138,7 +177,7 @@ namespace NBF.Qubica.Managers
                                                   ",    nbf.event e " +
                                                   ",    nbf.scores s " +
                                                   ", (SELECT user.id " +
-                                                  "   ,      user.name " +
+                                                  "   ,      user.email " +
                                                   "   ,      user.frequentbowlernumber " +
                                                   "   FROM competitionplayers " +
                                                   "   ,    user " +
@@ -150,7 +189,7 @@ namespace NBF.Qubica.Managers
                                                   "AND   g.freeentrycode IS NOT null " +
                                                   //"AND   date(g.startdatetime)>=@startdate " +
                                                   //"AND   date(g.startdatetime)<=@enddate " +
-                                                  "AND   d.name = g.playername " +
+                                                  "AND   d.email = g.playername " +
                                                   "AND   d.frequentbowlernumber = g.freeentrycode " +
                                                   "AND   g.eventid = e.id " +
                                                   "AND   e.scoresid = s.id " +
@@ -174,7 +213,7 @@ namespace NBF.Qubica.Managers
                                                   ",    nbf.event e " +
                                                   ",    nbf.scores s " +
                                                   ", (SELECT user.id " +
-                                                  "   ,      user.name " +
+                                                  "   ,      user.email " +
                                                   "   ,      user.frequentbowlernumber " +
                                                   "   FROM competitionplayers " +
                                                   "   ,    user " +
@@ -186,7 +225,7 @@ namespace NBF.Qubica.Managers
                                                   "AND   g.freeentrycode IS NOT null " +
                                                   "AND   date(g.startdatetime)>=@startdate " +
                                                   "AND   date(g.startdatetime)<=@enddate " +
-                                                  "AND   d.name = g.playername " +
+                                                  "AND   d.email = g.playername " +
                                                   "AND   d.frequentbowlernumber = g.freeentrycode " +
                                                   "AND   g.eventid = e.id " +
                                                   "AND   e.scoresid = s.id " +
@@ -207,7 +246,7 @@ namespace NBF.Qubica.Managers
                                                   "FROM nbf.game g " +
                                                   ",    nbf.event e " +
                                                   ",    nbf.scores s " +
-                                                  ",   (SELECT user.id, user.name, user.frequentbowlernumber " +
+                                                  ",   (SELECT user.id, user.email, user.frequentbowlernumber " +
                                                   "     FROM competitionplayers " +
                                                   "     ,    user " +
                                                   "     WHERE user.id = competitionplayers.userid " +
@@ -215,7 +254,7 @@ namespace NBF.Qubica.Managers
                                                   "WHERE date(g.startdatetime)>=@startdate " +
                                                   "AND   date(g.startdatetime)<=@enddate " +
                                                   "AND   g.eventid = e.id " +
-                                                  "AND   d.name = g.playername " +
+                                                  "AND   d.email = g.playername " +
                                                   "AND   d.frequentbowlernumber = g.freeentrycode " +
                                                   "AND   e.scoresid = s.id " +
                                                   "AND   s.bowlingcenterid in (SELECT bowlingcenterid FROM competitionbowlingcenter " +
@@ -235,14 +274,14 @@ namespace NBF.Qubica.Managers
                                                   "FROM nbf.game g " +
                                                   ",    nbf.event e " +
                                                   ",    nbf.scores s " +
-                                                  ",    (SELECT user.id, user.name, user.frequentbowlernumber " +
+                                                  ",    (SELECT user.id, user.email, user.frequentbowlernumber " +
                                                   "      FROM competitionplayers " +
                                                   "      ,    user " +
                                                   "      WHERE user.id = competitionplayers.userid " +
                                                   "      AND   competitionplayers.competitionid = @competitionid) d " +
                                                   "WHERE date(g.startdatetime) >= @startdate  " +
                                                   "AND   date(g.startdatetime) <= @enddate " +
-                                                  "AND   d.name = g.playername " +
+                                                  "AND   d.email = g.playername " +
                                                   "AND   d.frequentbowlernumber = g.freeentrycode " +
                                                   "AND   g.eventid = e.id " +
                                                   "AND   e.scoresid = s.id " +
@@ -264,7 +303,7 @@ namespace NBF.Qubica.Managers
                                                   ",     event e " +
                                                   ",     scores s " +
                                                   ", (SELECT user.id " +
-                                                  "   ,      user.name " +
+                                                  "   ,      user.email " +
                                                   "   ,      user.frequentbowlernumber " +
                                                   "   FROM competitionplayers " +
                                                   "   ,    user " +
@@ -274,7 +313,7 @@ namespace NBF.Qubica.Managers
                                                   "AND   f.gameid = g.id " +
                                                   "AND   date(g.startdatetime)>=@startdate " +
                                                   "AND   date(g.startdatetime)<=@enddate " +
-                                                  "AND   d.name = g.playername " +
+                                                  "AND   d.email = g.playername " +
                                                   "AND   d.frequentbowlernumber = g.freeentrycode " +
                                                   "AND   g.eventid = e.id " +
                                                   "AND   e.scoresid = s.id " +
@@ -297,7 +336,7 @@ namespace NBF.Qubica.Managers
                                                   ",     event e " +
                                                   ",     scores s " +
                                                   ",    (SELECT user.id " +
-                                                  "      ,      user.name " +
+                                                  "      ,      user.email " +
                                                   "      ,      user.frequentbowlernumber " +
                                                   "      FROM competitionplayers " +
                                                   "      ,    user " +
@@ -309,7 +348,7 @@ namespace NBF.Qubica.Managers
                                                   "AND   b.pins = '7,10' " +
                                                   "AND   date(g.startdatetime)>=@startdate " +
                                                   "AND   date(g.startdatetime)<=@enddate " +
-                                                  "AND   d.name = g.playername " +
+                                                  "AND   d.email = g.playername " +
                                                   "AND   d.frequentbowlernumber = g.freeentrycode " +
                                                   "AND   g.eventid = e.id " +
                                                   "AND   e.scoresid = s.id " +
@@ -332,7 +371,7 @@ namespace NBF.Qubica.Managers
                                                   ",     event e " +
                                                   ",     scores s " +
                                                   ",    (SELECT user.id " +
-                                                  "      ,      user.name " +
+                                                  "      ,      user.email " +
                                                   "      ,      user.frequentbowlernumber " +
                                                   "      FROM competitionplayers " +
                                                   "      ,    user " +
@@ -344,7 +383,7 @@ namespace NBF.Qubica.Managers
                                                   "AND   b.pins like '%9%' " +
                                                   "AND   date(g.startdatetime)>=@startdate " +
                                                   "AND   date(g.startdatetime)<=@enddate " +
-                                                  "AND   d.name = g.playername " +
+                                                  "AND   d.email = g.playername " +
                                                   "AND   d.frequentbowlernumber = g.freeentrycode " +
                                                   "AND   g.eventid = e.id " +
                                                   "AND   e.scoresid = s.id " +
@@ -365,7 +404,7 @@ namespace NBF.Qubica.Managers
                                                   ",     event e " +
                                                   ",     scores s " +
                                                   ",    (SELECT user.id " +
-                                                  "      ,      user.name " +
+                                                  "      ,      user.email " +
                                                   "      ,      user.frequentbowlernumber " +
                                                   "      FROM competitionplayers " +
                                                   "      ,    user " +
@@ -374,7 +413,7 @@ namespace NBF.Qubica.Managers
                                                   "WHERE g.total > 160 " +
                                                   "AND   date(g.startdatetime)>=@startdate " +
                                                   "AND   date(g.startdatetime)<=@enddate " +
-                                                  "AND   d.name = g.playername " +
+                                                  "AND   d.email = g.playername " +
                                                   "AND   d.frequentbowlernumber = g.freeentrycode " +
                                                   "AND   g.eventid = e.id " +
                                                   "AND   e.scoresid = s.id " +
@@ -395,7 +434,7 @@ namespace NBF.Qubica.Managers
                                                   ",     event e " +
                                                   ",     scores s " +
                                                   ",    (SELECT user.id " +
-                                                  "      ,      user.name " +
+                                                  "      ,      user.email " +
                                                   "      ,      user.frequentbowlernumber " +
                                                   "      FROM competitionplayers " +
                                                   "      ,    user " +
@@ -403,7 +442,7 @@ namespace NBF.Qubica.Managers
                                                   "      AND   competitionplayers.competitionid=@competitionid) d  " +
                                                   "WHERE date(g.startdatetime)>=@startdate " +
                                                   "AND   date(g.startdatetime)<=@enddate " +
-                                                  "AND   d.name = g.playername " +
+                                                  "AND   d.email = g.playername " +
                                                   "AND   d.frequentbowlernumber = g.freeentrycode " +
                                                   "AND   g.eventid = e.id " +
                                                   "AND   e.scoresid = s.id " +
@@ -838,7 +877,7 @@ namespace NBF.Qubica.Managers
                     //Create Command
                     MySqlCommand command = new MySqlCommand();
                     command.Connection = databaseconnection.getConnection();
-                    command.CommandText = "SELECT id FROM user WHERE name LIKE '%"+name+"%' and id not in (select userid from competitionplayers where competitionid=@competitionid)";
+                    command.CommandText = "SELECT id FROM user WHERE email LIKE '%"+name+"%' and id not in (select userid from competitionplayers where competitionid=@competitionid)";
                     command.Parameters.AddWithValue("@competitionid", Conversion.LongToSql(id));
                     //Create a data reader and Execute the command
                     MySqlDataReader dataReader = command.ExecuteReader();
@@ -919,7 +958,7 @@ namespace NBF.Qubica.Managers
             }
         }
 
-        public static void DeletePlayer(long id)
+        public static void DeletePlayerByID(long id)
         {
             try
             {
@@ -940,6 +979,30 @@ namespace NBF.Qubica.Managers
             catch (Exception ex)
             {
                 logger.Error(string.Format("Delete, Error deleting competitionplayersranking data: {0}", ex.Message));
+            }
+        }
+
+        public static void DeleteCompetitionPlayer(long userid)
+        {
+            try
+            {
+                DatabaseConnection databaseconnection = new DatabaseConnection();
+
+                if (databaseconnection.OpenConnection())
+                {
+                    MySqlCommand command = new MySqlCommand();
+                    command.Connection = databaseconnection.getConnection();
+                    command.CommandText = "DELETE FROM competitionplayers WHERE userid=@userid ";
+                    command.Parameters.AddWithValue("@userid", Conversion.LongToSql(userid));
+
+                    command.ExecuteNonQuery();
+
+                    databaseconnection.CloseConnection();
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Delete, Error deleting DeleteCompetitionPlayer data: {0}", ex.Message));
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using NBF.Qubica.Classes;
+using NBF.Qubica.Common;
 using NBF.Qubica.Managers;
 using System;
 using System.Collections.Generic;
@@ -20,8 +21,8 @@ namespace NBF.Qubica.BowlingScores
                 long id = Convert.ToInt64(Session["uid"]);
                 S_User user = UserManager.GetUserById(id);
 
-                if (!string.IsNullOrEmpty(user.name)) contNaam.Text = user.name;
-                if (!string.IsNullOrEmpty(user.email)) contEmail.Text = user.email;
+                if (!string.IsNullOrEmpty(user.name)) contactNaam.Text = user.name;
+                if (!string.IsNullOrEmpty(user.email)) contactEmail.Text = user.email;
             }
         }
 
@@ -37,12 +38,17 @@ namespace NBF.Qubica.BowlingScores
                 try
                 {
                     S_Contact contact = new S_Contact();
-                    contact.email = contEmail.Text;
-                    contact.message = contMessage.Text;
+                    contact.email = contactEmail.Text;
+                    contact.message = contactMessage.Text;
                     ContactManager.Insert(contact);
 
                     validContact = true;
-                    result = "Bericht is verstuurd!";
+                    Mail.SendContactMailToNBF(Settings.MailNBF, contactNaam.Text, contact.email, contact.message);
+                    result = "Het bericht is verstuurd naar de NBF, u kunt spoedig een reactie te gemoed zien.";
+
+                    contactNaam.Visible = false;
+                    contactEmail.Visible = false;
+                    contactMessage.Visible = false;
                 }
                 catch (Exception ex)
                 {
